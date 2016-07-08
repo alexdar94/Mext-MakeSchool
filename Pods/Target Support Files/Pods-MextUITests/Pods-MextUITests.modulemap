@@ -1,0 +1,6 @@
+framework module Pods_MextUITests {
+  umbrella header "Pods-MextUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
