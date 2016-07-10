@@ -18,6 +18,7 @@
 		FA0DD1B21D276AD30089F512 /* MextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DD1B11D276AD30089F512 /* MextTests.swift */; };
 		FA0DD1BD1D276AD30089F512 /* MextUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DD1BC1D276AD30089F512 /* MextUITests.swift */; };
 		FA3A64471D2F68800074515A /* MusicSuggestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A64461D2F68800074515A /* MusicSuggestionTableViewCell.swift */; };
+		FA87532C1D31B13100EBDF6A /* MusicPlayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87532B1D31B13100EBDF6A /* MusicPlayerHelper.swift */; };
 		FAFAC3E91D276D38005BA926 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAFAC3E81D276D38005BA926 /* GoogleService-Info.plist */; };
 		FAFAC3EE1D277434005BA926 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAC3ED1D277434005BA926 /* ChatViewController.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		FA0DD1BC1D276AD30089F512 /* MextUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MextUITests.swift; sourceTree = "<group>"; };
 		FA0DD1BE1D276AD30089F512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA3A64461D2F68800074515A /* MusicSuggestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSuggestionTableViewCell.swift; sourceTree = "<group>"; };
+		FA87532B1D31B13100EBDF6A /* MusicPlayerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerHelper.swift; sourceTree = "<group>"; };
 		FAFAC3E81D276D38005BA926 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAFAC3ED1D277434005BA926 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		FF0B378683EA343F1732402A /* Pods-Mext.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mext.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mext/Pods-Mext.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		FA0DD19B1D276AD30089F512 /* Mext */ = {
 			isa = PBXGroup;
 			children = (
+				FA87532A1D31B10C00EBDF6A /* Helpers */,
 				FAFAC3EC1D27732D005BA926 /* ViewControllers */,
 				FAFAC3EB1D277320005BA926 /* View */,
 				FAFAC3EA1D277310005BA926 /* Models */,
@@ -172,6 +175,14 @@
 				FA0DD1BE1D276AD30089F512 /* Info.plist */,
 			);
 			path = MextUITests;
+			sourceTree = "<group>";
+		};
+		FA87532A1D31B10C00EBDF6A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA87532B1D31B13100EBDF6A /* MusicPlayerHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		FAFAC3EA1D277310005BA926 /* Models */ = {
@@ -465,6 +476,7 @@
 				FA3A64471D2F68800074515A /* MusicSuggestionTableViewCell.swift in Sources */,
 				FAFAC3EE1D277434005BA926 /* ChatViewController.swift in Sources */,
 				FA0DD19D1D276AD30089F512 /* AppDelegate.swift in Sources */,
+				FA87532C1D31B13100EBDF6A /* MusicPlayerHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

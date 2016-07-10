@@ -9,6 +9,7 @@ target 'Mext' do
   pod 'Firebase'
   pod 'JSQMessagesViewController'
   pod 'Firebase/Database'
+  pod 'Parse'
 
   target 'MextTests' do
     inherit! :search_paths

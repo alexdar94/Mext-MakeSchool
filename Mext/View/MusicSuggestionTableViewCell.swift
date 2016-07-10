@@ -28,10 +28,11 @@ class MusicSuggestionTableViewCell: UITableViewCell {
         //let label2Y : CGFloat = gap + labelHeight + lineGap
         let imageSize : CGFloat = 38
         
-        playButton = UIButton()
-//        playButton.frame = CGRectMake(bounds.width-imageSize - gap, gap, imageSize, imageSize)
+        playButton = UIButton(type: .Custom)
         playButton.frame = CGRectMake(gap_image, gap_image, imageSize, imageSize)
         playButton.setImage(UIImage(named: "playButton.png"), forState: UIControlState.Normal)
+        playButton.setImage(UIImage(named: "pauseButton.png"), forState: UIControlState.Selected)
+        playButton.addTarget(self, action: #selector(buttonAction), forControlEvents: .TouchUpInside)
         //playButton.centerYAnchor.constraintEqualToAnchor(contentView.centerYAnchor).active = true
         contentView.addSubview(playButton)
         
@@ -55,4 +56,7 @@ class MusicSuggestionTableViewCell: UITableViewCell {
 //        contentView.addSubview(myButton2)
     }
 
+    func buttonAction(sender: UIButton!) {
+        MusicPlayerHelper.grabSong()
+    }
 }
