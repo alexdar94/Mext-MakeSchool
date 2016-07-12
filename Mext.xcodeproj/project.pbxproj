@@ -71,7 +71,7 @@
 		FAB4B3FF1D3404E2007E5B5C /* SoundClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundClip.swift; sourceTree = "<group>"; };
 		FAB4B4011D3416B4007E5B5C /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		FAB4B4031D349AF9007E5B5C /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
-		FAB4B4051D34BE16007E5B5C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		FAB4B4051D34BE16007E5B5C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = ../View/Message.swift; sourceTree = "<group>"; };
 		FAFAC3E81D276D38005BA926 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAFAC3ED1D277434005BA926 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		FF0B378683EA343F1732402A /* Pods-Mext.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mext.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mext/Pods-Mext.release.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +198,7 @@
 		FAFAC3EA1D277310005BA926 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FAB4B4051D34BE16007E5B5C /* Message.swift */,
 				FAB4B3FF1D3404E2007E5B5C /* SoundClip.swift */,
 			);
 			path = Models;
@@ -207,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				FA3A64461D2F68800074515A /* MusicSuggestionTableViewCell.swift */,
-				FAB4B4051D34BE16007E5B5C /* Message.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

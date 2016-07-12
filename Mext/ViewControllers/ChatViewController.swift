@@ -10,16 +10,20 @@ class ChatViewController: JSQMessagesViewController {
     let chatRoomName = "messages"
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor(red: 10/255, green: 180/255, blue: 230/255, alpha: 1.0))
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor.lightGrayColor())
-//    var messages = [JSQMessage]()
+    //    var messages = [JSQMessage]()
     var messages = [Message]()
     
     var localTyping = false
     var usersTypingQuery: FIRDatabaseQuery!
     
+    var currWord = ""
+    var currMessageLength = 0
+    
     // Popup suggestion tableview for text
     var popUpTableView : UITableView? = nil
     var soundClips : [SoundClip] = []
     var soundFileUrl = ""
+    var attrStringIndex = [String: Int]()
     
     var isTyping: Bool {
         get {
@@ -33,7 +37,7 @@ class ChatViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.setup()
         self.observeMessages()
         self.observeTyping()
@@ -41,13 +45,13 @@ class ChatViewController: JSQMessagesViewController {
         //let childUpdates = ["/\(chatRoomName)/test": "update"]
         //ref.updateChildValues(childUpdates)
         
-//        let tempRef = FirebaseHelper.soundClipsRef(chatRoomName)
-//        tempRef.queryOrderedByChild("tag").queryEqualToValue("hello")
-//            .observeEventType(.ChildAdded, withBlock: { (snapshot) in
-//                print(snapshot)
-//                let text = snapshot.value!["soundName"]! as! String
-//                print(text)
-//            })
+        //        let tempRef = FirebaseHelper.soundClipsRef(chatRoomName)
+        //        tempRef.queryOrderedByChild("tag").queryEqualToValue("hello")
+        //            .observeEventType(.ChildAdded, withBlock: { (snapshot) in
+        //                print(snapshot)
+        //                let text = snapshot.value!["soundName"]! as! String
+        //                print(text)
+        //            })
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,7 +86,6 @@ extension ChatViewController {
     }
     
     func addMessage(id: String, text: String, soundFileUrl: String) {
-        //let message = JSQMessage(senderId: id, displayName: "", text: text)
         let message = Message(senderId: id, displayName: "", text: text, soundFileUrl: soundFileUrl)
         messages.append(message)
     }
@@ -95,6 +98,14 @@ extension ChatViewController {
             let text = snapshot.value!["text"]! as! String
             let soundFileUrl = snapshot.value!["soundFileUrl"]! as! String
             self.addMessage(snapshot.key, text: text, soundFileUrl: soundFileUrl)
+            
+//            let tempRef = FirebaseHelper.messageRef(chatRoomName).child()
+//            tempRef.queryOrderedByChild("tag").queryEqualToValue("hello")
+//                .observeEventType(.ChildAdded, withBlock: { (snapshot) in
+//                    print(snapshot)
+//                    let text = snapshot.value!["soundName"]! as! String
+//                    print(text)
+//                })
             
             self.finishReceivingMessage()
         })
@@ -163,10 +174,14 @@ extension ChatViewController {
         //            cell.textView!.textColor = UIColor.blackColor()
         //        }
         
-        //        let attributedString = NSMutableAttributedString(string: "asdasdaskjdakjfhasjkf")
-        //        let myRange = NSMakeRange(0,1)
-        //        attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: myRange)
-        //        cell.textView!.attributedText = attributedString
+        
+        
+        //                let attributedString = NSMutableAttributedString(string: "asdasdaskjdakjfhasjkf")
+        //                let myRange = NSMakeRange(0,6)
+        //                let color = UIColor.
+        //                attributedString.addAttribute(NSForegroundColorAttributeName, value: GradientColor(UIGradientStyle.TopToBottom, frame: CGRect(x: 0, y: 0, width: 1000, height: 1000), colors: [UIColor.redColor(), UIColor.grayColor()]), range: myRange)
+        //                attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: myRange)
+        //                cell.textView!.attributedText = attributedString
         
         return cell
     }
@@ -184,7 +199,8 @@ extension ChatViewController {
         let messageItem = [
             "text": text,
             "senderId": senderId,
-            "soundFileUrl": soundFileUrl ?? ""
+            "soundFileUrl": soundFileUrl ?? "",
+            "attrStringIndex":attrStringIndex
         ]
         itemRef.setValue(messageItem)
         
@@ -193,6 +209,8 @@ extension ChatViewController {
         finishSendingMessage()
         
         isTyping = false
+        soundFileUrl = ""
+        attrStringIndex = [:]
     }
     
     override func didPressAccessoryButton(sender: UIButton!) {
@@ -203,8 +221,9 @@ extension ChatViewController {
         super.textViewDidChange(textView)
         
         let message = textView.text
+        currMessageLength = message.characters.count
         var keywordArr = message.componentsSeparatedByString(" ")
-        let currWord = keywordArr[keywordArr.count-1]
+        currWord = keywordArr[keywordArr.count-1]
         //print(keywordArr[keywordArr.count-1])
         
         // TODO add keyword searching
@@ -232,7 +251,6 @@ extension ChatViewController {
                     self.popUpTableView = nil
                 }
             }
-            
         }
         
         let linkTextWithColor = "click here"
@@ -287,6 +305,9 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.soundFileUrl = soundClips[indexPath.row].soundFile!.url!
+        self.attrStringIndex[FirebaseHelper.generateFIRUID()] = currMessageLength - currWord.characters.count
+        self.attrStringIndex[FirebaseHelper.generateFIRUID()] = currMessageLength
+        
         if self.popUpTableView != nil {
             self.popUpTableView!.removeFromSuperview()
             self.popUpTableView = nil

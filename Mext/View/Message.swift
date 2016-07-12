@@ -11,6 +11,7 @@ import JSQMessagesViewController
 
 class Message : JSQMessage {
     var soundFileUrl : String
+    var attrStringIndex : [String: Int]?
     
     init(senderId: String, displayName: String, text: String, soundFileUrl: String){
         self.soundFileUrl = soundFileUrl

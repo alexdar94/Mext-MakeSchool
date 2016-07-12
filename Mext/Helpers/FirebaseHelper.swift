@@ -25,4 +25,9 @@ class FirebaseHelper {
         return ref.child("SoundClips")
     }
     
+    static func generateFIRUID() -> String {
+        let UID = (String)(FirebaseHelper.ref.childByAutoId())
+        return UID.substringWithRange(Range<String.Index>(start: UID.startIndex.advancedBy(52), end: UID.endIndex.advancedBy(0)))
+    }
+    
 }
