@@ -36,16 +36,44 @@ class MusicPlayerHelper {
     //        }
     //    }
     
-    static func grabSong() {
-        let songQuery = PFQuery(className: "Hello")
-        songQuery.getObjectInBackgroundWithId("RDmiZCBECP", block: {
+    // Play Parse music
+    static func playSoundClipFromParse() {
+        let soundQuery = PFQuery(className: "SoundClip")
+        soundQuery.getObjectInBackgroundWithId("RDmiZCBECP", block: {
             (object: PFObject?, error:NSError?) -> Void in
             if let audioFileTemp: PFFile = object?.valueForKey("musicFile") as? PFFile {
-                audioPlayer = AVPlayer(URL: NSURL(string: audioFileTemp.url!)!)
-                audioPlayer!.play()
+                playSoundClip(audioFileTemp)
+                //audioPlayer = AVPlayer(URL: NSURL(string: audioFileTemp.url!)!)
+                //audioPlayer!.play()
             }
         })
     }
+    
+    // Play music
+    static func playSoundClip(soundClipFile : PFFile?) {
+        if let audioFileTemp = soundClipFile{
+            audioPlayer = AVPlayer(URL: NSURL(string: audioFileTemp.url!)!)
+//            audioPlayer = AVPlayer(URL: NSURL(string: "http://mext.herokuapp.com/parse/files/mext/a48f0c809725fd0ec3d4f7228293f5bf_fuck-you-ceelo.mp3")!)
+            audioPlayer!.play()
+        }
+    }
+    
+    // Play sound with url
+    static func playSoundClipFromUrl(soundClipFileUrl : String!) {
+        if soundClipFileUrl != ""{
+            audioPlayer = AVPlayer(URL: NSURL(string: soundClipFileUrl)!)
+            audioPlayer!.play()
+        }
+    }
+    
+//    static func playSoundClip(soundClipFile : PFFile?) {
+//        if let audioFileTemp = soundClipFile{
+//            audioPlayer = AVPlayer(URL: NSURL(string: audioFileTemp.url!)!)
+//            //            audioPlayer = AVPlayer(URL: NSURL(string: "http://mext.herokuapp.com/parse/files/mext/a48f0c809725fd0ec3d4f7228293f5bf_fuck-you-ceelo.mp3")!)
+//            audioPlayer!.play()
+//        }
+//    }
+    
     
 //    static func searchSongs(searchText: String, completionBlock: PFQueryArrayResultBlock) -> PFQuery {
 //        /*

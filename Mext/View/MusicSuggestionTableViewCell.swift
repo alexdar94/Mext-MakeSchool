@@ -7,23 +7,27 @@
 //
 
 import UIKit
+import Parse
 
 class MusicSuggestionTableViewCell: UITableViewCell {
     var playButton : UIButton!
     var songName : UILabel!
     var songArt : UIImageView!
+    var soundClipFile : PFFile?
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:)")
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    init(style: UITableViewCellStyle, reuseIdentifier: String?, soundClipFile: PFFile?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.soundClipFile = soundClipFile
         
         let gap_image : CGFloat = 5
         let gap_label : CGFloat = 9
         let labelHeight: CGFloat = 30
-        let labelWidth: CGFloat = 150
+        let labelWidth: CGFloat = 300
         let lineGap : CGFloat = 5
         //let label2Y : CGFloat = gap + labelHeight + lineGap
         let imageSize : CGFloat = 38
@@ -34,6 +38,7 @@ class MusicSuggestionTableViewCell: UITableViewCell {
         playButton.setImage(UIImage(named: "pauseButton.png"), forState: UIControlState.Selected)
         playButton.addTarget(self, action: #selector(buttonAction), forControlEvents: .TouchUpInside)
         //playButton.centerYAnchor.constraintEqualToAnchor(contentView.centerYAnchor).active = true
+        //playButton.tag
         contentView.addSubview(playButton)
         
         songName = UILabel()
@@ -57,6 +62,8 @@ class MusicSuggestionTableViewCell: UITableViewCell {
     }
 
     func buttonAction(sender: UIButton!) {
-        MusicPlayerHelper.grabSong()
+        if let soundClipFile = self.soundClipFile {
+            MusicPlayerHelper.playSoundClip(soundClipFile)
+        }
     }
 }

@@ -1,24 +1,25 @@
 import Foundation
 import Firebase
+import Parse
 import JSQMessagesViewController
 import UIKit
 import FirebaseDatabase
 
 class ChatViewController: JSQMessagesViewController {
-    var ref: FIRDatabaseReference!
     
-    var messageRef: FIRDatabaseReference!
-    let chatRoomName = "messages/messages"
+    let chatRoomName = "messages"
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor(red: 10/255, green: 180/255, blue: 230/255, alpha: 1.0))
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor.lightGrayColor())
-    var messages = [JSQMessage]()
+//    var messages = [JSQMessage]()
+    var messages = [Message]()
     
-    var userIsTypingRef: FIRDatabaseReference!
     var localTyping = false
     var usersTypingQuery: FIRDatabaseQuery!
     
     // Popup suggestion tableview for text
     var popUpTableView : UITableView? = nil
+    var soundClips : [SoundClip] = []
+    var soundFileUrl = ""
     
     var isTyping: Bool {
         get {
@@ -26,21 +27,27 @@ class ChatViewController: JSQMessagesViewController {
         }
         set {
             localTyping = newValue
-            userIsTypingRef.setValue(newValue)
+            FirebaseHelper.userIsTypingRef(chatRoomName).setValue(newValue)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ref = FIRDatabase.database().reference()
-        messageRef = ref.child(chatRoomName)
-        userIsTypingRef = ref.child("messages/userIsTyping")
+
         self.setup()
         self.observeMessages()
         self.observeTyping()
         
         //let childUpdates = ["/\(chatRoomName)/test": "update"]
         //ref.updateChildValues(childUpdates)
+        
+//        let tempRef = FirebaseHelper.soundClipsRef(chatRoomName)
+//        tempRef.queryOrderedByChild("tag").queryEqualToValue("hello")
+//            .observeEventType(.ChildAdded, withBlock: { (snapshot) in
+//                print(snapshot)
+//                let text = snapshot.value!["soundName"]! as! String
+//                print(text)
+//            })
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,25 +81,27 @@ extension ChatViewController {
         self.senderDisplayName = "1"
     }
     
-    func addMessage(id: String, text: String) {
-        let message = JSQMessage(senderId: id, displayName: "", text: text)
+    func addMessage(id: String, text: String, soundFileUrl: String) {
+        //let message = JSQMessage(senderId: id, displayName: "", text: text)
+        let message = Message(senderId: id, displayName: "", text: text, soundFileUrl: soundFileUrl)
         messages.append(message)
     }
     
     private func observeMessages() {
-        let messagesQuery = messageRef.queryLimitedToLast(25)
+        let messagesQuery = FirebaseHelper.messageRef(chatRoomName).queryLimitedToLast(25)
+        
         messagesQuery.observeEventType(.ChildAdded, withBlock: { snapshot in
-            //let id = snapshot.value!["senderId"] as! String
-            let text = snapshot.value!["text"] as! String
-            
-            self.addMessage(snapshot.key, text: text)
+            //let id = snapshot.value!["senderId"]! as! String
+            let text = snapshot.value!["text"]! as! String
+            let soundFileUrl = snapshot.value!["soundFileUrl"]! as! String
+            self.addMessage(snapshot.key, text: text, soundFileUrl: soundFileUrl)
             
             self.finishReceivingMessage()
         })
     }
     
     private func observeTyping() {
-        let isTypingQuery = userIsTypingRef.child("1")
+        let isTypingQuery = FirebaseHelper.userIsTypingRef(chatRoomName).child("1")
         isTypingQuery.onDisconnectRemoveValue()
         
         usersTypingQuery = isTypingQuery.queryOrderedByValue().queryEqualToValue(true)
@@ -162,16 +171,20 @@ extension ChatViewController {
         return cell
     }
     
+    override func collectionView(collectionView: JSQMessagesCollectionView, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath) {
+        MusicPlayerHelper.playSoundClipFromUrl(messages[indexPath.item].soundFileUrl)
+    }
 }
 
 //MARK - Toolbar
 extension ChatViewController {
     
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        let itemRef = ref.child(chatRoomName).childByAutoId()
+        let itemRef = FirebaseHelper.messageRef(chatRoomName).childByAutoId()
         let messageItem = [
             "text": text,
-            "senderId": senderId
+            "senderId": senderId,
+            "soundFileUrl": soundFileUrl ?? ""
         ]
         itemRef.setValue(messageItem)
         
@@ -191,23 +204,35 @@ extension ChatViewController {
         
         let message = textView.text
         var keywordArr = message.componentsSeparatedByString(" ")
+        let currWord = keywordArr[keywordArr.count-1]
         //print(keywordArr[keywordArr.count-1])
         
         // TODO add keyword searching
-        if keywordArr[keywordArr.count-1] == "hello" {
-            popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - 48*3, self.inputToolbar.frame.width, 48*3))
-            popUpTableView!.rowHeight = 48.0
-            popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-            popUpTableView!.delegate = self
-            popUpTableView!.dataSource = self
-            //popUpTableView!.backgroundColor = UIColor.redColor()
-            self.view.addSubview(popUpTableView!)
-        } else {
-            print("else ran")
-            if popUpTableView != nil {
-                popUpTableView!.removeFromSuperview()
-                popUpTableView = nil
+        
+        ParseHelper.searchSoundClips(currWord){(result: [PFObject]?, error: NSError?) -> Void in
+            
+            if let error = error {
+                //ErrorHandling.defaultErrorHandler(error)
+                print(error)
             }
+            
+            self.soundClips = result as? [SoundClip] ?? []
+            let resultsCount = self.soundClips.count
+            if resultsCount>0 {
+                let numRows = resultsCount>4 ?  4 : resultsCount
+                self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
+                self.popUpTableView!.rowHeight = 48.0
+                self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+                self.popUpTableView!.delegate = self
+                self.popUpTableView!.dataSource = self
+                self.view.addSubview(self.popUpTableView!)
+            } else {
+                if self.popUpTableView != nil {
+                    self.popUpTableView!.removeFromSuperview()
+                    self.popUpTableView = nil
+                }
+            }
+            
         }
         
         let linkTextWithColor = "click here"
@@ -248,21 +273,24 @@ extension ChatViewController {
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.soundClips.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let soundClip = soundClips[indexPath.row]
+        let cell = MusicSuggestionTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell", soundClipFile: soundClip.soundFile)
         
-        let cell = MusicSuggestionTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
-        
-        cell.songName?.text = "Hello"
+        cell.songName?.text = "\(soundClip.soundName!) - \(soundClip.source!)"
         
         return cell
-        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("You selected cell #\(indexPath.row)!")
+        self.soundFileUrl = soundClips[indexPath.row].soundFile!.url!
+        if self.popUpTableView != nil {
+            self.popUpTableView!.removeFromSuperview()
+            self.popUpTableView = nil
+        }
     }
-
+    
 }
