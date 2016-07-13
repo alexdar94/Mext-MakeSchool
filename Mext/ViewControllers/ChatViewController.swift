@@ -65,7 +65,7 @@ class ChatViewController: JSQMessagesViewController {
     
 }
 
-// MARK - Setup
+// MARK: Setup
 extension ChatViewController {
     //    func retrieveMessages() {
     //        let messagesQuery = ref.child(chatRoomName).queryLimitedToLast(25)
@@ -138,7 +138,7 @@ extension ChatViewController {
     }
 }
 
-// MARK - ChatView implement method
+// MARK: ChatView implement method
 extension ChatViewController {
     
     override func collectionView(collectionView: JSQMessagesCollectionView!,
@@ -184,24 +184,33 @@ extension ChatViewController {
         
         let attributedString = NSMutableAttributedString(string: message.text)
         for index in message.attrStringIndex {
-            print(message.text.characters.count)
+            attributedString.addAttribute(NSLinkAttributeName, value: "playMusic://\(messages[indexPath.item].soundFileUrl)" , range: NSMakeRange(index[0],index[1]))
             attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(index[0],index[1]))
-            print("\(index[0]) \(index[1])")
         }
         
         //        attributedString.addAttribute(NSForegroundColorAttributeName, value: GradientColor(UIGradientStyle.TopToBottom, frame: CGRect(x: 0, y: 0, width: 1000, height: 1000), colors: [UIColor.redColor(), UIColor.grayColor()]), range: myRange)
         //attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: myRange)
         cell.textView!.attributedText = attributedString
+        cell.textView!.delegate = self
         
         return cell
     }
     
-    override func collectionView(collectionView: JSQMessagesCollectionView, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath) {
-        MusicPlayerHelper.playSoundClipFromUrl(messages[indexPath.item].soundFileUrl)
+    
+    override func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+        let url = URL.absoluteString
+        if URL.scheme == "playMusic"{
+                MusicPlayerHelper.playSoundClipFromUrl(url.substringFromIndex(url.startIndex.advancedBy(12)))
+        }
+        return true
     }
+    
+    //    override func collectionView(collectionView: JSQMessagesCollectionView, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath) {
+    //        MusicPlayerHelper.playSoundClipFromUrl(messages[indexPath.item].soundFileUrl)
+    //    }
 }
 
-//MARK - Toolbar
+//MARK: Toolbar
 extension ChatViewController {
     
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
@@ -236,8 +245,6 @@ extension ChatViewController {
         currWord = keywordArr[keywordArr.count-1]
         //print(keywordArr[keywordArr.count-1])
         
-        // TODO add keyword searching
-        
         ParseHelper.searchSoundClips(currWord){(result: [PFObject]?, error: NSError?) -> Void in
             
             if let error = error {
@@ -263,18 +270,13 @@ extension ChatViewController {
             }
         }
         
-        let linkTextWithColor = "click here"
-        let range = (message as NSString).rangeOfString(linkTextWithColor)
-        
         let attributedString = NSMutableAttributedString(string:message)
         if message.characters.count > 1{
             let myRange = NSMakeRange(0,1)
             attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: myRange)
         }
-        attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor() , range: range)
         
         textView.attributedText = attributedString
-        
         
         //let frm: CGRect = self.inputView!.frame
         //let frm: CGRect = inputToolbar!.frame
@@ -290,11 +292,6 @@ extension ChatViewController {
         //self.view.addSubview(customView)
         // If the text is not empty, the user is typing
         isTyping = textView.text != ""
-    }
-    
-    override func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
-        UIApplication.sharedApplication().openURL(URL)
-        return false
     }
 }
 
@@ -315,9 +312,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.soundFileUrl = soundClips[indexPath.row].soundFile!.url!
-        //self.attrStringIndex[FirebaseHelper.generateFIRUID()] = currMessageLength - currWord.characters.count
         self.attrStringIndex[FirebaseHelper.generateFIRUID()] = [currMessageLength - currWord.characters.count,currWord.characters.count]
-        //self.attrStringIndex[FirebaseHelper.generateFIRUID()] = currMessageLength
         
         if self.popUpTableView != nil {
             self.popUpTableView!.removeFromSuperview()
