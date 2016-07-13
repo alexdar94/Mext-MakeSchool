@@ -85,8 +85,8 @@ extension ChatViewController {
         self.senderDisplayName = "1"
     }
     
-    func addMessage(id: String, text: String, soundFileUrl: String) {
-        let message = Message(senderId: id, displayName: "", text: text, soundFileUrl: soundFileUrl)
+    func addMessage(id: String, text: String, soundFileUrl: String, attrStringIndex: [Int]) {
+        let message = Message(senderId: id, displayName: "", text: text, soundFileUrl: soundFileUrl, attrStringIndex: attrStringIndex)
         messages.append(message)
     }
     
@@ -97,15 +97,22 @@ extension ChatViewController {
             //let id = snapshot.value!["senderId"]! as! String
             let text = snapshot.value!["text"]! as! String
             let soundFileUrl = snapshot.value!["soundFileUrl"]! as! String
-            self.addMessage(snapshot.key, text: text, soundFileUrl: soundFileUrl)
+            var attrStringIndex = [Int]()
+            if let attrStringIndexDic = snapshot.value!["attrStringIndex"]! as! [String: AnyObject]? {
+                for index in attrStringIndexDic.values{
+                    attrStringIndex.append(index as! Int)
+                }
+                attrStringIndex.sortInPlace{$0 < $1}
+            }
+            self.addMessage(snapshot.key, text: text, soundFileUrl: soundFileUrl, attrStringIndex: attrStringIndex)
             
-//            let tempRef = FirebaseHelper.messageRef(chatRoomName).child()
-//            tempRef.queryOrderedByChild("tag").queryEqualToValue("hello")
-//                .observeEventType(.ChildAdded, withBlock: { (snapshot) in
-//                    print(snapshot)
-//                    let text = snapshot.value!["soundName"]! as! String
-//                    print(text)
-//                })
+            //            let tempRef = FirebaseHelper.messageRef(chatRoomName).child()
+            //            tempRef.queryOrderedByChild("tag").queryEqualToValue("hello")
+            //                .observeEventType(.ChildAdded, withBlock: { (snapshot) in
+            //                    print(snapshot)
+            //                    let text = snapshot.value!["soundName"]! as! String
+            //                    print(text)
+            //                })
             
             self.finishReceivingMessage()
         })
