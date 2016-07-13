@@ -23,7 +23,7 @@ class ChatViewController: JSQMessagesViewController {
     var popUpTableView : UITableView? = nil
     var soundClips : [SoundClip] = []
     var soundFileUrl = ""
-    var attrStringIndex = [String: Int]()
+    var attrStringIndex = [String: [Int]]()
     
     var isTyping: Bool {
         get {
@@ -85,7 +85,7 @@ extension ChatViewController {
         self.senderDisplayName = "1"
     }
     
-    func addMessage(id: String, text: String, soundFileUrl: String, attrStringIndex: [Int]) {
+    func addMessage(id: String, text: String, soundFileUrl: String, attrStringIndex: [[Int]]) {
         let message = Message(senderId: id, displayName: "", text: text, soundFileUrl: soundFileUrl, attrStringIndex: attrStringIndex)
         messages.append(message)
     }
@@ -97,12 +97,13 @@ extension ChatViewController {
             //let id = snapshot.value!["senderId"]! as! String
             let text = snapshot.value!["text"]! as! String
             let soundFileUrl = snapshot.value!["soundFileUrl"]! as! String
-            var attrStringIndex = [Int]()
+            //var attrStringIndex = [Int]()
+            var attrStringIndex = [[Int]]()
             if let attrStringIndexDic = snapshot.value!["attrStringIndex"]! as! [String: AnyObject]? {
                 for index in attrStringIndexDic.values{
-                    attrStringIndex.append(index as! Int)
+                    attrStringIndex.append(index as! [Int])
                 }
-                attrStringIndex.sortInPlace{$0 < $1}
+                //attrStringIndex.sortInPlace{$0 < $1}
             }
             self.addMessage(snapshot.key, text: text, soundFileUrl: soundFileUrl, attrStringIndex: attrStringIndex)
             
@@ -173,7 +174,7 @@ extension ChatViewController {
         let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath)
             as! JSQMessagesCollectionViewCell
         
-        //let message = messages[indexPath.item]
+        let message = messages[indexPath.item]
         
         //        if message.senderId == senderId {
         //            cell.textView!.textColor = UIColor.whiteColor()
@@ -181,14 +182,16 @@ extension ChatViewController {
         //            cell.textView!.textColor = UIColor.blackColor()
         //        }
         
+        let attributedString = NSMutableAttributedString(string: message.text)
+        for index in message.attrStringIndex {
+            print(message.text.characters.count)
+            attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(index[0],index[1]))
+            print("\(index[0]) \(index[1])")
+        }
         
-        
-        //                let attributedString = NSMutableAttributedString(string: "asdasdaskjdakjfhasjkf")
-        //                let myRange = NSMakeRange(0,6)
-        //                let color = UIColor.
-        //                attributedString.addAttribute(NSForegroundColorAttributeName, value: GradientColor(UIGradientStyle.TopToBottom, frame: CGRect(x: 0, y: 0, width: 1000, height: 1000), colors: [UIColor.redColor(), UIColor.grayColor()]), range: myRange)
-        //                attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: myRange)
-        //                cell.textView!.attributedText = attributedString
+        //        attributedString.addAttribute(NSForegroundColorAttributeName, value: GradientColor(UIGradientStyle.TopToBottom, frame: CGRect(x: 0, y: 0, width: 1000, height: 1000), colors: [UIColor.redColor(), UIColor.grayColor()]), range: myRange)
+        //attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: myRange)
+        cell.textView!.attributedText = attributedString
         
         return cell
     }
@@ -312,8 +315,9 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.soundFileUrl = soundClips[indexPath.row].soundFile!.url!
-        self.attrStringIndex[FirebaseHelper.generateFIRUID()] = currMessageLength - currWord.characters.count
-        self.attrStringIndex[FirebaseHelper.generateFIRUID()] = currMessageLength
+        //self.attrStringIndex[FirebaseHelper.generateFIRUID()] = currMessageLength - currWord.characters.count
+        self.attrStringIndex[FirebaseHelper.generateFIRUID()] = [currMessageLength - currWord.characters.count,currWord.characters.count]
+        //self.attrStringIndex[FirebaseHelper.generateFIRUID()] = currMessageLength
         
         if self.popUpTableView != nil {
             self.popUpTableView!.removeFromSuperview()
