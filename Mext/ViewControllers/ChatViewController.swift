@@ -22,7 +22,7 @@ class ChatViewController: JSQMessagesViewController {
     // Popup suggestion tableview for text
     var popUpTableView : UITableView? = nil
     var soundClips : [SoundClip] = []
-    var soundFileUrl = ""
+    var soundFileUrls = [String]()
     var attrStringIndex = [String: [Int]]()
     
     var isTyping: Bool {
@@ -85,8 +85,8 @@ extension ChatViewController {
         self.senderDisplayName = "1"
     }
     
-    func addMessage(id: String, text: String, soundFileUrl: String, attrStringIndex: [[Int]]) {
-        let message = Message(senderId: id, displayName: "", text: text, soundFileUrl: soundFileUrl, attrStringIndex: attrStringIndex)
+    func addMessage(id: String, text: String, soundFileUrls: [String], attrStringIndex: [[Int]]) {
+        let message = Message(senderId: id, displayName: "", text: text, soundFileUrls: soundFileUrls, attrStringIndex: attrStringIndex)
         messages.append(message)
     }
     
@@ -96,8 +96,9 @@ extension ChatViewController {
         messagesQuery.observeEventType(.ChildAdded, withBlock: { snapshot in
             //let id = snapshot.value!["senderId"]! as! String
             let text = snapshot.value!["text"]! as! String
-            let soundFileUrl = snapshot.value!["soundFileUrl"]! as! String
-            //var attrStringIndex = [Int]()
+            
+            let soundFileUrls = snapshot.value!["soundFileUrls"]! as! [String]?
+            
             var attrStringIndex = [[Int]]()
             if let attrStringIndexDic = snapshot.value!["attrStringIndex"]! as! [String: AnyObject]? {
                 for index in attrStringIndexDic.values{
@@ -105,7 +106,7 @@ extension ChatViewController {
                 }
                 //attrStringIndex.sortInPlace{$0 < $1}
             }
-            self.addMessage(snapshot.key, text: text, soundFileUrl: soundFileUrl, attrStringIndex: attrStringIndex)
+            self.addMessage(snapshot.key, text: text, soundFileUrls: soundFileUrls ?? [String](), attrStringIndex: attrStringIndex)
             
             //            let tempRef = FirebaseHelper.messageRef(chatRoomName).child()
             //            tempRef.queryOrderedByChild("tag").queryEqualToValue("hello")
@@ -183,31 +184,28 @@ extension ChatViewController {
         //        }
         
         let attributedString = NSMutableAttributedString(string: message.text)
-        for index in message.attrStringIndex {
-            attributedString.addAttribute(NSLinkAttributeName, value: "playMusic://\(messages[indexPath.item].soundFileUrl)" , range: NSMakeRange(index[0],index[1]))
-            attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(index[0],index[1]))
+        for (index, element) in message.attrStringIndex.enumerate() {
+            //attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(index[0],index[1]))
+            //TODO change soundFileUrls dynamic index
+            attributedString.addAttribute(NSLinkAttributeName, value: "playMusic://\(messages[indexPath.item].soundFileUrls[index])" , range: NSMakeRange(element[0],element[1]))
         }
         
         //        attributedString.addAttribute(NSForegroundColorAttributeName, value: GradientColor(UIGradientStyle.TopToBottom, frame: CGRect(x: 0, y: 0, width: 1000, height: 1000), colors: [UIColor.redColor(), UIColor.grayColor()]), range: myRange)
-        //attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: myRange)
+        cell.textView!.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.greenColor()]
         cell.textView!.attributedText = attributedString
         cell.textView!.delegate = self
         
         return cell
     }
     
-    
     override func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
         let url = URL.absoluteString
         if URL.scheme == "playMusic"{
-                MusicPlayerHelper.playSoundClipFromUrl(url.substringFromIndex(url.startIndex.advancedBy(12)))
+            MusicPlayerHelper.playSoundClipFromUrl(url.substringFromIndex(url.startIndex.advancedBy(12)))
         }
         return true
     }
     
-    //    override func collectionView(collectionView: JSQMessagesCollectionView, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath) {
-    //        MusicPlayerHelper.playSoundClipFromUrl(messages[indexPath.item].soundFileUrl)
-    //    }
 }
 
 //MARK: Toolbar
@@ -218,7 +216,7 @@ extension ChatViewController {
         let messageItem = [
             "text": text,
             "senderId": senderId,
-            "soundFileUrl": soundFileUrl ?? "",
+            "soundFileUrls": soundFileUrls,
             "attrStringIndex":attrStringIndex
         ]
         itemRef.setValue(messageItem)
@@ -228,7 +226,7 @@ extension ChatViewController {
         finishSendingMessage()
         
         isTyping = false
-        soundFileUrl = ""
+        soundFileUrls = []
         attrStringIndex = [:]
     }
     
@@ -311,7 +309,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.soundFileUrl = soundClips[indexPath.row].soundFile!.url!
+        self.soundFileUrls.append(soundClips[indexPath.row].soundFile!.url!)
         self.attrStringIndex[FirebaseHelper.generateFIRUID()] = [currMessageLength - currWord.characters.count,currWord.characters.count]
         
         if self.popUpTableView != nil {
