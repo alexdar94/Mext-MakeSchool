@@ -10,7 +10,7 @@ class ChatViewController: JSQMessagesViewController {
     let chatRoomName = "messages"
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor(red: 10/255, green: 180/255, blue: 230/255, alpha: 1.0))
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor.lightGrayColor())
-    //    var messages = [JSQMessage]()
+
     var messages = [Message]()
     
     var localTyping = false
@@ -81,8 +81,8 @@ extension ChatViewController {
     //    }
     
     func setup() {
-        self.senderId = "1"
-        self.senderDisplayName = "1"
+        self.senderId = "a"
+        self.senderDisplayName = "a"
     }
     
     func addMessage(id: String, text: String, soundFileUrls: [String], attrStringIndex: [[Int]]) {
@@ -94,11 +94,9 @@ extension ChatViewController {
         let messagesQuery = FirebaseHelper.messageRef(chatRoomName).queryLimitedToLast(25)
         
         messagesQuery.observeEventType(.ChildAdded, withBlock: { snapshot in
-            //let id = snapshot.value!["senderId"]! as! String
+            let id = snapshot.value!["senderId"]! as! String
             let text = snapshot.value!["text"]! as! String
-            
             let soundFileUrls = snapshot.value!["soundFileUrls"]! as! [String]?
-            
             var attrStringIndex = [[Int]]()
             if let attrStringIndexDic = snapshot.value!["attrStringIndex"]! as! [String: AnyObject]? {
                 for index in attrStringIndexDic.values{
@@ -106,7 +104,8 @@ extension ChatViewController {
                 }
                 //attrStringIndex.sortInPlace{$0 < $1}
             }
-            self.addMessage(snapshot.key, text: text, soundFileUrls: soundFileUrls ?? [String](), attrStringIndex: attrStringIndex)
+            
+            self.addMessage(id, text: text, soundFileUrls: soundFileUrls ?? [String](), attrStringIndex: attrStringIndex)
             
             //            let tempRef = FirebaseHelper.messageRef(chatRoomName).child()
             //            tempRef.queryOrderedByChild("tag").queryEqualToValue("hello")
@@ -177,11 +176,11 @@ extension ChatViewController {
         
         let message = messages[indexPath.item]
         
-        //        if message.senderId == senderId {
-        //            cell.textView!.textColor = UIColor.whiteColor()
-        //        } else {
-        //            cell.textView!.textColor = UIColor.blackColor()
-        //        }
+        if message.senderId == senderId {
+            cell.textView!.textColor = UIColor.whiteColor()
+        } else {
+            cell.textView!.textColor = UIColor.blackColor()
+        }
         
         let attributedString = NSMutableAttributedString(string: message.text)
         for (index, element) in message.attrStringIndex.enumerate() {
@@ -241,7 +240,6 @@ extension ChatViewController {
         currMessageLength = message.characters.count
         var keywordArr = message.componentsSeparatedByString(" ")
         currWord = keywordArr[keywordArr.count-1]
-        //print(keywordArr[keywordArr.count-1])
         
         ParseHelper.searchSoundClips(currWord){(result: [PFObject]?, error: NSError?) -> Void in
             
@@ -276,18 +274,6 @@ extension ChatViewController {
         
         textView.attributedText = attributedString
         
-        //let frm: CGRect = self.inputView!.frame
-        //let frm: CGRect = inputToolbar!.frame
-        
-        //print(frm.origin.x)
-        //        print(frm.size.height)
-        //let customView = UIView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - 30, self.inputToolbar.frame.width, 30))
-        //customView.backgroundColor = UIColor.redColor()
-        //        textView.inputAccessoryView = customView
-        
-        //NSLayoutConstraint(item: customView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.inputView, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 20.0).active = true
-        
-        //self.view.addSubview(customView)
         // If the text is not empty, the user is typing
         isTyping = textView.text != ""
     }
