@@ -8,13 +8,14 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let logTag = "AppDelegate"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -25,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.server = "https://mext.herokuapp.com/parse"
         }
         Parse.initializeWithConfiguration(configuration)
+        
+        isLogin()
         
         return true
     }
@@ -51,6 +54,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func isLogin () {
+        FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            var goToVC : UIViewController
+            if let user = user {
+                // User is signed in.
+                print("\(self.logTag) login")
+                goToVC = storyboard.instantiateViewControllerWithIdentifier("MessageInboxViewController")
+            } else {
+                // No user is signed in.
+                print("\(self.logTag) not login")
+                goToVC = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+            }
+            self.window?.rootViewController = goToVC
+        }
+    }
 
 }
 

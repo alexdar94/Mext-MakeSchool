@@ -11,6 +11,12 @@ target 'Mext' do
   pod 'Firebase/Database'
   pod 'Parse'
 
+  # Pods for Auth
+  pod 'FirebaseUI'
+  pod 'Firebase/Auth'
+  pod 'FBSDKLoginKit'
+  pod 'GoogleSignIn'
+
   target 'MextTests' do
     inherit! :search_paths
     # Pods for testing
