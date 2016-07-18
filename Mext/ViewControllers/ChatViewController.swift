@@ -296,7 +296,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.soundFileUrls.append(soundClips[indexPath.row].soundFile!.url!)
-        self.attrStringIndex[FirebaseHelper.generateFIRUID()] = [currMessageLength - currWord.characters.count,currWord.characters.count]
+        self.attrStringIndex[FirebaseHelper.generateFIRUID(FirebaseHelper.ref)] = [currMessageLength - currWord.characters.count,currWord.characters.count]
         
         if self.popUpTableView != nil {
             self.popUpTableView!.removeFromSuperview()

@@ -21,7 +21,12 @@ class NewChatViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             if identifier == "createNewChat" {
+                let newChatRoomUID = FirebaseHelper.generateFIRUID(FirebaseHelper.chatRoomsRef())
+                let newChatRoom = ChatRoom(UID:newChatRoomUID, title: "tapped_UserDisplayName",chatRoomPictureUrl: "tapped_UserPhotoUrl")
                 
+                FirebaseHelper.saveNewChatRoom(newChatRoomUID, newChatRoom: newChatRoom)
+                FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: "1")
+                FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: "2")
             }
         }
     }
