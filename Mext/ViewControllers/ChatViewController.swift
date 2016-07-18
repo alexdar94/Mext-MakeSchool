@@ -10,7 +10,7 @@ class ChatViewController: JSQMessagesViewController {
     let chatRoomName = "messages"
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor(red: 10/255, green: 180/255, blue: 230/255, alpha: 1.0))
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor.lightGrayColor())
-
+    
     var messages = [Message]()
     
     var localTyping = false
@@ -91,7 +91,7 @@ extension ChatViewController {
     }
     
     private func observeMessages() {
-        let messagesQuery = FirebaseHelper.messageRef(chatRoomName).queryLimitedToLast(25)
+        let messagesQuery = FirebaseHelper.messagesRef(chatRoomName).queryLimitedToLast(25)
         
         messagesQuery.observeEventType(.ChildAdded, withBlock: { snapshot in
             let id = snapshot.value!["senderId"]! as! String
@@ -107,7 +107,7 @@ extension ChatViewController {
             
             self.addMessage(id, text: text, soundFileUrls: soundFileUrls ?? [String](), attrStringIndex: attrStringIndex)
             
-            //            let tempRef = FirebaseHelper.messageRef(chatRoomName).child()
+            //            let tempRef = FirebaseHelper.messagesRef(chatRoomName).child()
             //            tempRef.queryOrderedByChild("tag").queryEqualToValue("hello")
             //                .observeEventType(.ChildAdded, withBlock: { (snapshot) in
             //                    print(snapshot)
@@ -211,7 +211,7 @@ extension ChatViewController {
 extension ChatViewController {
     
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        let itemRef = FirebaseHelper.messageRef(chatRoomName).childByAutoId()
+        let itemRef = FirebaseHelper.messagesRef(chatRoomName).childByAutoId()
         let messageItem = [
             "text": text,
             "senderId": senderId,

@@ -7,16 +7,26 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
+import FBSDKLoginKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, GIDSignInUIDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // Google sign in
+        GIDSignIn.sharedInstance().uiDelegate = self
+        //GIDSignIn.sharedInstance().signInSilently()
+        
+        // Facebook sign in
+        facebookLoginButton.delegate = self
+        facebookLoginButton.readPermissions = ["email","user_friends"]
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -56,13 +66,45 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func didTapSignOut(sender: AnyObject) {
-        let firebaseAuth = FIRAuth.auth()
-        do {
-            try firebaseAuth?.signOut()
-            
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.signOut()
+    }
+    
+}
+
+
+// MARK: Facebook login
+extension LoginViewController: FBSDKLoginButtonDelegate {
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        
+        if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.firebaseLogin(credential)
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            print(result)
+            if result.grantedPermissions.contains("email")
+            {
+                
+                //print(result.valueForKey("email"))
+            }
+            if result.grantedPermissions.contains("user_friends")
+            {
+                print("user friends returned")
+            }
         }
     }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    }
 }
+
 
