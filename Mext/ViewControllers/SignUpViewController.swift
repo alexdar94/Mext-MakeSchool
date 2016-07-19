@@ -37,30 +37,22 @@ class SignUpViewController: UIViewController {
                             return
                         }
                         
-                        if let user = FIRAuth.auth()?.currentUser {
-//                            let ref = FIRDatabase.database().reference()
-//                            let key = uid
+                        if let FIRUser = FIRAuth.auth()?.currentUser {
+                            let user = User(UID: FIRUser.uid, email: FIRUser.email!, displayName: username, photoUrl: "", phoneNumber: "0123" )
+                            FirebaseHelper.saveNewUser(user)
+//                            let changeRequest = user.profileChangeRequest()
 //                            
-//                            let userDict = [ "name"    : name ,
-//                                "email"   : email]
-//                            
-//                            let childUpdates = ["/users/\(key)": userDict]
-//                            ref.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) -> Void in
-//                                // now users exist in the database
-//                            })
-                            let changeRequest = user.profileChangeRequest()
-                            
-                            changeRequest.displayName = username
-                            changeRequest.photoURL = NSURL(string: "")
-                            changeRequest.commitChangesWithCompletion { error in
-                                if let error = error {
-                                    // An error happened.
-                                    print(error)
-                                } else {
-                                    // Profile updated.
-                                    print(user.displayName)
-                                }
-                            }
+//                            changeRequest.displayName = username
+//                            changeRequest.photoURL = NSURL(string: "")
+//                            changeRequest.commitChangesWithCompletion { error in
+//                                if let error = error {
+//                                    // An error happened.
+//                                    print(error)
+//                                } else {
+//                                    // Profile updated.
+//                                    print(user.displayName)
+//                                }
+//                            }
                         }
                     })
                 }

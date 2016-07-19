@@ -15,12 +15,9 @@ class FirebaseHelper {
     static let ref = FIRDatabase.database().reference()
     
     static func messagesRef(chatRoomName : String) -> FIRDatabaseReference {
-        return ref.child("messages/\(chatRoomName)")
+        return ref.child("Messages/\(chatRoomName)")
     }
-    
-    static func userIsTypingRef(chatRoomName : String) -> FIRDatabaseReference {
-        return ref.child("\(chatRoomName)/userIsTyping")
-    }
+
 }
 
 // MARK: SoundClips Endpoint
@@ -32,13 +29,34 @@ extension FirebaseHelper{
 
 // MARK: Users Endpoint
 extension FirebaseHelper{
+    static func usersRef() -> FIRDatabaseReference {
+        return ref.child("Users")
+    }
     
+    static func userRef(userUID: String) -> FIRDatabaseReference {
+        return usersRef().child(userUID)
+    }
+
+    static func saveNewUser(newUser: User){
+        let newUserRef = FirebaseHelper.usersRef().child(newUser.UID)
+        let newUserRef_JSON = [
+            "email": newUser.email,
+            "displayName": newUser.displayName,
+            "photoUrl": newUser.photoUrl,
+            "phoneNumber": newUser.phoneNumber
+        ]
+        newUserRef.setValue(newUserRef_JSON)
+    }
 }
 
 // MARK: ChatRooms Endpoint
 extension FirebaseHelper{
     static func chatRoomsRef() -> FIRDatabaseReference {
         return ref.child("ChatRooms")
+    }
+    
+    static func userIsTypingRef(chatRoomName : String) -> FIRDatabaseReference {
+        return chatRoomsRef().child("\(chatRoomName)/userIsTyping")
     }
     
     static func saveNewChatRoom(chatRoomUID: String, newChatRoom: ChatRoom){

@@ -27,6 +27,10 @@ class NewChatViewController: UIViewController {
                 FirebaseHelper.saveNewChatRoom(newChatRoomUID, newChatRoom: newChatRoom)
                 FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: "1")
                 FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: "2")
+                
+                let chatViewController = segue.destinationViewController as! ChatViewController
+                
+                chatViewController.chatRoomName = newChatRoomUID
             }
         }
     }
