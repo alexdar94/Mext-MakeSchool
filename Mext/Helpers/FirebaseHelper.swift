@@ -17,7 +17,7 @@ class FirebaseHelper {
     static func messagesRef(chatRoomName : String) -> FIRDatabaseReference {
         return ref.child("Messages/\(chatRoomName)")
     }
-
+    
 }
 
 // MARK: SoundClips Endpoint
@@ -36,7 +36,38 @@ extension FirebaseHelper{
     static func userRef(userUID: String) -> FIRDatabaseReference {
         return usersRef().child(userUID)
     }
-
+    
+    static func userChatRoomsRef(userUID: String) -> FIRDatabaseReference {
+        return userRef(userUID).child("chatRooms")
+    }
+    
+    static func getUser(userUID: String, onComplete: User? -> Void ) {
+        
+        userRef(userUID).observeSingleEventOfType(.Value, withBlock: { snapshot in
+            let UID = userUID
+            let email = snapshot.value!["email"] as! String
+            let displayName = snapshot.value!["displayName"] as! String
+            let photoUrl = snapshot.value!["photoUrl"] as! String
+            let phoneNumber = snapshot.value!["phoneNumber"] as! String
+            
+            let user = User(UID: UID, email: email, displayName: displayName, photoUrl: photoUrl, phoneNumber: phoneNumber)
+            
+            onComplete(user)
+        })
+    }
+    
+    static func getUserChatRoomUIDs(userUID: String, onComplete: [String]? -> Void ) {
+        userChatRoomsRef(userUID).observeEventType(.Value, withBlock: { snapshot in
+            var chatRoomKeys: [String]? = nil
+            if let value = snapshot.value as? [String: AnyObject] {
+                chatRoomKeys = Array(value.keys)
+            } else {
+                print("Firebase ChatRooms Endpoint - null")
+            }
+            onComplete(chatRoomKeys)
+        })
+    }
+    
     static func saveNewUser(newUser: User){
         let newUserRef = FirebaseHelper.usersRef().child(newUser.UID)
         let newUserRef_JSON = [
@@ -47,6 +78,13 @@ extension FirebaseHelper{
         ]
         newUserRef.setValue(newUserRef_JSON)
     }
+    
+    static func addChatRoomToUser(user: User, chatRoomUID: String){
+        let newUserRef_JSON = [
+            chatRoomUID: true
+        ]
+        FirebaseHelper.userChatRoomsRef(user.UID).setValue(newUserRef_JSON)
+    }
 }
 
 // MARK: ChatRooms Endpoint
@@ -55,8 +93,26 @@ extension FirebaseHelper{
         return ref.child("ChatRooms")
     }
     
-    static func userIsTypingRef(chatRoomName : String) -> FIRDatabaseReference {
-        return chatRoomsRef().child("\(chatRoomName)/userIsTyping")
+    static func chatRoomRef(chatRoomUID: String) -> FIRDatabaseReference {
+        return chatRoomsRef().child(chatRoomUID)
+    }
+    
+    static func userIsTypingRef(chatRoomUID : String) -> FIRDatabaseReference {
+        return chatRoomsRef().child("\(chatRoomUID)/userIsTyping")
+    }
+    
+    static func getChatRoom(chatRoomUID: String, onComplete: ChatRoom -> Void ) {
+        chatRoomRef(chatRoomUID).observeEventType(.Value, withBlock: { snapshot in
+            if let value = snapshot.value as? [String: AnyObject] {
+                onComplete(ChatRoom(UID: chatRoomUID
+                                    , lastMessage: value["lastMessage"] as! String
+                                    , title: value["title"] as! String
+                                    , chatRoomPictureUrl: value["chatRoomPictureUrl"] as! String))
+            } else {
+                print("Firebase ChatRoom Endpoint - null")
+            }
+            
+        })
     }
     
     static func saveNewChatRoom(chatRoomUID: String, newChatRoom: ChatRoom){
@@ -65,7 +121,7 @@ extension FirebaseHelper{
             "userIsTyping": newChatRoom.userIsTyping,
             "lastMessage": newChatRoom.lastMessage,
             "title": newChatRoom.title,
-            "chatPictureUrl": newChatRoom.chatRoomPictureUrl
+            "chatRoomPictureUrl": newChatRoom.chatRoomPictureUrl
         ]
         newChatRoomRef.setValue(newChatRoom_JSON)
     }

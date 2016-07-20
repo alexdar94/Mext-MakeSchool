@@ -10,11 +10,10 @@ import Foundation
 import JSQMessagesViewController
 
 class Message : JSQMessage {
-    var soundFileUrls : [String]
-    //var attrStringIndex : [Int]
-    var attrStringIndex : [[Int]]
+    var soundFileUrls : [String]?
+    var attrStringIndex : [[Int]]?
     
-    init(senderId: String, displayName: String, text: String, soundFileUrls: [String], attrStringIndex : [[Int]]){
+    init(senderId: String, displayName: String, text: String, soundFileUrls: [String]?, attrStringIndex : [[Int]]?){
         self.soundFileUrls = soundFileUrls
         self.attrStringIndex = attrStringIndex
         super.init(senderId: senderId, senderDisplayName: displayName, date: NSDate(), text: text)

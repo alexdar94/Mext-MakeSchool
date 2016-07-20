@@ -16,6 +16,8 @@ class User {
     var phoneNumber = ""
     var friends = [String]()
     
+    init(){}
+    
     init(UID: String, email: String, displayName: String, photoUrl: String, phoneNumber: String){
         self.UID = UID
         self.email = email

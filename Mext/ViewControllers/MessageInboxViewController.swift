@@ -9,15 +9,57 @@
 import UIKit
 
 class MessageInboxViewController: UIViewController {
-
+    
+    @IBOutlet weak var messageInboxTableView: UITableView!
+    
+    var currUser: User!
+    var currUserUID: String!
+    var chatRooms : [ChatRoom]? {
+        didSet{
+            messageInboxTableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        FirebaseHelper.getUserChatRoomUIDs(self.currUser.UID){ chatRoomKeys in
+            if let chatRoomKeys = chatRoomKeys {
+                for uid in chatRoomKeys {
+                    FirebaseHelper.getChatRoom(uid, onComplete: { chatRoom in
+                        if (self.chatRooms?.append(chatRoom)) == nil {
+                            self.chatRooms = [chatRoom]
+                        }
+                        print(chatRoom.title)
+                    })
+                }
+            } else {
+                print("No chat room")
+            }
+            
+        }
+        //print("MessageInboxViewController Email : \(currUser.email)")
+        //        if let uid = currUserUID {
+        //            FirebaseHelper.getUser(uid){ in
+        //
+        //            }
+        //        }
         
     }
     
     override func viewDidAppear(animated: Bool) {
         //performSegueWithIdentifier("temp", sender: nil)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            if identifier == "toContacts" {
+                let contactsViewController = segue.destinationViewController as! ContactsViewController
+                contactsViewController.currUser = currUser
+            }
+        }
+    }
+    
 }
 
 // MARK: TableView Methods

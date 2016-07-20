@@ -28,7 +28,7 @@
 		FAB4B4041D349AF9007E5B5C /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB4B4031D349AF9007E5B5C /* FirebaseHelper.swift */; };
 		FAB4B4061D34BE16007E5B5C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB4B4051D34BE16007E5B5C /* Message.swift */; };
 		FAC482CD1D3D73C500F83E91 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC482CC1D3D73C500F83E91 /* User.swift */; };
-		FAC482CF1D3D789E00F83E91 /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC482CE1D3D789E00F83E91 /* NewChatViewController.swift */; };
+		FAC482CF1D3D789E00F83E91 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC482CE1D3D789E00F83E91 /* ContactsViewController.swift */; };
 		FAC482D11D3D854200F83E91 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC482D01D3D854200F83E91 /* ChatRoom.swift */; };
 		FAFAC3E91D276D38005BA926 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAFAC3E81D276D38005BA926 /* GoogleService-Info.plist */; };
 		FAFAC3EE1D277434005BA926 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAC3ED1D277434005BA926 /* ChatViewController.swift */; };
@@ -86,7 +86,7 @@
 		FAB4B4031D349AF9007E5B5C /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		FAB4B4051D34BE16007E5B5C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = ../View/Message.swift; sourceTree = "<group>"; };
 		FAC482CC1D3D73C500F83E91 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		FAC482CE1D3D789E00F83E91 /* NewChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
+		FAC482CE1D3D789E00F83E91 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		FAC482D01D3D854200F83E91 /* ChatRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		FAFAC3E81D276D38005BA926 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAFAC3ED1D277434005BA926 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -249,7 +249,7 @@
 				FAFAC3ED1D277434005BA926 /* ChatViewController.swift */,
 				FA7559A21D3854A700F5DD39 /* SignUpViewController.swift */,
 				FAA051721D3954E200BB20AC /* MessageInboxViewController.swift */,
-				FAC482CE1D3D789E00F83E91 /* NewChatViewController.swift */,
+				FAC482CE1D3D789E00F83E91 /* ContactsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -532,7 +532,7 @@
 				FA87532C1D31B13100EBDF6A /* MusicPlayerHelper.swift in Sources */,
 				FAB4B4001D3404E2007E5B5C /* SoundClip.swift in Sources */,
 				FA7559AC1D3894B600F5DD39 /* UIViewController+Alerts.m in Sources */,
-				FAC482CF1D3D789E00F83E91 /* NewChatViewController.swift in Sources */,
+				FAC482CF1D3D789E00F83E91 /* ContactsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

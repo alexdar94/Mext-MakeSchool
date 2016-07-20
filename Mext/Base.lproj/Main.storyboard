@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BNS-MN-B3R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BNS-MN-B3R">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -169,7 +169,7 @@
                                     <navigationItem title="Title" id="B1f-BJ-twz">
                                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="YD2-fS-rAJ">
                                             <connections>
-                                                <segue destination="VOY-ee-nuV" kind="show" id="YmT-2z-Blk"/>
+                                                <segue destination="VOY-ee-nuV" kind="show" identifier="toContacts" id="YmT-2z-Blk"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -208,6 +208,9 @@
                             <constraint firstItem="DAf-Xb-3DG" firstAttribute="top" secondItem="Ujp-Fn-B5s" secondAttribute="bottom" id="wBo-Pe-7zh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="messageInboxTableView" destination="a6p-E0-PkY" id="qqx-Xe-04z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNm-nt-7o6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -233,10 +236,10 @@
             </objects>
             <point key="canvasLocation" x="2631" y="82"/>
         </scene>
-        <!--New Chat View Controller-->
+        <!--Contacts View Controller-->
         <scene sceneID="wJI-rX-Hoa">
             <objects>
-                <viewController id="VOY-ee-nuV" customClass="NewChatViewController" customModule="Mext" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VOY-ee-nuV" customClass="ContactsViewController" customModule="Mext" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MBo-rB-tSQ"/>
                         <viewControllerLayoutGuide type="bottom" id="W5O-wG-gaD"/>

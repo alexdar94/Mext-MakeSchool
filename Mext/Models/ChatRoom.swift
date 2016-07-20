@@ -17,9 +17,9 @@ class ChatRoom {
     var chatRoomPictureUrl = "chatRoomPictureUrlPlaceHolder"
     var chatMembers = [User]()
     
-    init(UID:String, title: String, chatRoomPictureUrl: String){
+    init(UID:String, lastMessage: String, title: String, chatRoomPictureUrl: String){
         self.UID = UID
-        self.lastMessage = ""
+        self.lastMessage = lastMessage
         self.title = title
         self.chatRoomPictureUrl = chatRoomPictureUrl
     }

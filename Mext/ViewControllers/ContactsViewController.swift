@@ -8,7 +8,9 @@
 
 import UIKit
 
-class NewChatViewController: UIViewController {
+class ContactsViewController: UIViewController {
+    var currUser: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,12 +24,12 @@ class NewChatViewController: UIViewController {
         if let identifier = segue.identifier {
             if identifier == "createNewChat" {
                 let newChatRoomUID = FirebaseHelper.generateFIRUID(FirebaseHelper.chatRoomsRef())
-                let newChatRoom = ChatRoom(UID:newChatRoomUID, title: "tapped_UserDisplayName",chatRoomPictureUrl: "tapped_UserPhotoUrl")
+                let newChatRoom = ChatRoom(UID:newChatRoomUID, lastMessage: "",title: "tapped_UserDisplayName",chatRoomPictureUrl: "tapped_UserPhotoUrl")
                 
                 FirebaseHelper.saveNewChatRoom(newChatRoomUID, newChatRoom: newChatRoom)
                 FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: "1")
                 FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: "2")
-                
+                FirebaseHelper.addChatRoomToUser(currUser, chatRoomUID: newChatRoomUID)
                 let chatViewController = segue.destinationViewController as! ChatViewController
                 
                 chatViewController.chatRoomName = newChatRoomUID
@@ -37,7 +39,7 @@ class NewChatViewController: UIViewController {
 }
 
 // MARK: TableView Methods
-extension NewChatViewController: UITableViewDataSource, UITableViewDelegate {
+extension ContactsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }

@@ -63,18 +63,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func isLogin () {
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            var goToVC : UIViewController
+            
             if let user = user {
                 // User is signed in.
                 print("\(self.logTag) login")
-                print(user.email)
-                goToVC = storyboard.instantiateViewControllerWithIdentifier("MessageInboxViewController")
+                let messageInboxViewController = storyboard.instantiateViewControllerWithIdentifier("MessageInboxViewController") as! MessageInboxViewController
+                
+                FirebaseHelper.getUser(user.uid){ user -> Void in
+                    messageInboxViewController.currUser = user
+                    self.window?.rootViewController = messageInboxViewController
+                }                
             } else {
                 // No user is signed in.
                 print("\(self.logTag) not login")
-                goToVC = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+                let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+                
+                self.window?.rootViewController = loginViewController
             }
-            self.window?.rootViewController = goToVC
         }
     }
     

@@ -33,11 +33,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         //performSegueWithIdentifier("launchChatView", sender: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             if identifier == "launchChatView" {
@@ -48,7 +43,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
     @IBAction func didTapEmailLogin(sender: AnyObject) {
         if let email = self.emailTextField.text, password = self.passwordTextField.text {
-            
             showSpinner({
                 FIRAuth.auth()?.signInWithEmail(email, password: password) { (user, error) in
                     self.hideSpinner({
@@ -69,41 +63,41 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.signOut()
     }
-    
 }
 
 
 // MARK: Facebook login
 extension LoginViewController: FBSDKLoginButtonDelegate {
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        if let error = error {
+        
+        guard error == nil else {
             print(error.localizedDescription)
             return
         }
-        
+
         if result.isCancelled {
             // Handle cancellations
-        }
-        else {
+        } else {
             let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.firebaseLogin(credential)
+            
             // If you ask for multiple permissions at once, you
             // should check if specific permissions missing
             print(result)
-            if result.grantedPermissions.contains("email")
-            {
-                
+            
+            if result.grantedPermissions.contains("email") {
                 //print(result.valueForKey("email"))
             }
-            if result.grantedPermissions.contains("user_friends")
-            {
+            
+            if result.grantedPermissions.contains("user_friends") {
                 print("user friends returned")
             }
         }
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        // log out
     }
 }
 
