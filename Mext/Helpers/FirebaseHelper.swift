@@ -83,7 +83,7 @@ extension FirebaseHelper{
         let newUserRef_JSON = [
             chatRoomUID: true
         ]
-        FirebaseHelper.userChatRoomsRef(user.UID).setValue(newUserRef_JSON)
+        FirebaseHelper.userChatRoomsRef(user.UID).updateChildValues(newUserRef_JSON)
     }
 }
 
@@ -105,9 +105,9 @@ extension FirebaseHelper{
         chatRoomRef(chatRoomUID).observeEventType(.Value, withBlock: { snapshot in
             if let value = snapshot.value as? [String: AnyObject] {
                 onComplete(ChatRoom(UID: chatRoomUID
-                                    , lastMessage: value["lastMessage"] as! String
-                                    , title: value["title"] as! String
-                                    , chatRoomPictureUrl: value["chatRoomPictureUrl"] as! String))
+                    , lastMessage: value["lastMessage"] as! String
+                    , title: value["title"] as! String
+                    , chatRoomPictureUrl: value["chatRoomPictureUrl"] as! String))
             } else {
                 print("Firebase ChatRoom Endpoint - null")
             }

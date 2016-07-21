@@ -9,6 +9,7 @@
 import UIKit
 
 class MessageInboxViewController: UIViewController {
+    let TAG = "MessageInboxViewController"
     
     @IBOutlet weak var messageInboxTableView: UITableView!
     
@@ -30,11 +31,10 @@ class MessageInboxViewController: UIViewController {
                         if (self.chatRooms?.append(chatRoom)) == nil {
                             self.chatRooms = [chatRoom]
                         }
-                        print(chatRoom.title)
                     })
                 }
             } else {
-                print("No chat room")
+                print("\(self.TAG) - No chat room")
             }
             
         }
@@ -65,13 +65,14 @@ class MessageInboxViewController: UIViewController {
 // MARK: TableView Methods
 extension MessageInboxViewController: UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.chatRooms?.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("messageInboxTableViewCell", forIndexPath: indexPath)
-        
-        cell.textLabel?.text = "Yay - it's working!"
+        if let chatRooms = chatRooms {
+            cell.textLabel?.text = chatRooms[indexPath.row].UID
+        }
         
         return cell
     }

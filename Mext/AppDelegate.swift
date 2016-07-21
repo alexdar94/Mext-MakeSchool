@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 FirebaseHelper.getUser(user.uid){ user -> Void in
                     messageInboxViewController.currUser = user
                     self.window?.rootViewController = messageInboxViewController
-                }                
+                }
             } else {
                 // No user is signed in.
                 print("\(self.logTag) not login")

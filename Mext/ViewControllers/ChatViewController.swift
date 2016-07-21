@@ -6,6 +6,7 @@ import UIKit
 import FirebaseDatabase
 
 class ChatViewController: JSQMessagesViewController {
+    let TAG = "ChatViewController"
     
     var chatRoomName = "messages"
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor(red: 10/255, green: 180/255, blue: 230/255, alpha: 1.0))

@@ -9,6 +9,8 @@
 import UIKit
 
 class ContactsViewController: UIViewController {
+    let TAG = "ContactsViewController"
+    
     var currUser: User!
     
     override func viewDidLoad() {
