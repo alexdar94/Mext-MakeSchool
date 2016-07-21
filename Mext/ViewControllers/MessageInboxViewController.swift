@@ -72,9 +72,9 @@ extension MessageInboxViewController: UITableViewDataSource{
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("messageInboxTableViewCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("messageInboxTableViewCell", forIndexPath: indexPath) as! MessageInboxTableViewCell
         if let chatRooms = chatRooms {
-            cell.textLabel?.text = chatRooms[indexPath.row].UID
+            cell.displayNameLabel?.text = chatRooms[indexPath.row].UID
         }
         
         return cell

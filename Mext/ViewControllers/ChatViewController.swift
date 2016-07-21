@@ -98,7 +98,7 @@ extension ChatViewController {
             guard let value = snapshot.value as? [String: AnyObject] else { return }
             guard let id = value["senderId"] as? String else { return }
             guard let text = value["text"] as? String else { return }
-
+            
             var soundFileURLs: [String]?
             
             if let urls = value["soundFileUrls"] as? [String] {
@@ -108,13 +108,11 @@ extension ChatViewController {
             var attrStringIndex: [[Int]]?
             
             if let attrStringIndexDic = value["attrStringIndex"] as? [String: AnyObject] {
-//                attrStringIndex = [[Int]]()
-
+                
                 for index in attrStringIndexDic.values {
                     if (attrStringIndex?.append(index as! [Int])) == nil {
                         attrStringIndex = [index as! [Int]]
                     }
-//                    attrStringIndex?.append(index as! [Int])
                 }
                 //attrStringIndex.sortInPlace{$0 < $1}
             }
