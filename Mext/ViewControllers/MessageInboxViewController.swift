@@ -56,6 +56,9 @@ class MessageInboxViewController: UIViewController {
             if identifier == "toContacts" {
                 let contactsViewController = segue.destinationViewController as! ContactsViewController
                 contactsViewController.currUser = currUser
+            } else if identifier == "toChat" {
+                let chatViewController = segue.destinationViewController as! ChatViewController
+                chatViewController.chatRoomName = chatRooms![messageInboxTableView.indexPathForSelectedRow!.row].UID
             }
         }
     }

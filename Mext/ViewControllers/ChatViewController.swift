@@ -103,9 +103,6 @@ extension ChatViewController {
             
             if let urls = value["soundFileUrls"] as? [String] {
                 soundFileURLs = urls
-                //soundFileURLs.append("")
-            } else {
-                print("No soundFileUrl")
             }
             
             var attrStringIndex: [[Int]]?
@@ -120,8 +117,6 @@ extension ChatViewController {
 //                    attrStringIndex?.append(index as! [Int])
                 }
                 //attrStringIndex.sortInPlace{$0 < $1}
-            } else {
-                print("No attrStringIndex")
             }
             
             self.addMessage(id, text: text, soundFileUrls: soundFileURLs, attrStringIndex: attrStringIndex)

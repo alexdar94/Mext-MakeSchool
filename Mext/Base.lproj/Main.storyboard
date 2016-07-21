@@ -187,7 +187,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="JhB-ph-Eha" kind="show" identifier="Message Inbox" id="GNH-1K-6Kp"/>
+                                            <segue destination="72V-sa-Ywk" kind="show" identifier="toChat" id="ywg-CL-0E5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -214,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNm-nt-7o6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1831" y="961"/>
+            <point key="canvasLocation" x="1823" y="985"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="7GH-J7-c2n">
@@ -312,26 +312,8 @@
             </objects>
             <point key="canvasLocation" x="255" y="82"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="wCa-RX-be2">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JhB-ph-Eha" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="haA-lg-fwg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="72V-sa-Ywk" kind="relationship" relationship="rootViewController" id="TfR-AH-dME"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FnV-0O-lIR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1819" y="82"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gOt-K7-caG"/>
+        <segue reference="ywg-CL-0E5"/>
     </inferredMetricsTieBreakers>
 </document>
