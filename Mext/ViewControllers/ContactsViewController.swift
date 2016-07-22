@@ -12,11 +12,32 @@ import Firebase
 class ContactsViewController: UIViewController {
     let TAG = "ContactsViewController"
     
+    @IBOutlet weak var contactsTableView: UITableView!
+    
     var currUser: User!
+    var friends: [User]! {
+        didSet{
+            contactsTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        FirebaseHelper.getUserFriendUIDs(self.currUser.UID){ friendKeys in
+            if let friendKeys = friendKeys {
+                for uid in friendKeys {
+                    FirebaseHelper.getUser(uid, onComplete: { user in
+                        guard let friend = user else {return}
+                        
+                        if (self.friends?.append(friend)) == nil {
+                            self.friends = [friend]
+                        }
+                    })
+                }
+            } else {
+                print("\(self.TAG) - No chat room")
+            }
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -44,13 +65,14 @@ class ContactsViewController: UIViewController {
 // MARK: TableView Methods
 extension ContactsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.friends?.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("contactsTableViewCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("contactTableViewCell", forIndexPath: indexPath) as! ContactTableViewCell
         
-        cell.textLabel?.text = "User \(indexPath.row)"
+        let friend = friends[indexPath.row]
+        cell.userDisplayNameLabel.text = friend.displayName
         
         return cell
     }

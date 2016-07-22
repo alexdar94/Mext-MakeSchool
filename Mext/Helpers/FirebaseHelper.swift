@@ -41,6 +41,10 @@ extension FirebaseHelper{
         return userRef(userUID).child("chatRooms")
     }
     
+    static func userFriendsRef(userUID: String) -> FIRDatabaseReference {
+        return userRef(userUID).child("friends")
+    }
+    
     static func getUser(userUID: String, onComplete: User? -> Void ) {
         
         userRef(userUID).observeSingleEventOfType(.Value, withBlock: { snapshot in
@@ -68,6 +72,18 @@ extension FirebaseHelper{
         })
     }
     
+    static func getUserFriendUIDs(userUID: String, onComplete: [String]? -> Void ) {
+        userFriendsRef(userUID).observeEventType(.Value, withBlock: { snapshot in
+            var friendKeys: [String]? = nil
+            if let value = snapshot.value as? [String: AnyObject] {
+                friendKeys = Array(value.keys)
+            } else {
+                print("Firebase Friends Endpoint - null")
+            }
+            onComplete(friendKeys)
+        })
+    }
+    
     static func saveNewUser(newUser: User){
         let newUserRef = FirebaseHelper.usersRef().child(newUser.UID)
         let newUserRef_JSON = [
@@ -80,10 +96,19 @@ extension FirebaseHelper{
     }
     
     static func addChatRoomToUser(user: User, chatRoomUID: String){
-        let newUserRef_JSON = [
+        let newUser_JSON = [
             chatRoomUID: true
         ]
-        FirebaseHelper.userChatRoomsRef(user.UID).updateChildValues(newUserRef_JSON)
+        
+        FirebaseHelper.userChatRoomsRef(user.UID).updateChildValues(newUser_JSON)
+    }
+    
+    static func addFriends(fromUser: User, toUser: User){
+        let newFriend_JSON = [
+            toUser.UID: true
+        ]
+        
+        FirebaseHelper.userFriendsRef(fromUser.UID).updateChildValues(newFriend_JSON)
     }
 }
 

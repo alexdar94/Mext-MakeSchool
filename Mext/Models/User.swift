@@ -14,7 +14,8 @@ class User {
     var displayName = ""
     var photoUrl = ""
     var phoneNumber = ""
-    var friends = [String]()
+    var friendUIDs: [String]?
+    var chatRoomUIDs: [String]?
     
     init(){}
     
