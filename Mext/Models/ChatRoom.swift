@@ -13,14 +13,22 @@ class ChatRoom {
     var UID = "uidPlaceHolder"
     var userIsTyping = false
     var lastMessage = "lastMessagePlaceHolder"
+    var lastMessageTime: NSDate {
+        let date = (FIRLastMessageTimeStamp["lastMessageTime"] as? NSTimeInterval)
+        return NSDate(timeIntervalSince1970: date!/1000)
+    }
+    var FIRLastMessageTimeStamp: [NSObject : AnyObject]!
     var title = "titlePlaceHolder"
     var chatRoomPictureUrl = "chatRoomPictureUrlPlaceHolder"
     var chatMembers = [User]()
     
-    init(UID:String, lastMessage: String, title: String, chatRoomPictureUrl: String){
+    init(UID:String, lastMessage: String, FIRLastMessageTimeStamp: [NSObject : AnyObject], title: String, chatRoomPictureUrl: String){
         self.UID = UID
         self.lastMessage = lastMessage
+        self.FIRLastMessageTimeStamp = FIRLastMessageTimeStamp
         self.title = title
         self.chatRoomPictureUrl = chatRoomPictureUrl
+        print(lastMessageTime)
+        //        print(NSDate(FIRLastMessageTimeStamp["lastMessageTime"] as? NSNumber))
     }
 }

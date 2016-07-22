@@ -106,6 +106,7 @@ extension FirebaseHelper{
             if let value = snapshot.value as? [String: AnyObject] {
                 onComplete(ChatRoom(UID: chatRoomUID
                     , lastMessage: value["lastMessage"] as! String
+                    , FIRLastMessageTimeStamp: ["lastMessageTime":value["lastMessageTime"]!]
                     , title: value["title"] as! String
                     , chatRoomPictureUrl: value["chatRoomPictureUrl"] as! String))
             } else {
@@ -120,6 +121,7 @@ extension FirebaseHelper{
         let newChatRoom_JSON = [
             "userIsTyping": newChatRoom.userIsTyping,
             "lastMessage": newChatRoom.lastMessage,
+            "lastMessageTime": newChatRoom.FIRLastMessageTimeStamp,
             "title": newChatRoom.title,
             "chatRoomPictureUrl": newChatRoom.chatRoomPictureUrl
         ]

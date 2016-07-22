@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class MessageInboxViewController: UIViewController {
     let TAG = "MessageInboxViewController"
@@ -15,7 +17,7 @@ class MessageInboxViewController: UIViewController {
     
     var currUser: User!
     var currUserUID: String!
-    var chatRooms : [ChatRoom]? {
+    var chatRooms: [ChatRoom]? {
         didSet{
             messageInboxTableView.reloadData()
         }
@@ -23,7 +25,7 @@ class MessageInboxViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.messageInboxTableView.delegate = self
         FirebaseHelper.getUserChatRoomUIDs(self.currUser.UID){ chatRoomKeys in
             if let chatRoomKeys = chatRoomKeys {
                 for uid in chatRoomKeys {
@@ -36,8 +38,8 @@ class MessageInboxViewController: UIViewController {
             } else {
                 print("\(self.TAG) - No chat room")
             }
-            
         }
+
         //print("MessageInboxViewController Email : \(currUser.email)")
         //        if let uid = currUserUID {
         //            FirebaseHelper.getUser(uid){ in
@@ -57,12 +59,19 @@ class MessageInboxViewController: UIViewController {
                 let contactsViewController = segue.destinationViewController as! ContactsViewController
                 contactsViewController.currUser = currUser
             } else if identifier == "toChat" {
-                let chatViewController = segue.destinationViewController as! ChatViewController
+                let navVc = segue.destinationViewController as! UINavigationController
+                let chatViewController = navVc.viewControllers.first as! ChatViewController
                 chatViewController.chatRoomName = chatRooms![messageInboxTableView.indexPathForSelectedRow!.row].UID
             }
         }
     }
     
+    @IBAction func unwindToMessageInboxViewController(segue: UIStoryboardSegue) {
+        
+        // for now, simply defining the method is sufficient.
+        // we'll add code later
+        
+    }
 }
 
 // MARK: TableView Methods
@@ -74,19 +83,23 @@ extension MessageInboxViewController: UITableViewDataSource{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("messageInboxTableViewCell", forIndexPath: indexPath) as! MessageInboxTableViewCell
         if let chatRooms = chatRooms {
-            cell.displayNameLabel?.text = chatRooms[indexPath.row].UID
+            cell.chatRoomTitleLabel?.text = chatRooms[indexPath.row].title
+            
         }
         
         return cell
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        // 2
         if editingStyle == .Delete {
-            //            // 3
             //            notes.removeAtIndex(indexPath.row)
-            //            // 4
             //            tableView.reloadData()
         }
+    }
+}
+
+extension MessageInboxViewController : UITableViewDelegate {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("toChat", sender: self)
     }
 }

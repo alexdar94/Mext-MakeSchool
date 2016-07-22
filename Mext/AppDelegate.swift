@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().delegate = self
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions:launchOptions)
-        
+//        try! FIRAuth.auth()?.signOut()
         isLogin()
         
         return true
@@ -62,24 +62,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func isLogin () {
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            if let user = user {
-                // User is signed in.
-                print("\(self.logTag) login")
-                let messageInboxViewController = storyboard.instantiateViewControllerWithIdentifier("MessageInboxViewController") as! MessageInboxViewController
-                
-                FirebaseHelper.getUser(user.uid){ user -> Void in
-                    messageInboxViewController.currUser = user
-                    self.window?.rootViewController = messageInboxViewController
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            dispatch_async(dispatch_get_main_queue(), { 
+                if let user = user {
+                    // User is signed in.
+                    print("\(self.logTag) login")
+                    let messageInboxViewController = storyboard.instantiateViewControllerWithIdentifier("MessageInboxViewController") as! MessageInboxViewController
+                    
+                    FirebaseHelper.getUser(user.uid){ user -> Void in
+                        messageInboxViewController.currUser = user
+                        self.window?.rootViewController = messageInboxViewController
+                    }
+                } else {
+                    // No user is signed in.
+                    print("\(self.logTag) not login")
+                    //                let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginNavigationController") as! UINavigationController
+                    //
+                    //                self.window?.rootViewController = loginViewController
                 }
-            } else {
-                // No user is signed in.
-                print("\(self.logTag) not login")
-                let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
-                
-                self.window?.rootViewController = loginViewController
-            }
+
+            })
+            
         }
     }
     

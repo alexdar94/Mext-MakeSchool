@@ -21,8 +21,8 @@ class ChatViewController: JSQMessagesViewController {
     var currMessageLength = 0
     
     // Popup suggestion tableview for text
-    var popUpTableView : UITableView? = nil
-    var soundClips : [SoundClip] = []
+    var popUpTableView: UITableView? = nil
+    var soundClips: [SoundClip] = []
     var soundFileUrls = [String]()
     var attrStringIndex = [String: [Int]]()
     

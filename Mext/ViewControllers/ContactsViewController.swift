@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ContactsViewController: UIViewController {
     let TAG = "ContactsViewController"
@@ -26,13 +27,13 @@ class ContactsViewController: UIViewController {
         if let identifier = segue.identifier {
             if identifier == "createNewChat" {
                 let newChatRoomUID = FirebaseHelper.generateFIRUID(FirebaseHelper.chatRoomsRef())
-                let newChatRoom = ChatRoom(UID:newChatRoomUID, lastMessage: "",title: "tapped_UserDisplayName",chatRoomPictureUrl: "tapped_UserPhotoUrl")
-                
+                let newChatRoom = ChatRoom(UID:newChatRoomUID, lastMessage: "",FIRLastMessageTimeStamp: FIRServerValue.timestamp(), title: "tapped_UserDisplayName",chatRoomPictureUrl: "tapped_UserPhotoUrl")
                 FirebaseHelper.saveNewChatRoom(newChatRoomUID, newChatRoom: newChatRoom)
                 FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: "1")
                 FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: "2")
                 FirebaseHelper.addChatRoomToUser(currUser, chatRoomUID: newChatRoomUID)
-                let chatViewController = segue.destinationViewController as! ChatViewController
+                let navVc = segue.destinationViewController as! UINavigationController
+                let chatViewController = navVc.viewControllers.first as! ChatViewController
                 
                 chatViewController.chatRoomName = newChatRoomUID
             }
