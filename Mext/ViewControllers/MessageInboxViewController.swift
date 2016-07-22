@@ -17,7 +17,7 @@ class MessageInboxViewController: UIViewController {
     
     var currUser: User!
     var currUserUID: String!
-    var chatRooms: [ChatRoom]? {
+    var chatRooms: [ChatRoom]! {
         didSet{
             messageInboxTableView.reloadData()
         }
@@ -82,10 +82,15 @@ extension MessageInboxViewController: UITableViewDataSource{
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("messageInboxTableViewCell", forIndexPath: indexPath) as! MessageInboxTableViewCell
-        if let chatRooms = chatRooms {
-            cell.chatRoomTitleLabel?.text = chatRooms[indexPath.row].title
-            
-        }
+        
+        let chatRoom = chatRooms[indexPath.row]
+        
+        cell.chatRoomTitleLabel.text = chatRoom.title
+        cell.lastMessageLabel.text = chatRoom.lastMessage
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "HH:mm"
+        cell.lastMessageTimeLabel.text = formatter.stringFromDate(chatRoom.lastMessageTime)
+
         
         return cell
     }

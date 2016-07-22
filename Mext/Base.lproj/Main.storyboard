@@ -187,14 +187,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="57.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AO-Su-ffG" userLabel="ChatRoom Title Label">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AO-Su-ffG" userLabel="ChatRoom Title Label">
                                                     <rect key="frame" x="57" y="5" width="443" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Label">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izt-EM-lMj">
-                                                    <rect key="frame" x="57" y="23" width="493" height="21"/>
+                                                    <rect key="frame" x="57" y="30" width="493" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -230,7 +236,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="Nws-2J-GwX" secondAttribute="trailing" constant="8" id="dh6-4k-iWL"/>
                                                 <constraint firstItem="1AO-Su-ffG" firstAttribute="top" secondItem="hYD-9K-APM" secondAttribute="top" constant="5" id="kky-gi-yqj"/>
                                                 <constraint firstAttribute="trailing" secondItem="1AO-Su-ffG" secondAttribute="trailing" constant="100" id="tdd-V4-rqT"/>
-                                                <constraint firstItem="izt-EM-lMj" firstAttribute="top" secondItem="hYD-9K-APM" secondAttribute="top" constant="23" id="vRn-XI-Hc9"/>
+                                                <constraint firstItem="izt-EM-lMj" firstAttribute="top" secondItem="hYD-9K-APM" secondAttribute="top" constant="30" id="vRn-XI-Hc9"/>
                                                 <constraint firstItem="1AO-Su-ffG" firstAttribute="leading" secondItem="4hf-DP-jzk" secondAttribute="trailing" constant="8" id="zGA-Nu-gMt"/>
                                             </constraints>
                                         </tableViewCellContentView>
