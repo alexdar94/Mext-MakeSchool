@@ -7,33 +7,13 @@
 //
 
 import Foundation
-import Parse
 
-class SoundClip : PFObject, PFSubclassing {
+class SoundClip {
 
-    @NSManaged var tag: String?
-    @NSManaged var text: String?
-    @NSManaged var soundFile: PFFile?
-    @NSManaged var soundName: String?
-    @NSManaged var source: String?
-    
-    //MARK: PFSubclassing Protocol
-    
-    static func parseClassName() -> String {
-        return "SoundClip"
-    }
-    
-    override init () {
-        super.init()
-    }
-    
-    override class func initialize() {
-        var onceToken : dispatch_once_t = 0;
-        dispatch_once(&onceToken) {
-            // inform Parse about this subclass
-            self.registerSubclass()
-        }
-    }
-    
+    var tag: String?
+    var text: String?
+    var soundFileUrl: String?
+    var soundName: String?
+    var source: String?
     
 }

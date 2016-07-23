@@ -245,6 +245,7 @@
                                             <outlet property="lastMessageLabel" destination="izt-EM-lMj" id="XLG-xE-Ecn"/>
                                             <outlet property="lastMessageTimeLabel" destination="Nws-2J-GwX" id="7dp-D5-tUD"/>
                                             <outlet property="profileImageButton" destination="4hf-DP-jzk" id="1YK-NG-eZv"/>
+                                            <segue destination="hwY-XU-ykk" kind="show" identifier="toChat" id="5vo-VD-72L"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -268,7 +269,6 @@
                     <navigationItem key="navigationItem" id="62w-jo-Cje"/>
                     <connections>
                         <outlet property="messageInboxTableView" destination="a6p-E0-PkY" id="qqx-Xe-04z"/>
-                        <segue destination="hwY-XU-ykk" kind="show" identifier="toChat" id="BSk-CT-vXH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNm-nt-7o6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,7 +348,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
-                                                                <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
                                                             </attributes>
                                                         </fragment>
@@ -465,6 +465,6 @@
         <image name="nobody_m.original" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BSk-CT-vXH"/>
+        <segue reference="5vo-VD-72L"/>
     </inferredMetricsTieBreakers>
 </document>
