@@ -38,7 +38,7 @@ class MessageInboxViewController: UIViewController {
                 print("\(self.TAG) - No chat room")
             }
         }
-
+        
         //print("MessageInboxViewController Email : \(currUser.email)")
         //        if let uid = currUserUID {
         //            FirebaseHelper.getUser(uid){ in

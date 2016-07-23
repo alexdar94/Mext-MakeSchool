@@ -30,6 +30,8 @@
 		FAC482CF1D3D789E00F83E91 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC482CE1D3D789E00F83E91 /* ContactsViewController.swift */; };
 		FAC482D11D3D854200F83E91 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC482D01D3D854200F83E91 /* ChatRoom.swift */; };
 		FAC818901D41DE1600B837B4 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8188F1D41DE1600B837B4 /* ContactTableViewCell.swift */; };
+		FAD74F031D441C6A0022B881 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD74EF21D4419D90022B881 /* Alamofire.framework */; };
+		FAD74F041D441C6A0022B881 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FAD74EF21D4419D90022B881 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FAFAC3E91D276D38005BA926 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAFAC3E81D276D38005BA926 /* GoogleService-Info.plist */; };
 		FAFAC3EE1D277434005BA926 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAC3ED1D277434005BA926 /* ChatViewController.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +52,20 @@
 			remoteInfo = Mext;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FAD74F051D441C6A0022B881 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FAD74F041D441C6A0022B881 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		12AA148D0AC0F4DCCA2D3321 /* Pods_MextTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MextTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +104,8 @@
 		FAC482CE1D3D789E00F83E91 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		FAC482D01D3D854200F83E91 /* ChatRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		FAC8188F1D41DE1600B837B4 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		FAD74EF21D4419D90022B881 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = "/Users/Alex/Library/Developer/Xcode/DerivedData/Mext-bdqzsrnreuikfxhauqqabzxxfvkn/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<absolute>"; };
+		FAD74EF81D441A7B0022B881 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = AlamofireImage.framework; path = "/Users/Alex/Library/Developer/Xcode/DerivedData/Mext-bdqzsrnreuikfxhauqqabzxxfvkn/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<absolute>"; };
 		FAFAC3E81D276D38005BA926 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAFAC3ED1D277434005BA926 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		FF0B378683EA343F1732402A /* Pods-Mext.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mext.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mext/Pods-Mext.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				164F3412F1ED539A4F1204A5 /* Pods_Mext.framework in Frameworks */,
+				FAD74F031D441C6A0022B881 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +166,8 @@
 		FA0DD1901D276AD30089F512 = {
 			isa = PBXGroup;
 			children = (
+				FAD74EF81D441A7B0022B881 /* AlamofireImage.framework */,
+				FAD74EF21D4419D90022B881 /* Alamofire.framework */,
 				FA0DD19B1D276AD30089F512 /* Mext */,
 				FA0DD1B01D276AD30089F512 /* MextTests */,
 				FA0DD1BB1D276AD30089F512 /* MextUITests */,
@@ -267,6 +288,7 @@
 				FA0DD1971D276AD30089F512 /* Resources */,
 				7CCD76EFA4F98642859519F3 /* [CP] Embed Pods Frameworks */,
 				B5BECBF673E639B0149B65F2 /* [CP] Copy Pods Resources */,
+				FAD74F051D441C6A0022B881 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -264,6 +264,14 @@ extension ChatViewController {
         var keywordArr = message.componentsSeparatedByString(" ")
         currWord = keywordArr[keywordArr.count-1]
         
+        FirebaseHelper.searchSoundClip("hello"){ matchingSoundClips in
+            if let matchingSoundClips = matchingSoundClips{
+                for i in matchingSoundClips {
+                    print(i.soundName)
+                }
+            }
+        }
+        
         //        ParseHelper.searchSoundClips(currWord){(result: [PFObject]?, error: NSError?) -> Void in
         //
         //            guard error == nil else {

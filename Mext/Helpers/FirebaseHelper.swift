@@ -22,8 +22,31 @@ class FirebaseHelper {
 
 // MARK: SoundClips Endpoint
 extension FirebaseHelper{
-    static func soundClipsRef(chatRoomName : String) -> FIRDatabaseReference {
+    static func soundClipsRef() -> FIRDatabaseReference {
         return ref.child("SoundClips")
+    }
+    
+    static func searchSoundClip(soundClipTag: String, onComplete: [SoundClip]? -> Void) {
+        var matchingSoundClips: [SoundClip]? = nil
+        let searchQuery = soundClipsRef().queryLimitedToFirst(10)
+        
+        searchQuery.queryOrderedByChild("tag").queryEqualToValue(soundClipTag)
+            .observeEventType(.ChildAdded, withBlock: { snapshot in
+                //let text = snapshot.value!["soundName"]! as! String
+                //print(snapshot.value)
+                
+                if let value = snapshot.value as? [String: AnyObject] {
+                    let soundClip = SoundClip(tag: value["tag"] as! String
+                        , text: value["text"] as! String
+                        , soundFileUrl: value["soundFileUrl"] as! String
+                        , soundName: value["soundName"] as! String
+                        , source: value["source"] as! String)
+                    if (matchingSoundClips?.append(soundClip)) == nil {
+                        matchingSoundClips = [soundClip]
+                    }
+                }
+                onComplete(matchingSoundClips)
+        })        
     }
 }
 
