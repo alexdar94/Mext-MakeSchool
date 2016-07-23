@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import AlamofireImage
 
 class ContactsViewController: UIViewController {
     let TAG = "ContactsViewController"
@@ -48,7 +49,8 @@ class ContactsViewController: UIViewController {
         if let identifier = segue.identifier {
             if identifier == "createNewChat" {
                 let newChatRoomUID = FirebaseHelper.generateFIRUID(FirebaseHelper.chatRoomsRef())
-                let newChatRoom = ChatRoom(UID:newChatRoomUID, lastMessage: "",FIRLastMessageTimeStamp: FIRServerValue.timestamp(), title: "tapped_UserDisplayName",chatRoomPictureUrl: "tapped_UserPhotoUrl")
+                let userTapped = friends[contactsTableView.indexPathForSelectedRow!.row]
+                let newChatRoom = ChatRoom(UID:newChatRoomUID, lastMessage: "",FIRLastMessageTimeStamp: FIRServerValue.timestamp(), title: userTapped.displayName, chatRoomPictureUrl: userTapped.photoUrl)
                 FirebaseHelper.saveNewChatRoom(newChatRoomUID, newChatRoom: newChatRoom)
                 FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: "1")
                 FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: "2")
@@ -56,7 +58,7 @@ class ContactsViewController: UIViewController {
                 let navVc = segue.destinationViewController as! UINavigationController
                 let chatViewController = navVc.viewControllers.first as! ChatViewController
                 
-                chatViewController.chatRoomName = newChatRoomUID
+                chatViewController.chatRoom = newChatRoom
             }
         }
     }
@@ -73,6 +75,10 @@ extension ContactsViewController: UITableViewDataSource, UITableViewDelegate {
         
         let friend = friends[indexPath.row]
         cell.userDisplayNameLabel.text = friend.displayName
+        cell.profileImageButton.af_setImageForState(
+            UIControlState.Normal
+            , URL: NSURL(string: friend.photoUrl)!
+            , placeHolderImage: UIImage(named: "nobody_m.original")!)
         
         return cell
     }
