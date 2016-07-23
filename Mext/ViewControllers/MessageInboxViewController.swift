@@ -25,7 +25,6 @@ class MessageInboxViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.messageInboxTableView.delegate = self
         FirebaseHelper.getUserChatRoomUIDs(self.currUser.UID){ chatRoomKeys in
             if let chatRoomKeys = chatRoomKeys {
                 for uid in chatRoomKeys {
@@ -97,11 +96,5 @@ extension MessageInboxViewController: UITableViewDataSource{
             //            notes.removeAtIndex(indexPath.row)
             //            tableView.reloadData()
         }
-    }
-}
-
-extension MessageInboxViewController : UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("toChat", sender: self)
     }
 }

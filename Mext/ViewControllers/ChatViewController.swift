@@ -259,30 +259,30 @@ extension ChatViewController {
         var keywordArr = message.componentsSeparatedByString(" ")
         currWord = keywordArr[keywordArr.count-1]
         
-        ParseHelper.searchSoundClips(currWord){(result: [PFObject]?, error: NSError?) -> Void in
-            
-            guard error == nil else {
-                print(error)
-                return
-            }
-            
-            self.soundClips = result as? [SoundClip] ?? []
-            let resultsCount = self.soundClips.count
-            if resultsCount>0 {
-                let numRows = resultsCount>4 ?  4 : resultsCount
-                self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
-                self.popUpTableView!.rowHeight = 48.0
-                self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-                self.popUpTableView!.delegate = self
-                self.popUpTableView!.dataSource = self
-                self.view.addSubview(self.popUpTableView!)
-            } else {
-                if self.popUpTableView != nil {
-                    self.popUpTableView!.removeFromSuperview()
-                    self.popUpTableView = nil
-                }
-            }
-        }
+//        ParseHelper.searchSoundClips(currWord){(result: [PFObject]?, error: NSError?) -> Void in
+//            
+//            guard error == nil else {
+//                print(error)
+//                return
+//            }
+//            
+//            self.soundClips = result as? [SoundClip] ?? []
+//            let resultsCount = self.soundClips.count
+//            if resultsCount>0 {
+//                let numRows = resultsCount>4 ?  4 : resultsCount
+//                self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
+//                self.popUpTableView!.rowHeight = 48.0
+//                self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+//                self.popUpTableView!.delegate = self
+//                self.popUpTableView!.dataSource = self
+//                self.view.addSubview(self.popUpTableView!)
+//            } else {
+//                if self.popUpTableView != nil {
+//                    self.popUpTableView!.removeFromSuperview()
+//                    self.popUpTableView = nil
+//                }
+//            }
+//        }
         
         let attributedString = NSMutableAttributedString(string:message)
         if message.characters.count > 1{
@@ -297,29 +297,29 @@ extension ChatViewController {
     }
 }
 
-extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.soundClips.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let soundClip = soundClips[indexPath.row]
-        let cell = MusicSuggestionTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell", soundClipFile: soundClip.soundFile)
-        
-        cell.songName?.text = "\(soundClip.soundName!) - \(soundClip.source!)"
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.soundFileUrls.append(soundClips[indexPath.row].soundFile!.url!)
-        self.attrStringIndex[FirebaseHelper.generateFIRUID(FirebaseHelper.ref)] = [currMessageLength - currWord.characters.count,currWord.characters.count]
-        
-        if self.popUpTableView != nil {
-            self.popUpTableView!.removeFromSuperview()
-            self.popUpTableView = nil
-        }
-    }
-    
-}
+//extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
+//    
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return self.soundClips.count
+//    }
+//    
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let soundClip = soundClips[indexPath.row]
+//        let cell = MusicSuggestionTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell", soundClipFile: soundClip.soundFile)
+//        
+//        cell.songName?.text = "\(soundClip.soundName!) - \(soundClip.source!)"
+//        
+//        return cell
+//    }
+//    
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        self.soundFileUrls.append(soundClips[indexPath.row].soundFile!.url!)
+//        self.attrStringIndex[FirebaseHelper.generateFIRUID(FirebaseHelper.ref)] = [currMessageLength - currWord.characters.count,currWord.characters.count]
+//        
+//        if self.popUpTableView != nil {
+//            self.popUpTableView!.removeFromSuperview()
+//            self.popUpTableView = nil
+//        }
+//    }
+//    
+//}
