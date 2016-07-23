@@ -330,7 +330,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactTableViewCell" rowHeight="58" id="B9e-w1-PCQ" customClass="ContactTableViewCell" customModule="Mext" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="58"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B9e-w1-PCQ" id="9r6-ZF-hOC">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="57.5"/>
@@ -349,7 +349,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
-                                                                <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
                                                             </attributes>
                                                         </fragment>
@@ -424,7 +424,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Dgm-SR-bVS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="As3-WN-qoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qow-Cu-weg" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TiJ-hr-8BZ">
@@ -440,6 +439,7 @@
                         <segue destination="4oS-ak-yVF" kind="relationship" relationship="rootViewController" id="MGy-S7-sMA"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="As3-WN-qoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2635" y="985"/>
         </scene>
