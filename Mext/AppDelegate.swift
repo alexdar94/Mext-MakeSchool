@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().delegate = self
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions:launchOptions)
-//        try! FIRAuth.auth()?.signOut()
+        //        try! FIRAuth.auth()?.signOut()
         isLogin()
         
         return true
@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func isLogin () {
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-            dispatch_async(dispatch_get_main_queue(), { 
+            dispatch_async(dispatch_get_main_queue(), {
                 if let user = user {
                     // User is signed in.
                     print("\(self.logTag) login")
@@ -75,11 +75,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 } else {
                     // No user is signed in.
                     print("\(self.logTag) not login")
-                    //                let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginNavigationController") as! UINavigationController
-                    //
-                    //                self.window?.rootViewController = loginViewController
+                    let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginNavigationController") as! UINavigationController
+                    
+                    self.window?.rootViewController = loginViewController
                 }
-
+                
             })
             
         }
@@ -96,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                                                     annotation: annotation)
     }
     
-    // Google sign in
+    // Google sign in 
     func application(application: UIApplication,
                      openURL url: NSURL, options: [String: AnyObject]) -> Bool {
         if GIDSignIn.sharedInstance().handleURL(url,
