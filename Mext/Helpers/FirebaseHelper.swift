@@ -27,14 +27,11 @@ extension FirebaseHelper{
     }
     
     static func searchSoundClip(soundClipTag: String, onComplete: [SoundClip]? -> Void) {
-        var matchingSoundClips: [SoundClip]? = nil
+        var matchingSoundClips: [SoundClip]?
         let searchQuery = soundClipsRef().queryLimitedToFirst(10)
         
         searchQuery.queryOrderedByChild("tag").queryEqualToValue(soundClipTag)
             .observeEventType(.ChildAdded, withBlock: { snapshot in
-                //let text = snapshot.value!["soundName"]! as! String
-                //print(snapshot.value)
-                
                 if let value = snapshot.value as? [String: AnyObject] {
                     let soundClip = SoundClip(tag: value["tag"] as! String
                         , text: value["text"] as! String
@@ -44,9 +41,10 @@ extension FirebaseHelper{
                     if (matchingSoundClips?.append(soundClip)) == nil {
                         matchingSoundClips = [soundClip]
                     }
+                    onComplete(matchingSoundClips)
                 }
-                onComplete(matchingSoundClips)
-        })        
+        })
+        onComplete(matchingSoundClips)
     }
 }
 

@@ -13,16 +13,16 @@ class MusicSuggestionTableViewCell: UITableViewCell {
     var playButton : UIButton!
     var songName : UILabel!
     var songArt : UIImageView!
-    var soundClipFile : PFFile?
+    var soundFileUrl: String!
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:)")
     }
     
-    init(style: UITableViewCellStyle, reuseIdentifier: String?, soundClipFile: PFFile?) {
+    init(style: UITableViewCellStyle, reuseIdentifier: String?, soundFileUrl: String!) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.soundClipFile = soundClipFile
+        self.soundFileUrl = soundFileUrl
         
         let gap_image : CGFloat = 5
         let gap_label : CGFloat = 9
@@ -62,8 +62,6 @@ class MusicSuggestionTableViewCell: UITableViewCell {
     }
 
     func buttonAction(sender: UIButton!) {
-        if let soundClipFile = self.soundClipFile {
-            MusicPlayerHelper.playSoundClip(soundClipFile)
-        }
+        MusicPlayerHelper.playSoundClipFromUrl(self.soundFileUrl)
     }
 }
