@@ -61,7 +61,7 @@ class MessageInboxViewController: UIViewController {
             } else if identifier == "toChat" {
                 let navVc = segue.destinationViewController as! UINavigationController
                 let chatViewController = navVc.viewControllers.first as! ChatViewController
-                chatViewController.chatRoom = chatRooms![messageInboxTableView.indexPathForSelectedRow!.row]
+                chatViewController.chatRoomName = chatRooms![messageInboxTableView.indexPathForSelectedRow!.row].UID
             }
         }
     }
@@ -102,8 +102,6 @@ extension MessageInboxViewController: UITableViewDataSource{
 
 extension MessageInboxViewController : UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("inside didselect")
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.performSegueWithIdentifier("toChat", sender: self)
     }
 }
