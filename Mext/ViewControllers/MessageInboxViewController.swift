@@ -60,7 +60,7 @@ class MessageInboxViewController: UIViewController {
             } else if identifier == "toChat" {
                 let navVc = segue.destinationViewController as! UINavigationController
                 let chatViewController = navVc.viewControllers.first as! ChatViewController
-                chatViewController.chatRoomName = chatRooms![messageInboxTableView.indexPathForSelectedRow!.row].UID
+                chatViewController.chatRoom = chatRooms![messageInboxTableView.indexPathForSelectedRow!.row]
             }
         }
     }
