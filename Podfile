@@ -10,6 +10,7 @@ target 'Mext' do
   pod 'JSQMessagesViewController'
   pod 'Firebase/Database'
   pod 'Parse'
+  pod 'AlamofireImage', '~> 2.0'
 
   # Pods for Auth
   pod 'FirebaseUI'
