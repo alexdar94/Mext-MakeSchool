@@ -93,6 +93,22 @@ extension FirebaseHelper{
         })
     }
     
+    static func getExistingChatRoomKey(searchUserUID: String, chatPartnerUID: String, onComplete: String? -> Void ) {
+        let chatRoomKeyQuery = userChatRoomsRef(searchUserUID).queryOrderedByValue().queryEqualToValue(chatPartnerUID)
+        
+        chatRoomKeyQuery.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            var chatRoomKey: String? = nil
+            if let value = snapshot.value as? [String: AnyObject] {
+                print("Existing chat room \(value)")
+                chatRoomKey =  Array(value.keys)[0]
+                print(chatRoomKey)
+            } else {
+                print("Firebase ExistingChatRoom Endpoint - null")
+            }
+            onComplete(chatRoomKey)
+        })
+    }
+    
     static func getUserFriendUIDs(userUID: String, onComplete: [String]? -> Void ) {
         userFriendsRef(userUID).observeEventType(.Value, withBlock: { snapshot in
             var friendKeys: [String]? = nil

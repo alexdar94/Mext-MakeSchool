@@ -47,7 +47,19 @@ class ContactsViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
-            if identifier == "createNewChat" {
+            if identifier == "toChat" {
+                
+                FirebaseHelper.getExistingChatRoomKey(currUser.UID, chatPartnerUID: friends[contactsTableView.indexPathForSelectedRow!.row].UID){ chatRoomKey in
+                    if let chatRoomKey = chatRoomKey {
+                        let navVc = segue.destinationViewController as! UINavigationController
+                        let chatViewController = navVc.viewControllers.first as! ChatViewController
+                        
+                        //chatViewController.chatRoom = newChatRoom
+                    } else {
+                        
+                    }
+                }
+                
                 let newChatRoomUID = FirebaseHelper.generateFIRUID(FirebaseHelper.chatRoomsRef())
                 let userTapped = friends[contactsTableView.indexPathForSelectedRow!.row]
                 let newChatRoom = ChatRoom(UID:newChatRoomUID, lastMessage: "",FIRLastMessageTimeStamp: FIRServerValue.timestamp(), title: userTapped.displayName, chatRoomPictureUrl: userTapped.photoUrl)

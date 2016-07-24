@@ -368,7 +368,7 @@
                                         <connections>
                                             <outlet property="profileImageButton" destination="APm-EX-khb" id="1Lc-i3-qaX"/>
                                             <outlet property="userDisplayNameLabel" destination="yMb-yi-8Uq" id="Cox-bx-9dT"/>
-                                            <segue destination="hwY-XU-ykk" kind="show" identifier="createNewChat" id="gOt-K7-caG"/>
+                                            <segue destination="hwY-XU-ykk" kind="show" identifier="toChat" id="gOt-K7-caG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -466,6 +466,6 @@
         <image name="nobody_m.original" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5vo-VD-72L"/>
+        <segue reference="gOt-K7-caG"/>
     </inferredMetricsTieBreakers>
 </document>
