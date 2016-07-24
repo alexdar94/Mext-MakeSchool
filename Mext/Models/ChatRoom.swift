@@ -9,6 +9,7 @@
 import Foundation
 
 class ChatRoom {
+    let TAG = "ChatRoom"
     
     var UID = "uidPlaceHolder"
     var userIsTyping = false
@@ -28,7 +29,7 @@ class ChatRoom {
         self.FIRLastMessageTimeStamp = FIRLastMessageTimeStamp
         self.title = title
         self.chatRoomPictureUrl = chatRoomPictureUrl
-        print(lastMessageTime)
+        print("\(TAG): \(FIRLastMessageTimeStamp)")
         //        print(NSDate(FIRLastMessageTimeStamp["lastMessageTime"] as? NSNumber))
     }
 }

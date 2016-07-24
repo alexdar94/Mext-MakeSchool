@@ -11,7 +11,8 @@ import UIKit
 class MessageInboxTableViewCell: UITableViewCell {
     
     @IBOutlet weak var chatRoomTitleLabel: UILabel!
-    @IBOutlet weak var profileImageButton: UIButton!
+    
+    @IBOutlet weak var chatRoomImageButton: UIButton!
     @IBOutlet weak var lastMessageTimeLabel: UILabel!
     @IBOutlet weak var lastMessageLabel: UILabel!
     
@@ -31,7 +32,7 @@ class MessageInboxTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        profileImageButton.imageView?.layer.cornerRadius = self.profileImageButton.imageView!.frame.size.width / 2
+        chatRoomImageButton.imageView?.layer.cornerRadius = self.chatRoomImageButton.imageView!.frame.size.width / 2
     }
 
 }

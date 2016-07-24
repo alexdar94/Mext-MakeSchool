@@ -161,6 +161,14 @@ extension FirebaseHelper{
         return chatRoomsRef().child("\(chatRoomUID)/userIsTyping")
     }
     
+    static func chatRoomLastMessage(chatRoomUID : String) -> FIRDatabaseReference {
+        return chatRoomsRef().child("\(chatRoomUID)/lastMessage")
+    }
+    
+    static func chatRoomLastMessageTime(chatRoomUID : String) -> FIRDatabaseReference {
+        return chatRoomsRef().child("\(chatRoomUID)/lastMessageTime")
+    }
+    
     static func getChatRoom(chatRoomUID: String, onComplete: ChatRoom -> Void ) {
         chatRoomRef(chatRoomUID).observeEventType(.Value, withBlock: { snapshot in
             if let value = snapshot.value as? [String: AnyObject] {
@@ -188,6 +196,10 @@ extension FirebaseHelper{
         newChatRoomRef.setValue(newChatRoom_JSON)
     }
     
+    static func updateChatRoomLastMessage(chatRoomUID: String, lastMessage: String){
+        chatRoomLastMessageTime(chatRoomUID).setValue(FIRServerValue.timestamp())
+        chatRoomLastMessage(chatRoomUID).setValue(lastMessage)
+    }
 }
 
 // MARK: ChatRoomMembers Endpoint

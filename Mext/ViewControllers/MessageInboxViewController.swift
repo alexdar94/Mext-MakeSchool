@@ -86,7 +86,10 @@ extension MessageInboxViewController: UITableViewDataSource{
         let formatter = NSDateFormatter()
         formatter.dateFormat = "HH:mm"
         cell.lastMessageTimeLabel.text = formatter.stringFromDate(chatRoom.lastMessageTime)
-
+        cell.chatRoomImageButton.af_setImageForState(
+            UIControlState.Normal
+            , URL: NSURL(string: chatRoom.chatRoomPictureUrl)!
+            , placeHolderImage: UIImage(named: "nobody_m.original")!)
         
         return cell
     }

@@ -243,7 +243,7 @@ extension ChatViewController {
         itemRef.setValue(messageItem)
         
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
-        
+        FirebaseHelper.updateChatRoomLastMessage(chatRoomName, lastMessage: text)
         finishSendingMessage()
         
         isTyping = false

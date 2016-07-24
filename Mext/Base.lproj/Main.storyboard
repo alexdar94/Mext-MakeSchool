@@ -199,12 +199,6 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izt-EM-lMj">
-                                                    <rect key="frame" x="57" y="30" width="493" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nws-2J-GwX">
                                                     <rect key="frame" x="512" y="5" width="80" height="21"/>
                                                     <constraints>
@@ -226,6 +220,12 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="frame.size.width / 2"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izt-EM-lMj">
+                                                    <rect key="frame" x="57" y="30" width="493" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="izt-EM-lMj" secondAttribute="trailing" constant="50" id="6Bg-Tz-Sz4"/>
@@ -241,10 +241,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="chatRoomImageButton" destination="4hf-DP-jzk" id="Bve-lE-PEh"/>
                                             <outlet property="chatRoomTitleLabel" destination="1AO-Su-ffG" id="RDg-QU-Aep"/>
                                             <outlet property="lastMessageLabel" destination="izt-EM-lMj" id="XLG-xE-Ecn"/>
                                             <outlet property="lastMessageTimeLabel" destination="Nws-2J-GwX" id="7dp-D5-tUD"/>
-                                            <outlet property="profileImageButton" destination="4hf-DP-jzk" id="1YK-NG-eZv"/>
                                             <segue destination="hwY-XU-ykk" kind="show" identifier="toChat" id="5vo-VD-72L"/>
                                         </connections>
                                     </tableViewCell>
@@ -466,6 +466,6 @@
         <image name="nobody_m.original" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ASL-Kn-si8"/>
+        <segue reference="5vo-VD-72L"/>
     </inferredMetricsTieBreakers>
 </document>
