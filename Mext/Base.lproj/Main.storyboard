@@ -368,7 +368,6 @@
                                         <connections>
                                             <outlet property="profileImageButton" destination="APm-EX-khb" id="1Lc-i3-qaX"/>
                                             <outlet property="userDisplayNameLabel" destination="yMb-yi-8Uq" id="Cox-bx-9dT"/>
-                                            <segue destination="hwY-XU-ykk" kind="show" identifier="toChat" id="gOt-K7-caG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -396,12 +395,13 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="contactsTableView" destination="d4c-da-FhX" id="4D6-q1-WpK"/>
+                        <segue destination="hwY-XU-ykk" kind="show" identifier="toChat" id="ASL-Kn-si8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ecv-jg-PTL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="PTc-Gb-7MT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4255" y="1011"/>
+            <point key="canvasLocation" x="4369" y="1005"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="D7A-B4-9Vo">
@@ -466,6 +466,6 @@
         <image name="nobody_m.original" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gOt-K7-caG"/>
+        <segue reference="ASL-Kn-si8"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -22,6 +22,8 @@ class ContactsViewController: UIViewController {
         }
     }
     
+    var chatVCChatRoom: ChatRoom!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         FirebaseHelper.getUserFriendUIDs(self.currUser.UID){ friendKeys in
@@ -48,29 +50,9 @@ class ContactsViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             if identifier == "toChat" {
-                
-                FirebaseHelper.getExistingChatRoomKey(currUser.UID, chatPartnerUID: friends[contactsTableView.indexPathForSelectedRow!.row].UID){ chatRoomKey in
-                    if let chatRoomKey = chatRoomKey {
-                        let navVc = segue.destinationViewController as! UINavigationController
-                        let chatViewController = navVc.viewControllers.first as! ChatViewController
-                        
-                        //chatViewController.chatRoom = newChatRoom
-                    } else {
-                        
-                    }
-                }
-                
-                let newChatRoomUID = FirebaseHelper.generateFIRUID(FirebaseHelper.chatRoomsRef())
-                let userTapped = friends[contactsTableView.indexPathForSelectedRow!.row]
-                let newChatRoom = ChatRoom(UID:newChatRoomUID, lastMessage: "",FIRLastMessageTimeStamp: FIRServerValue.timestamp(), title: userTapped.displayName, chatRoomPictureUrl: userTapped.photoUrl)
-                FirebaseHelper.saveNewChatRoom(newChatRoomUID, newChatRoom: newChatRoom)
-                FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: "1")
-                FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: "2")
-                FirebaseHelper.addChatRoomToUser(currUser, chatRoomUID: newChatRoomUID)
                 let navVc = segue.destinationViewController as! UINavigationController
                 let chatViewController = navVc.viewControllers.first as! ChatViewController
-                
-                chatViewController.chatRoom = newChatRoom
+                chatViewController.chatRoom = chatVCChatRoom
             }
         }
     }
@@ -99,6 +81,31 @@ extension ContactsViewController: UITableViewDataSource, UITableViewDelegate {
         if editingStyle == .Delete {
             //            notes.removeAtIndex(indexPath.row)
             //            tableView.reloadData()
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        FirebaseHelper.getExistingChatRoomKey(currUser.UID, chatPartnerUID: friends[contactsTableView.indexPathForSelectedRow!.row].UID){ chatRoomKey in
+            if let chatRoomKey = chatRoomKey {
+                FirebaseHelper.getChatRoom(chatRoomKey){ chatRoom in
+                    self.chatVCChatRoom = chatRoom
+                    self.performSegueWithIdentifier("toChat", sender: nil)
+                }
+            } else {
+                let newChatRoomUID = FirebaseHelper.generateFIRUID(FirebaseHelper.chatRoomsRef())
+                let userTapped = self.friends[self.contactsTableView.indexPathForSelectedRow!.row]
+                let newChatRoom = ChatRoom(UID:newChatRoomUID, lastMessage: "",FIRLastMessageTimeStamp: FIRServerValue.timestamp(), title: userTapped.displayName, chatRoomPictureUrl: userTapped.photoUrl)
+                
+                FirebaseHelper.saveNewChatRoom(newChatRoomUID, newChatRoom: newChatRoom)
+                FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: self.currUser.UID)
+                FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: userTapped.UID)
+                FirebaseHelper.addChatRoomToUser(self.currUser, chatRoomUID: newChatRoomUID, chatPartner: userTapped)
+                FirebaseHelper.addChatRoomToUser(userTapped, chatRoomUID: newChatRoomUID,
+                    chatPartner: self.currUser)
+                
+                self.chatVCChatRoom = newChatRoom
+                self.performSegueWithIdentifier("toChat", sender: nil)
+            }
         }
     }
 }

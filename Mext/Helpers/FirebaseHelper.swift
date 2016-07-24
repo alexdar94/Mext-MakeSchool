@@ -99,9 +99,7 @@ extension FirebaseHelper{
         chatRoomKeyQuery.observeSingleEventOfType(.Value, withBlock: { snapshot in
             var chatRoomKey: String? = nil
             if let value = snapshot.value as? [String: AnyObject] {
-                print("Existing chat room \(value)")
                 chatRoomKey =  Array(value.keys)[0]
-                print(chatRoomKey)
             } else {
                 print("Firebase ExistingChatRoom Endpoint - null")
             }
@@ -132,9 +130,9 @@ extension FirebaseHelper{
         newUserRef.setValue(newUserRef_JSON)
     }
     
-    static func addChatRoomToUser(user: User, chatRoomUID: String){
+    static func addChatRoomToUser(user: User, chatRoomUID: String, chatPartner: User){
         let newUser_JSON = [
-            chatRoomUID: true
+            chatRoomUID: chatPartner.UID
         ]
         
         FirebaseHelper.userChatRoomsRef(user.UID).updateChildValues(newUser_JSON)
