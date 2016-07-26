@@ -26,12 +26,14 @@ class MessageInboxViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         FirebaseHelper.getUserChatRoomUIDs(self.currUser.UID){ chatRoomKeys in
+            print("getUserChatRoomUIDs")
             if let chatRoomKeys = chatRoomKeys {
                 for uid in chatRoomKeys {
                     FirebaseHelper.getChatRoom(uid, onComplete: { chatRoom in
                         if (self.chatRooms?.append(chatRoom)) == nil {
                             self.chatRooms = [chatRoom]
                         }
+                        //self.messageInboxTableView.reloadData()
                     })
                 }
             } else {
@@ -50,6 +52,7 @@ class MessageInboxViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         //performSegueWithIdentifier("temp", sender: nil)
+        //FirebaseHelper.searchUser("J")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

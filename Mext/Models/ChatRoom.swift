@@ -29,7 +29,6 @@ class ChatRoom {
         self.FIRLastMessageTimeStamp = FIRLastMessageTimeStamp
         self.title = title
         self.chatRoomPictureUrl = chatRoomPictureUrl
-        print("\(TAG): \(FIRLastMessageTimeStamp)")
         //        print(NSDate(FIRLastMessageTimeStamp["lastMessageTime"] as? NSNumber))
     }
 }

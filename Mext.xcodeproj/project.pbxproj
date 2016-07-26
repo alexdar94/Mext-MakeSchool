@@ -19,6 +19,7 @@
 		FA0DD1BD1D276AD30089F512 /* MextUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DD1BC1D276AD30089F512 /* MextUITests.swift */; };
 		FA3A64471D2F68800074515A /* MusicSuggestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A64461D2F68800074515A /* MusicSuggestionTableViewCell.swift */; };
 		FA60537C1D458D3400720599 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60537B1D458D3400720599 /* AddFriendViewController.swift */; };
+		FA6053801D45ABD400720599 /* AddFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60537F1D45ABD400720599 /* AddFriendTableViewCell.swift */; };
 		FA7559A31D3854A700F5DD39 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7559A21D3854A700F5DD39 /* SignUpViewController.swift */; };
 		FA7559AC1D3894B600F5DD39 /* UIViewController+Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7559AB1D3894B600F5DD39 /* UIViewController+Alerts.m */; };
 		FA87532C1D31B13100EBDF6A /* MusicPlayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87532B1D31B13100EBDF6A /* MusicPlayerHelper.swift */; };
@@ -92,6 +93,7 @@
 		FA0DD1BE1D276AD30089F512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA3A64461D2F68800074515A /* MusicSuggestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSuggestionTableViewCell.swift; sourceTree = "<group>"; };
 		FA60537B1D458D3400720599 /* AddFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
+		FA60537F1D45ABD400720599 /* AddFriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendTableViewCell.swift; sourceTree = "<group>"; };
 		FA7559A21D3854A700F5DD39 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FA7559A71D3892F000F5DD39 /* Mext-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mext-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA7559AB1D3894B600F5DD39 /* UIViewController+Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alerts.m"; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				FA3A64461D2F68800074515A /* MusicSuggestionTableViewCell.swift */,
 				FAB09E171D3D403C001E0115 /* MessageInboxTableViewCell.swift */,
 				FAC8188F1D41DE1600B837B4 /* ContactTableViewCell.swift */,
+				FA60537F1D45ABD400720599 /* AddFriendTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				FA60537C1D458D3400720599 /* AddFriendViewController.swift in Sources */,
 				FAC482CF1D3D789E00F83E91 /* ContactsViewController.swift in Sources */,
 				FAC818901D41DE1600B837B4 /* ContactTableViewCell.swift in Sources */,
+				FA6053801D45ABD400720599 /* AddFriendTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -264,7 +264,7 @@ extension ChatViewController {
         var keywordArr = message.componentsSeparatedByString(" ")
         currWord = keywordArr[keywordArr.count-1]
         
-        FirebaseHelper.searchSoundClip(currWord.lowercaseString){ matchingSoundClips in
+        FirebaseHelper.searchSoundClip("\(currWord.lowercaseString)"){ matchingSoundClips in
             if let matchingSoundClips = matchingSoundClips{
                 self.soundClips = matchingSoundClips
                 let resultsCount = self.soundClips.count

@@ -31,19 +31,19 @@ extension FirebaseHelper{
         let searchQuery = soundClipsRef().queryLimitedToFirst(10)
         
         searchQuery.queryOrderedByChild("tag").queryEqualToValue(soundClipTag)
-            .observeEventType(.ChildAdded, withBlock: { snapshot in
-                if let value = snapshot.value as? [String: AnyObject] {
-                    let soundClip = SoundClip(tag: value["tag"] as! String
-                        , text: value["text"] as! String
-                        , soundFileUrl: value["soundFileUrl"] as! String
-                        , soundName: value["soundName"] as! String
-                        , source: value["source"] as! String)
+            .observeEventType(.Value, withBlock: { snapshot in
+                for soundClipJSON in snapshot.children.allObjects {
+                    let soundClip = SoundClip(tag: soundClipJSON.value["tag"] as! String
+                        , text: soundClipJSON.value["text"] as! String
+                        , soundFileUrl: soundClipJSON.value["soundFileUrl"] as! String
+                        , soundName: soundClipJSON.value["soundName"] as! String
+                        , source: soundClipJSON.value["source"] as! String)
                     if (matchingSoundClips?.append(soundClip)) == nil {
                         matchingSoundClips = [soundClip]
                     }
-                    onComplete(matchingSoundClips)
                 }
-        })
+                onComplete(matchingSoundClips)
+            })
         onComplete(matchingSoundClips)
     }
 }
@@ -138,12 +138,12 @@ extension FirebaseHelper{
         FirebaseHelper.userChatRoomsRef(user.UID).updateChildValues(newUser_JSON)
     }
     
-    static func addFriends(fromUser: User, toUser: User){
-        let newFriend_JSON = [
-            toUser.UID: true
-        ]
-        
-        FirebaseHelper.userFriendsRef(fromUser.UID).updateChildValues(newFriend_JSON)
+    static func searchUser(searchText: String){
+    FirebaseHelper.usersRef().queryOrderedByChild("displayName").queryStartingAtValue(searchText)
+        .queryEndingAtValue("\(searchText)\u{f8ff}").queryLimitedToFirst(100)
+        .observeEventType(.ChildAdded, withBlock: { snapshot in
+            print(snapshot.value)
+        })
     }
 }
 
@@ -170,7 +170,7 @@ extension FirebaseHelper{
     }
     
     static func getChatRoom(chatRoomUID: String, onComplete: ChatRoom -> Void ) {
-        chatRoomRef(chatRoomUID).observeEventType(.Value, withBlock: { snapshot in
+        chatRoomRef(chatRoomUID).observeSingleEventOfType(.Value, withBlock: { snapshot in
             if let value = snapshot.value as? [String: AnyObject] {
                 onComplete(ChatRoom(UID: chatRoomUID
                     , lastMessage: value["lastMessage"] as! String
@@ -214,6 +214,24 @@ extension FirebaseHelper{
             userUID : true
         ]
         newChatRoomMemberRef.updateChildValues(newChatRoomMember_JSON)
+    }
+    
+}
+
+// MARK: Friendships Endpoint
+extension FirebaseHelper{
+    static func friendshipsRef() -> FIRDatabaseReference {
+        return ref.child("Friendships")
+    }
+    
+    static func saveFriendShip(fromUserUID: String, toUserUID: String){
+        let newFriendshipRef = FirebaseHelper.friendshipsRef().childByAutoId()
+        let newFriendship_JSON = [
+            "fromUser": fromUserUID
+            , "toUser": toUserUID
+            , "type": "pending"
+        ]
+        newFriendshipRef.setValue(newFriendship_JSON)
     }
     
 }
