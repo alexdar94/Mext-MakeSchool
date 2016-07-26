@@ -107,23 +107,12 @@ extension FirebaseHelper{
         })
     }
     
-    static func getUserFriendUIDs(userUID: String, onComplete: [String]? -> Void ) {
-        userFriendsRef(userUID).observeEventType(.Value, withBlock: { snapshot in
-            var friendKeys: [String]? = nil
-            if let value = snapshot.value as? [String: AnyObject] {
-                friendKeys = Array(value.keys)
-            } else {
-                print("Firebase Friends Endpoint - null")
-            }
-            onComplete(friendKeys)
-        })
-    }
-    
     static func saveNewUser(newUser: User){
         let newUserRef = FirebaseHelper.usersRef().child(newUser.UID)
         let newUserRef_JSON = [
             "email": newUser.email,
             "displayName": newUser.displayName,
+            "lowerCaseDisplayName": newUser.displayName.lowercaseString,
             "photoUrl": newUser.photoUrl,
             "phoneNumber": newUser.phoneNumber
         ]
@@ -138,12 +127,24 @@ extension FirebaseHelper{
         FirebaseHelper.userChatRoomsRef(user.UID).updateChildValues(newUser_JSON)
     }
     
-    static func searchUser(searchText: String){
-    FirebaseHelper.usersRef().queryOrderedByChild("displayName").queryStartingAtValue(searchText)
-        .queryEndingAtValue("\(searchText)\u{f8ff}").queryLimitedToFirst(100)
-        .observeEventType(.ChildAdded, withBlock: { snapshot in
-            print(snapshot.value)
-        })
+    static func searchUsers(searchText: String, onComplete: [User]? -> Void){
+        var matchingUsers: [User]?
+        FirebaseHelper.usersRef().queryOrderedByChild("lowerCaseDisplayName").queryStartingAtValue(searchText)
+            .queryEndingAtValue("\(searchText)\u{f8ff}").queryLimitedToFirst(100)
+            .observeEventType(.Value, withBlock: { snapshot in
+                for userJSON in snapshot.children.allObjects {
+                    let user = User(UID: snapshot.key
+                        , email: userJSON.value["email"] as! String
+                        , displayName: userJSON.value["displayName"] as! String
+                        , photoUrl: userJSON.value["photoUrl"] as! String
+                        , phoneNumber: userJSON.value["phoneNumber"] as! String)
+                    if (matchingUsers?.append(user)) == nil {
+                        matchingUsers = [user]
+                    }
+                }
+                onComplete(matchingUsers)
+            })
+        onComplete(matchingUsers)
     }
 }
 
@@ -230,12 +231,40 @@ extension FirebaseHelper{
         return ref.child("Friendships")
     }
     
+    static func getUserFriendUIDs(userUID: String, onComplete: [String]? -> Void ) {
+        userFriendsRef(userUID).observeEventType(.Value, withBlock: { snapshot in
+            var friendKeys: [String]? = nil
+            if let value = snapshot.value as? [String: AnyObject] {
+                friendKeys = Array(value.keys)
+            } else {
+                print("Firebase Friends Endpoint - null")
+            }
+            onComplete(friendKeys)
+        })
+    }
+    
+    //    static func getUserFriendUIDs(fromUserUID: String, onComplete: [String]? -> Void ) {
+    //        friendshipsRef().queryOrderedByChild("fromUser").queryEqualToValue(fromUserUID)
+    //            .observeSingleEventOfType(.Value, withBlock: { snapshot in
+    //            if let value = snapshot.value as? [String: AnyObject] {
+    //                onComplete(ChatRoom(UID: chatRoomUID
+    //                    , lastMessage: value["lastMessage"] as! String
+    //                    , FIRLastMessageTimeStamp: ["lastMessageTime": value["lastMessageTime"]!]
+    //                    , title: value["title"] as! String
+    //                    , chatRoomPictureUrl: value["chatRoomPictureUrl"] as! String))
+    //            } else {
+    //                print("Firebase ChatRoom Endpoint - null")
+    //            }
+    //
+    //        })
+    //    }
+    
     static func saveFriendShip(fromUserUID: String, toUserUID: String){
         let newFriendshipRef = FirebaseHelper.friendshipsRef().childByAutoId()
         let newFriendship_JSON = [
             "fromUser": fromUserUID
             , "toUser": toUserUID
-            , "type": "pending"
+            , "status": "pending"
         ]
         newFriendshipRef.setValue(newFriendship_JSON)
     }

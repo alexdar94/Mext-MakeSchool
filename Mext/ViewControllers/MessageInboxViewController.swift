@@ -36,21 +36,24 @@ class MessageInboxViewController: UIViewController {
                         }
                         
                         FirebaseHelper.getChangedChatRoom(chatRoom.UID){ snapshot in
-                            print("\(snapshot.key) \(snapshot.value)")
                             if let index = self.chatRooms.indexOf({$0.UID == chatRoom.UID}) {
-                                self.chatRooms[index].title = snapshot.value as! String
+                                switch snapshot.key {
+                                case "chatRoomPictureUrl": self.chatRooms[index].chatRoomPictureUrl = snapshot.value as! String
+                                case "lastMessage": self.chatRooms[index].lastMessage = snapshot.value as! String
+                                case "lastMessageTime": self.chatRooms[index].FIRLastMessageTimeStamp = ["lastMessageTime": snapshot.value!]
+                                case "title": self.chatRooms[index].title = snapshot.value as! String
+                                default: print("")
+                                }
                                 self.messageInboxTableView.reloadData()
                             }
                         }
-                    
-                        //self.messageInboxTableView.reloadData()
                     })
                 }
             } else {
                 print("\(self.TAG) - No chat room")
             }
         }
-
+        
         //print("MessageInboxViewController Email : \(currUser.email)")
         //        if let uid = currUserUID {
         //            FirebaseHelper.getUser(uid){ in
