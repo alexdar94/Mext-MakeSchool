@@ -23,6 +23,17 @@ class ChatRoom {
     var chatRoomPictureUrl = "chatRoomPictureUrlPlaceHolder"
     var chatMembers = [User]()
     
+    subscript(key: String) -> AnyObject? {
+        switch key {
+            case "chatRoomPictureUrl" : return chatRoomPictureUrl
+            case "lastMessage" : return title
+            case "lastMessageTime" : return FIRLastMessageTimeStamp
+            case "title" : return title
+            case "userIsTyping" : return userIsTyping
+        default : return nil
+        }
+    }
+    
     init(UID:String, lastMessage: String, FIRLastMessageTimeStamp: [NSObject : AnyObject], title: String, chatRoomPictureUrl: String){
         self.UID = UID
         self.lastMessage = lastMessage

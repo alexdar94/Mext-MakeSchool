@@ -200,6 +200,12 @@ extension FirebaseHelper{
         chatRoomLastMessageTime(chatRoomUID).setValue(FIRServerValue.timestamp())
         chatRoomLastMessage(chatRoomUID).setValue(lastMessage)
     }
+    
+    static func getChangedChatRoom(chatRoomUID: String, onComplete: FIRDataSnapshot -> Void){
+        chatRoomRef(chatRoomUID).observeEventType(.ChildChanged, withBlock: { snapshot in
+            onComplete(snapshot)
+        })
+    }
 }
 
 // MARK: ChatRoomMembers Endpoint

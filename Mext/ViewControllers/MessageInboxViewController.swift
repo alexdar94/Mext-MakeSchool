@@ -26,13 +26,23 @@ class MessageInboxViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         FirebaseHelper.getUserChatRoomUIDs(self.currUser.UID){ chatRoomKeys in
-            print("getUserChatRoomUIDs")
+            
             if let chatRoomKeys = chatRoomKeys {
                 for uid in chatRoomKeys {
                     FirebaseHelper.getChatRoom(uid, onComplete: { chatRoom in
+                        
                         if (self.chatRooms?.append(chatRoom)) == nil {
                             self.chatRooms = [chatRoom]
                         }
+                        
+                        FirebaseHelper.getChangedChatRoom(chatRoom.UID){ snapshot in
+                            print("\(snapshot.key) \(snapshot.value)")
+                            if let index = self.chatRooms.indexOf({$0.UID == chatRoom.UID}) {
+                                self.chatRooms[index].title = snapshot.value as! String
+                                self.messageInboxTableView.reloadData()
+                            }
+                        }
+                    
                         //self.messageInboxTableView.reloadData()
                     })
                 }
@@ -40,7 +50,7 @@ class MessageInboxViewController: UIViewController {
                 print("\(self.TAG) - No chat room")
             }
         }
-        
+
         //print("MessageInboxViewController Email : \(currUser.email)")
         //        if let uid = currUserUID {
         //            FirebaseHelper.getUser(uid){ in
