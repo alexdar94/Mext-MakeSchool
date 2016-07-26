@@ -56,6 +56,10 @@ class ContactsViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func unwindToContactsViewController(segue: UIStoryboardSegue) {
+        
+    }
 }
 
 // MARK: TableView Methods

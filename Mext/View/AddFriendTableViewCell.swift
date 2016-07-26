@@ -14,4 +14,7 @@ class AddFriendTableViewCell: UITableViewCell {
     @IBOutlet weak var profilePictureImageView: UIImageView!
     @IBOutlet weak var addFriendButton: UIButton!
 
+    @IBAction func addFriendButtonTapped(sender: AnyObject) {
+        
+    }
 }
