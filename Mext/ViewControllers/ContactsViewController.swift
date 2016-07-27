@@ -26,9 +26,9 @@ class ContactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FirebaseHelper.getUserFriendUIDs(self.currUser.UID){ friendKeys in
-            if let friendKeys = friendKeys {
-                for uid in friendKeys {
+        FirebaseHelper.XgetUserFriendUIDs(self.currUser.UID){ friendUIDs in
+            if let friendUIDs = friendUIDs {
+                for uid in friendUIDs {
                     FirebaseHelper.getUser(uid, onComplete: { user in
                         guard let friend = user else {return}
                         
@@ -41,6 +41,22 @@ class ContactsViewController: UIViewController {
                 print("\(self.TAG) - No chat room")
             }
         }
+        
+//        FirebaseHelper.getUserFriendUIDs(self.currUser.UID){ friendKeys in
+//            if let friendKeys = friendKeys {
+//                for uid in friendKeys {
+//                    FirebaseHelper.getUser(uid, onComplete: { user in
+//                        guard let friend = user else {return}
+//                        
+//                        if (self.friends?.append(friend)) == nil {
+//                            self.friends = [friend]
+//                        }
+//                    })
+//                }
+//            } else {
+//                print("\(self.TAG) - No chat room")
+//            }
+//        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -53,6 +69,9 @@ class ContactsViewController: UIViewController {
                 let navVc = segue.destinationViewController as! UINavigationController
                 let chatViewController = navVc.viewControllers.first as! ChatViewController
                 chatViewController.chatRoom = chatVCChatRoom
+            } else if identifier == "toAddFriendVC" {
+                let addFriendVC = segue.destinationViewController as! AddFriendViewController
+                addFriendVC.currUser = currUser
             }
         }
     }

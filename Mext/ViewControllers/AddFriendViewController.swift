@@ -13,14 +13,24 @@ class AddFriendViewController: UIViewController {
     @IBOutlet weak var addFriendTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var currUserUID: String! {
+        return currUser.UID
+    }
+    var currUser: User!
     var matchingUsers: [User]? {
         didSet {
             addFriendTableView.reloadData()
         }
     }
     
+    var friendUIDs: [String]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        FirebaseHelper.XgetUserFriendUIDs(currUserUID){ friendUIDs in
+            self.friendUIDs = friendUIDs
+            print(friendUIDs)
+        }
     }
     
 }
@@ -46,18 +56,14 @@ extension AddFriendViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("addFriendTableViewCell", forIndexPath: indexPath) as! AddFriendTableViewCell
         
         let user = self.matchingUsers![indexPath.row]
-        cell.displayNameLabel.text = user.displayName
         
-        let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
-            size: cell.profilePictureImageView.frame.size,
-            radius: 22.0
-        )
+        cell.user = user
+        print(user.UID)
+        if let friendUIDs = friendUIDs {
+            cell.canFriend = !friendUIDs.contains(user.UID)
+        }
         
-        cell.profilePictureImageView.af_setImageWithURL(
-            NSURL(string: user.photoUrl)!,
-            placeholderImage: UIImage(named: "nobody_m.original")!,
-            filter: filter
-        )
+        cell.delegate = self
         return cell
     }
     
@@ -71,4 +77,19 @@ extension AddFriendViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
     }
+}
+
+// MARK: FriendSearchTableViewCell Delegate
+extension AddFriendViewController: AddFriendTableViewCellDelegate {
+    
+    func cell(cell: AddFriendTableViewCell, didSelectFriendUser user: User) {
+        FirebaseHelper.saveFriendship(currUserUID, toUserUID: user.UID)
+        friendUIDs?.append(user.UID)
+    }
+    
+    func cell(cell: AddFriendTableViewCell, didSelectUnfriendUser user: User) {
+        FirebaseHelper.removeFriendship(currUserUID, toUserUID: user.UID)
+        self.friendUIDs = friendUIDs!.filter({$0 != user.UID})
+    }
+    
 }

@@ -324,7 +324,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="u65-2g-HI3">
                                             <connections>
-                                                <segue destination="6gv-iG-0uG" kind="show" id="hYp-xb-EAf"/>
+                                                <segue destination="6gv-iG-0uG" kind="show" identifier="toAddFriendVC" id="hYp-xb-EAf"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
