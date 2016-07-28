@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 class MusicSuggestionTableViewCell: UITableViewCell {
     var playButton : UIButton!

@@ -6,10 +6,10 @@ target 'Mext' do
   use_frameworks!
 
   # Pods for Mext
+  pod 'AlamofireImage', '~> 2.0'
   pod 'Firebase'
   pod 'JSQMessagesViewController'
   pod 'Firebase/Database'
-  pod 'Parse'
 
   # Pods for Auth
   pod 'FirebaseUI'

@@ -1,6 +1,5 @@
 import Foundation
 import Firebase
-import Parse
 import JSQMessagesViewController
 import UIKit
 import FirebaseDatabase
@@ -28,7 +27,7 @@ class ChatViewController: JSQMessagesViewController {
     var popUpTableView: UITableView? = nil
     var soundClips: [SoundClip] = []
     var soundFileUrls = [String]()
-    var attrStringIndex = [String: [Int]]()
+    var attrStringIndex = [[Int]]()
     
     var isTyping: Bool {
         get {
@@ -112,14 +111,14 @@ extension ChatViewController {
             
             var attrStringIndex: [[Int]]?
             
-            if let attrStringIndexDic = value["attrStringIndex"] as? [String: AnyObject] {
-                
-                for index in attrStringIndexDic.values {
-                    if (attrStringIndex?.append(index as! [Int])) == nil {
-                        attrStringIndex = [index as! [Int]]
-                    }
-                }
-                //attrStringIndex.sortInPlace{$0 < $1}
+            if let attrStringIndexArray = value["attrStringIndex"] as? [[Int]] {
+                attrStringIndex = attrStringIndexArray
+//                for index in attrStringIndexDic.values {
+//                    if (attrStringIndex?.append(index as! [Int])) == nil {
+//                        attrStringIndex = [index as! [Int]]
+//                    }
+//                    print(index)
+//                }
             }
             
             self.addMessage(id, text: text, soundFileUrls: soundFileURLs, attrStringIndex: attrStringIndex)
@@ -205,10 +204,10 @@ extension ChatViewController {
                 for (index, element) in attrStringIndex.enumerate() {
                     //attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(index[0],index[1]))
                     attributedString.addAttribute(NSLinkAttributeName, value: "playMusic://\(soundFileUrls[index])" , range: NSMakeRange(element[0],element[1]))
+                    print("\(TAG) \(element[0]) - \(element[1])")
                 }
             }
         }
-        
         
         //        attributedString.addAttribute(NSForegroundColorAttributeName, value: GradientColor(UIGradientStyle.TopToBottom, frame: CGRect(x: 0, y: 0, width: 1000, height: 1000), colors: [UIColor.redColor(), UIColor.grayColor()]), range: myRange)
         cell.textView!.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.greenColor()]
@@ -248,7 +247,7 @@ extension ChatViewController {
         
         isTyping = false
         soundFileUrls = []
-        attrStringIndex = [:]
+        attrStringIndex = [[Int]]()
     }
     
     override func didPressAccessoryButton(sender: UIButton!) {
@@ -285,31 +284,6 @@ extension ChatViewController {
             }
         }
         
-        //        ParseHelper.searchSoundClips(currWord){(result: [PFObject]?, error: NSError?) -> Void in
-        //
-        //            guard error == nil else {
-        //                print(error)
-        //                return
-        //            }
-        //
-        //            self.soundClips = result as? [SoundClip] ?? []
-        //            let resultsCount = self.soundClips.count
-        //            if resultsCount>0 {
-        //                let numRows = resultsCount>4 ?  4 : resultsCount
-        //                self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
-        //                self.popUpTableView!.rowHeight = 48.0
-        //                self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        //                self.popUpTableView!.delegate = self
-        //                self.popUpTableView!.dataSource = self
-        //                self.view.addSubview(self.popUpTableView!)
-        //            } else {
-        //                if self.popUpTableView != nil {
-        //                    self.popUpTableView!.removeFromSuperview()
-        //                    self.popUpTableView = nil
-        //                }
-        //            }
-        //        }
-        
         let attributedString = NSMutableAttributedString(string:message)
         if message.characters.count > 1{
             let myRange = NSMakeRange(0,1)
@@ -340,7 +314,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.soundFileUrls.append(soundClips[indexPath.row].soundFileUrl)
-        self.attrStringIndex[FirebaseHelper.generateFIRUID(FirebaseHelper.ref)] = [currMessageLength - currWord.characters.count,currWord.characters.count]
+        self.attrStringIndex.append([currMessageLength - currWord.characters.count,currWord.characters.count])
 
         if self.popUpTableView != nil {
             self.popUpTableView!.removeFromSuperview()
