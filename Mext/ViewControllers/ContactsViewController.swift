@@ -26,7 +26,7 @@ class ContactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FirebaseHelper.XgetUserFriendUIDs(self.currUser.UID){ friendUIDs in
+        FirebaseHelper.getUserFriendUIDs(self.currUser.UID){ friendUIDs in
             if let friendUIDs = friendUIDs {
                 for uid in friendUIDs {
                     FirebaseHelper.getUser(uid, onComplete: { user in

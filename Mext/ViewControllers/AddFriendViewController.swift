@@ -27,7 +27,7 @@ class AddFriendViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FirebaseHelper.XgetUserFriendUIDs(currUserUID){ friendUIDs in
+        FirebaseHelper.getUserFriendUIDs(currUserUID){ friendUIDs in
             self.friendUIDs = friendUIDs
             print(friendUIDs)
         }
@@ -40,7 +40,7 @@ extension AddFriendViewController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         FirebaseHelper.searchUsers(searchText.lowercaseString){ matchingUsers in
             if let matchingUsers = matchingUsers {
-                self.matchingUsers = matchingUsers
+                self.matchingUsers = matchingUsers.filter{$0.UID != self.currUserUID}
             }
         }
     }

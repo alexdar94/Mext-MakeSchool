@@ -231,19 +231,19 @@ extension FirebaseHelper{
         return ref.child("Friendships")
     }
     
-    static func getUserFriendUIDs(userUID: String, onComplete: [String]? -> Void ) {
-        userFriendsRef(userUID).observeEventType(.Value, withBlock: { snapshot in
-            var friendKeys: [String]? = nil
-            if let value = snapshot.value as? [String: AnyObject] {
-                friendKeys = Array(value.keys)
-            } else {
-                print("Firebase Friends Endpoint - null")
-            }
-            onComplete(friendKeys)
-        })
-    }
+//    static func getUserFriendUIDs(userUID: String, onComplete: [String]? -> Void ) {
+//        userFriendsRef(userUID).observeEventType(.Value, withBlock: { snapshot in
+//            var friendKeys: [String]? = nil
+//            if let value = snapshot.value as? [String: AnyObject] {
+//                friendKeys = Array(value.keys)
+//            } else {
+//                print("Firebase Friends Endpoint - null")
+//            }
+//            onComplete(friendKeys)
+//        })
+//    }
     
-    static func XgetUserFriendUIDs(fromUserUID: String, onComplete: [String]? -> Void ) {
+    static func getUserFriendUIDs(fromUserUID: String, onComplete: [String]? -> Void ) {
         friendshipsRef().queryOrderedByChild("fromUser").queryEqualToValue(fromUserUID)
             .observeEventType(.Value, withBlock: { snapshot in
                 var friendUIDs: [String]?
