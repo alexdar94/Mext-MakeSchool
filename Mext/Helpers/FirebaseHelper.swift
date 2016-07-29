@@ -36,7 +36,6 @@ extension FirebaseHelper{
                     var tags = [String]()
                     if let tagsJSON = soundClipJSON.value["tag"] as? [String: AnyObject]{
                         tags = Array(tagsJSON.keys)
-                        print(tags)
                     }
                     let soundClip = SoundClip(tag: tags
                         , text: soundClipJSON.value["text"] as! String

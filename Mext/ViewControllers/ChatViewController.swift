@@ -39,6 +39,8 @@ class ChatViewController: JSQMessagesViewController {
         }
     }
     
+    var chatingTextBox: UITextView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -198,7 +200,6 @@ extension ChatViewController {
                 for (index, element) in attrStringIndex.enumerate() {
                     //attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(index[0],index[1]))
                     attributedString.addAttribute(NSLinkAttributeName, value: "playMusic://\(soundFileUrls[index])" , range: NSMakeRange(element[0],element[1]))
-                    print("\(TAG) \(element[0]) - \(element[1])")
                 }
             }
         }
@@ -248,6 +249,27 @@ extension ChatViewController {
         
     }
     
+    override func textViewDidBeginEditing(textView: UITextView) {
+        chatingTextBox = textView
+    }
+    
+    override func textViewDidChangeSelection(textView: UITextView) {
+        if let selectedRange = textView.selectedTextRange {
+            
+            let cursorPosition = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: selectedRange.start)
+            
+        }
+    }
+    
+    override func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        let  char = text.cStringUsingEncoding(NSUTF8StringEncoding)!
+        let isBackSpace = strcmp(char, "\\b")
+        if (isBackSpace == -92) {
+            print("Backspace was pressed")
+        }
+        return true
+    }
+    
     override func textViewDidChange(textView: UITextView) {
         super.textViewDidChange(textView)
         
@@ -277,43 +299,45 @@ extension ChatViewController {
                 }
             }
         }
-        
-        let attributedString = NSMutableAttributedString(string:message)
-        if message.characters.count > 1{
-            let myRange = NSMakeRange(0,1)
-            attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: myRange)
-        }
-        
-        textView.attributedText = attributedString
-        
+
         // If the text is not empty, the user is typing
         isTyping = textView.text != ""
     }
 }
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.soundClips.count
     }
-
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let soundClip = soundClips[indexPath.row]
         let cell = MusicSuggestionTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell", soundFileUrl: soundClip.soundFileUrl)
-
+        
         cell.songName?.text = "\(soundClip.soundName) - \(soundClip.source)"
-
+        
         return cell
     }
-
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.soundFileUrls.append(soundClips[indexPath.row].soundFileUrl)
         self.attrStringIndex.append([currMessageLength - currWord.characters.count,currWord.characters.count])
-
+        
         if self.popUpTableView != nil {
             self.popUpTableView!.removeFromSuperview()
             self.popUpTableView = nil
         }
+        
+        if let chatingTextBox = chatingTextBox {
+            let attributedString = NSMutableAttributedString(string:chatingTextBox.text + " ")
+            if self.attrStringIndex.count != 0 {
+                for stringIndex in attrStringIndex {
+                    attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(stringIndex[0],stringIndex[1]))
+                }
+            }
+            chatingTextBox.attributedText = attributedString
+        }
     }
-
+    
 }
