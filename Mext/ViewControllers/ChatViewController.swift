@@ -41,6 +41,10 @@ class ChatViewController: JSQMessagesViewController {
     
     var chatingTextBox: UITextView?
     
+    // Message editing
+    var currCursorPosition = 0
+    var isBackSpace = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -256,8 +260,13 @@ extension ChatViewController {
     override func textViewDidChangeSelection(textView: UITextView) {
         if let selectedRange = textView.selectedTextRange {
             
-            let cursorPosition = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: selectedRange.start)
-            
+            self.currCursorPosition = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: selectedRange.start)
+            var text: String = textView.text!
+//            var substring: String = text.substringToIndex(text.startIndex.advancedBy(currCursorPosition))
+//            var lastWord: String = substring.componentsSeparatedByString(" ").last!
+            //            print("substring - \(substring)")
+            //            print("lastword - \(lastWord)")
+            //            print("text length - \(textView.text.characters.count)")
         }
     }
     
@@ -265,7 +274,9 @@ extension ChatViewController {
         let  char = text.cStringUsingEncoding(NSUTF8StringEncoding)!
         let isBackSpace = strcmp(char, "\\b")
         if (isBackSpace == -92) {
-            print("Backspace was pressed")
+            self.isBackSpace = true
+        } else {
+            self.isBackSpace = false
         }
         return true
     }
@@ -276,30 +287,46 @@ extension ChatViewController {
         let message = textView.text
         currMessageLength = message.characters.count
         
-        var keywordArr = message.componentsSeparatedByString(" ")
-        currWord = keywordArr[keywordArr.count-1]
-        
-        FirebaseHelper.searchSoundClip("\(currWord.lowercaseString)"){ matchingSoundClips in
-            if let matchingSoundClips = matchingSoundClips{
-                self.soundClips = matchingSoundClips
-                let resultsCount = self.soundClips.count
-                if resultsCount>0 {
-                    let numRows = resultsCount>4 ?  4 : resultsCount
-                    self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
-                    self.popUpTableView!.rowHeight = 48.0
-                    self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-                    self.popUpTableView!.delegate = self
-                    self.popUpTableView!.dataSource = self
-                    self.view.addSubview(self.popUpTableView!)
+        if currCursorPosition == message.characters.count {
+            var keywordArr = message.componentsSeparatedByString(" ")
+            currWord = keywordArr[keywordArr.count-1]
+            
+            FirebaseHelper.searchSoundClip("\(currWord.lowercaseString)"){ matchingSoundClips in
+                if let matchingSoundClips = matchingSoundClips{
+                    self.soundClips = matchingSoundClips
+                    let resultsCount = self.soundClips.count
+                    if resultsCount>0 {
+                        let numRows = resultsCount>4 ?  4 : resultsCount
+                        self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
+                        self.popUpTableView!.rowHeight = 48.0
+                        self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+                        self.popUpTableView!.delegate = self
+                        self.popUpTableView!.dataSource = self
+                        self.view.addSubview(self.popUpTableView!)
+                    }
+                } else {
+                    if self.popUpTableView != nil {
+                        self.popUpTableView!.removeFromSuperview()
+                        self.popUpTableView = nil
+                    }
+                }
+            }
+        } else {
+            if isBackSpace {
+                for index in 0..<attrStringIndex.count {
+                    if attrStringIndex[index][0] >= currCursorPosition - 1 {
+                        attrStringIndex[index][0] = attrStringIndex[index][0] - 1
+                    }
                 }
             } else {
-                if self.popUpTableView != nil {
-                    self.popUpTableView!.removeFromSuperview()
-                    self.popUpTableView = nil
+                for index in 0..<attrStringIndex.count {
+                    if attrStringIndex[index][0] >= currCursorPosition - 1 {
+                        attrStringIndex[index][0] = attrStringIndex[index][0] + 1
+                    }
                 }
             }
         }
-
+        
         // If the text is not empty, the user is typing
         isTyping = textView.text != ""
     }
@@ -330,7 +357,10 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
         }
         
         if let chatingTextBox = chatingTextBox {
+            //            let myAttribute = [ NSFontAttributeName: UIFont(name: "Helvetica Neuet", size: 18.0)! ]
             let attributedString = NSMutableAttributedString(string:chatingTextBox.text + " ")
+            //            let font = UIFont.init(name: "Helvetica Neuet", size: 18.0)
+            //            attributedString.addAttributes(NSFontAttributeName, value: font,range: NSRange(location: 0, length: count(chatingTextBox.text)))
             if self.attrStringIndex.count != 0 {
                 for stringIndex in attrStringIndex {
                     attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(stringIndex[0],stringIndex[1]))
