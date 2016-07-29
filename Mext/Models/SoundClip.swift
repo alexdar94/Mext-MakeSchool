@@ -10,13 +10,13 @@ import Foundation
 
 class SoundClip {
 
-    var tag: String
+    var tag: [String]
     var text: String
     var soundFileUrl: String
     var soundName: String
     var source: String
     
-    init(tag: String, text: String, soundFileUrl: String, soundName: String, source: String){
+    init(tag: [String], text: String, soundFileUrl: String, soundName: String, source: String){
         self.tag = tag
         self.text = text
         self.soundFileUrl = soundFileUrl

@@ -86,14 +86,25 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
             
             // If you ask for multiple permissions at once, you
             // should check if specific permissions missing
-            print(result)
+            print("Result: \(result)")
             
             if result.grantedPermissions.contains("email") {
-                //print(result.valueForKey("email"))
+                print()
             }
             
             if result.grantedPermissions.contains("user_friends") {
                 print("user friends returned")
+            }
+            
+            var fbRequest = FBSDKGraphRequest(graphPath:"me", parameters: ["fields": "email,user_friends"]);
+            fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
+                
+                if error == nil {
+                    
+                    print("User Info : \(result)")
+                } else {
+                    print("Error Getting Info \(error)");
+                }
             }
         }
     }

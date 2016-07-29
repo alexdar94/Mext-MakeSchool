@@ -113,12 +113,6 @@ extension ChatViewController {
             
             if let attrStringIndexArray = value["attrStringIndex"] as? [[Int]] {
                 attrStringIndex = attrStringIndexArray
-//                for index in attrStringIndexDic.values {
-//                    if (attrStringIndex?.append(index as! [Int])) == nil {
-//                        attrStringIndex = [index as! [Int]]
-//                    }
-//                    print(index)
-//                }
             }
             
             self.addMessage(id, text: text, soundFileUrls: soundFileURLs, attrStringIndex: attrStringIndex)

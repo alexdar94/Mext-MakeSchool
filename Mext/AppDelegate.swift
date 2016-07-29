@@ -69,9 +69,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 } else {
                     // No user is signed in.
                     print("\(self.logTag) not login")
-                    //                let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginNavigationController") as! UINavigationController
-                    //
-                    //                self.window?.rootViewController = loginViewController
+                                    let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginNavigationController") as! UINavigationController
+                    
+                                    self.window?.rootViewController = loginViewController
                 }
 
             })

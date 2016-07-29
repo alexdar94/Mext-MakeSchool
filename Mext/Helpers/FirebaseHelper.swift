@@ -30,10 +30,15 @@ extension FirebaseHelper{
         var matchingSoundClips: [SoundClip]?
         let searchQuery = soundClipsRef().queryLimitedToFirst(10)
         
-        searchQuery.queryOrderedByChild("tag").queryEqualToValue(soundClipTag)
+        searchQuery.queryOrderedByChild("tag/\(soundClipTag)").queryEqualToValue(true)
             .observeEventType(.Value, withBlock: { snapshot in
                 for soundClipJSON in snapshot.children.allObjects {
-                    let soundClip = SoundClip(tag: soundClipJSON.value["tag"] as! String
+                    var tags = [String]()
+                    if let tagsJSON = soundClipJSON.value["tag"] as? [String: AnyObject]{
+                        tags = Array(tagsJSON.keys)
+                        print(tags)
+                    }
+                    let soundClip = SoundClip(tag: tags
                         , text: soundClipJSON.value["text"] as! String
                         , soundFileUrl: soundClipJSON.value["soundFileUrl"] as! String
                         , soundName: soundClipJSON.value["soundName"] as! String
