@@ -198,7 +198,7 @@ extension ChatViewController {
             cell.textView!.textColor = UIColor.blackColor()
         }
         
-        let attributedString = NSMutableAttributedString(string: message.text)
+        let attributedString = NSMutableAttributedString(string: message.text, attributes: [NSFontAttributeName: UIFont.init(name: "Helvetica Neue", size: 17.0)!])
         if let attrStringIndex = message.attrStringIndex {
             if let soundFileUrls = message.soundFileUrls{
                 for (index, element) in attrStringIndex.enumerate() {
@@ -213,7 +213,6 @@ extension ChatViewController {
         cell.textView!.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.greenColor()]
         cell.textView!.attributedText = attributedString
         cell.textView!.delegate = self
-        
         return cell
     }
     
@@ -355,17 +354,14 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
         
         let currWordCount = String(currWord).utf16.count
         self.attrStringIndex.append([currMessageLength - currWordCount, currWordCount])
-
+        
         if self.popUpTableView != nil {
             self.popUpTableView!.removeFromSuperview()
             self.popUpTableView = nil
         }
         
         if let chatingTextBox = chatingTextBox {
-            //            let myAttribute = [ NSFontAttributeName: UIFont(name: "Helvetica Neuet", size: 18.0)! ]
-            let attributedString = NSMutableAttributedString(string:chatingTextBox.text + " ")
-            //            let font = UIFont.init(name: "Helvetica Neuet", size: 18.0)
-            //            attributedString.addAttributes(NSFontAttributeName, value: font,range: NSRange(location: 0, length: count(chatingTextBox.text)))
+            let attributedString = NSMutableAttributedString(string:chatingTextBox.text + " ", attributes: [NSFontAttributeName: UIFont.init(name: "Helvetica Neue", size: 16.0)!])
             if self.attrStringIndex.count != 0 {
                 for stringIndex in attrStringIndex {
                     attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(stringIndex[0],stringIndex[1]))
