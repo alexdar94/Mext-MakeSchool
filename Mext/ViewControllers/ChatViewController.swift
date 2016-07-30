@@ -208,7 +208,8 @@ extension ChatViewController {
             }
         }
         
-        //        attributedString.addAttribute(NSForegroundColorAttributeName, value: GradientColor(UIGradientStyle.TopToBottom, frame: CGRect(x: 0, y: 0, width: 1000, height: 1000), colors: [UIColor.redColor(), UIColor.grayColor()]), range: myRange)
+        
+        //                attributedString.addAttribute(NSForegroundColorAttributeName, value: GradientColor(UIGradientStyle.TopToBottom, frame: CGRect(x: 0, y: 0, width: 1000, height: 1000), colors: [UIColor.redColor(), UIColor.grayColor()]), range: myRange)
         cell.textView!.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.greenColor()]
         cell.textView!.attributedText = attributedString
         cell.textView!.delegate = self
@@ -247,6 +248,8 @@ extension ChatViewController {
         isTyping = false
         soundFileUrls = []
         attrStringIndex = [[Int]]()
+        
+        
     }
     
     override func didPressAccessoryButton(sender: UIButton!) {
@@ -261,9 +264,9 @@ extension ChatViewController {
         if let selectedRange = textView.selectedTextRange {
             
             self.currCursorPosition = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: selectedRange.start)
-            var text: String = textView.text!
-//            var substring: String = text.substringToIndex(text.startIndex.advancedBy(currCursorPosition))
-//            var lastWord: String = substring.componentsSeparatedByString(" ").last!
+            //            var text: String = textView.text!
+            //            var substring: String = text.substringToIndex(text.startIndex.advancedBy(currCursorPosition))
+            //            var lastWord: String = substring.componentsSeparatedByString(" ").last!
             //            print("substring - \(substring)")
             //            print("lastword - \(lastWord)")
             //            print("text length - \(textView.text.characters.count)")
@@ -285,12 +288,12 @@ extension ChatViewController {
         super.textViewDidChange(textView)
         
         let message = textView.text
-        currMessageLength = message.characters.count
+        currMessageLength = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: textView.endOfDocument)
         
-        if currCursorPosition == message.characters.count {
-            var keywordArr = message.componentsSeparatedByString(" ")
-            currWord = keywordArr[keywordArr.count-1]
-            
+        var keywordArr = message.componentsSeparatedByString(" ")
+        currWord = keywordArr[keywordArr.count-1]
+        
+        if currCursorPosition == currMessageLength {
             FirebaseHelper.searchSoundClip("\(currWord.lowercaseString)"){ matchingSoundClips in
                 if let matchingSoundClips = matchingSoundClips{
                     self.soundClips = matchingSoundClips
@@ -349,8 +352,10 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.soundFileUrls.append(soundClips[indexPath.row].soundFileUrl)
-        self.attrStringIndex.append([currMessageLength - currWord.characters.count,currWord.characters.count])
         
+        let currWordCount = String(currWord).utf16.count
+        self.attrStringIndex.append([currMessageLength - currWordCount, currWordCount])
+
         if self.popUpTableView != nil {
             self.popUpTableView!.removeFromSuperview()
             self.popUpTableView = nil

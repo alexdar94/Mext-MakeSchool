@@ -17,6 +17,7 @@
 		FA0DD1A71D276AD30089F512 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA0DD1A51D276AD30089F512 /* LaunchScreen.storyboard */; };
 		FA0DD1B21D276AD30089F512 /* MextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DD1B11D276AD30089F512 /* MextTests.swift */; };
 		FA0DD1BD1D276AD30089F512 /* MextUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DD1BC1D276AD30089F512 /* MextUITests.swift */; };
+		FA24801F1D4C68CC00988A8A /* EmojiChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24801E1D4C68CC00988A8A /* EmojiChecker.swift */; };
 		FA3A64471D2F68800074515A /* MusicSuggestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A64461D2F68800074515A /* MusicSuggestionTableViewCell.swift */; };
 		FA60537C1D458D3400720599 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60537B1D458D3400720599 /* AddFriendViewController.swift */; };
 		FA6053801D45ABD400720599 /* AddFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60537F1D45ABD400720599 /* AddFriendTableViewCell.swift */; };
@@ -91,6 +92,7 @@
 		FA0DD1B81D276AD30089F512 /* MextUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MextUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0DD1BC1D276AD30089F512 /* MextUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MextUITests.swift; sourceTree = "<group>"; };
 		FA0DD1BE1D276AD30089F512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA24801E1D4C68CC00988A8A /* EmojiChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiChecker.swift; sourceTree = "<group>"; };
 		FA3A64461D2F68800074515A /* MusicSuggestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSuggestionTableViewCell.swift; sourceTree = "<group>"; };
 		FA60537B1D458D3400720599 /* AddFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		FA60537F1D45ABD400720599 /* AddFriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendTableViewCell.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			children = (
 				FA87532B1D31B13100EBDF6A /* MusicPlayerHelper.swift */,
 				FAB4B4031D349AF9007E5B5C /* FirebaseHelper.swift */,
+				FA24801E1D4C68CC00988A8A /* EmojiChecker.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				FA60537C1D458D3400720599 /* AddFriendViewController.swift in Sources */,
 				FAC482CF1D3D789E00F83E91 /* ContactsViewController.swift in Sources */,
 				FAC818901D41DE1600B837B4 /* ContactTableViewCell.swift in Sources */,
+				FA24801F1D4C68CC00988A8A /* EmojiChecker.swift in Sources */,
 				FA6053801D45ABD400720599 /* AddFriendTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

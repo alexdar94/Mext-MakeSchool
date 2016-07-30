@@ -12,6 +12,9 @@ import FirebaseDatabase
 
 // MARK: Messages Endpoint
 class FirebaseHelper {
+
+static let TAG = "FirebaseHelper"
+    
     static let ref = FIRDatabase.database().reference()
     
     static func messagesRef(chatRoomName : String) -> FIRDatabaseReference {
@@ -281,5 +284,14 @@ extension FirebaseHelper{
 extension FirebaseHelper{
     static func generateFIRUID(ref:FIRDatabaseReference) -> String {
         return ref.childByAutoId().key
+    }
+}
+
+// MARK: Dev for soundclip
+extension FirebaseHelper{
+    static func uploadEmojiToTag(text: String) {
+        FirebaseHelper.soundClipsRef().child("8/tag").updateChildValues([
+            text: true
+            ])
     }
 }
