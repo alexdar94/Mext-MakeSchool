@@ -49,10 +49,12 @@ class ChatViewController: JSQMessagesViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = chatRoom.title
+        //self.collectionView.collectionViewLayout.bubbleSizeCalculator = CustomBubbleSizeCalculator()
         self.setup()
         self.observeMessages()
         self.observeTyping()
         
+//        self.collectionView.collectionViewLayout.bubbleSizeCalculator = 
         //let childUpdates = ["/\(chatRoomName)/test": "update"]
         //ref.updateChildValues(childUpdates)
         
