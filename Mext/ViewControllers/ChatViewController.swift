@@ -44,6 +44,7 @@ class ChatViewController: JSQMessagesViewController {
     // Message editing
     var currCursorPosition = 0
     var isBackSpace = false
+    var currLetter = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -265,6 +266,7 @@ extension ChatViewController {
         if let selectedRange = textView.selectedTextRange {
             
             self.currCursorPosition = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: selectedRange.start)
+            
             //            var text: String = textView.text!
             //            var substring: String = text.substringToIndex(text.startIndex.advancedBy(currCursorPosition))
             //            var lastWord: String = substring.componentsSeparatedByString(" ").last!
@@ -275,12 +277,22 @@ extension ChatViewController {
     }
     
     override func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        let  char = text.cStringUsingEncoding(NSUTF8StringEncoding)!
-        let isBackSpace = strcmp(char, "\\b")
-        if (isBackSpace == -92) {
+//        self.currLetter = text
+//        let  char = text.cStringUsingEncoding(NSUTF8StringEncoding)!
+//        let isBackSpace = strcmp(char, "\\b")
+//        if (isBackSpace == -92) {
+//            self.isBackSpace = true
+//        } else {
+//            self.isBackSpace = false
+//        }
+//        
+        if text == "" && range.length > 0 {
+            let stringToDelete = (textView.text! as NSString).substringWithRange(range)
             self.isBackSpace = true
+            self.currLetter = stringToDelete
         } else {
             self.isBackSpace = false
+            self.currLetter = text
         }
         return true
     }
@@ -319,13 +331,17 @@ extension ChatViewController {
             if isBackSpace {
                 for index in 0..<attrStringIndex.count {
                     if attrStringIndex[index][0] >= currCursorPosition - 1 {
-                        attrStringIndex[index][0] = attrStringIndex[index][0] - 1
+                        print("BackSpace before - \(attrStringIndex[index][0])")
+                        attrStringIndex[index][0] = attrStringIndex[index][0] - String(currLetter).utf16.count
+                        print("BackSpace after - \(attrStringIndex[index][0])")
                     }
                 }
             } else {
                 for index in 0..<attrStringIndex.count {
                     if attrStringIndex[index][0] >= currCursorPosition - 1 {
-                        attrStringIndex[index][0] = attrStringIndex[index][0] + 1
+                        print("Typing before - \(attrStringIndex[index][0])")
+                        attrStringIndex[index][0] = attrStringIndex[index][0] + String(currLetter).utf16.count
+                        print("Typing before - \(attrStringIndex[index][0])")
                     }
                 }
             }
@@ -356,7 +372,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
         
         let currWordCount = String(currWord).utf16.count
         self.attrStringIndex.append([currMessageLength - currWordCount, currWordCount])
-        
+
         if self.popUpTableView != nil {
             self.popUpTableView!.removeFromSuperview()
             self.popUpTableView = nil
