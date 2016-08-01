@@ -36,6 +36,7 @@
 		FAC818901D41DE1600B837B4 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8188F1D41DE1600B837B4 /* ContactTableViewCell.swift */; };
 		FAD74F031D441C6A0022B881 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD74EF21D4419D90022B881 /* Alamofire.framework */; };
 		FAD74F041D441C6A0022B881 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FAD74EF21D4419D90022B881 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FAE8BBA51D4FEF0500816EB3 /* SoundChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE8BBA41D4FEF0500816EB3 /* SoundChartViewController.swift */; };
 		FAFAC3E91D276D38005BA926 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAFAC3E81D276D38005BA926 /* GoogleService-Info.plist */; };
 		FAFAC3EE1D277434005BA926 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAC3ED1D277434005BA926 /* ChatViewController.swift */; };
 /* End PBXBuildFile section */
@@ -114,6 +115,7 @@
 		FAC8188F1D41DE1600B837B4 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		FAD74EF21D4419D90022B881 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = "/Users/Alex/Library/Developer/Xcode/DerivedData/Mext-bdqzsrnreuikfxhauqqabzxxfvkn/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<absolute>"; };
 		FAD74EF81D441A7B0022B881 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = AlamofireImage.framework; path = "/Users/Alex/Library/Developer/Xcode/DerivedData/Mext-bdqzsrnreuikfxhauqqabzxxfvkn/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<absolute>"; };
+		FAE8BBA41D4FEF0500816EB3 /* SoundChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundChartViewController.swift; sourceTree = "<group>"; };
 		FAFAC3E81D276D38005BA926 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAFAC3ED1D277434005BA926 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		FF0B378683EA343F1732402A /* Pods-Mext.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mext.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mext/Pods-Mext.release.xcconfig"; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				FAA051721D3954E200BB20AC /* MessageInboxViewController.swift */,
 				FAC482CE1D3D789E00F83E91 /* ContactsViewController.swift */,
 				FA60537B1D458D3400720599 /* AddFriendViewController.swift */,
+				FAE8BBA41D4FEF0500816EB3 /* SoundChartViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				FA7559A31D3854A700F5DD39 /* SignUpViewController.swift in Sources */,
 				FAC482CD1D3D73C500F83E91 /* User.swift in Sources */,
 				FAFAC3EE1D277434005BA926 /* ChatViewController.swift in Sources */,
+				FAE8BBA51D4FEF0500816EB3 /* SoundChartViewController.swift in Sources */,
 				FA0DD19D1D276AD30089F512 /* AppDelegate.swift in Sources */,
 				FA0A7C581D4D776100708429 /* CustomBubbleSizeCalculator.swift in Sources */,
 				FAC482D11D3D854200F83E91 /* ChatRoom.swift in Sources */,
