@@ -42,7 +42,11 @@ class ChatViewController: JSQMessagesViewController {
     var chatingTextBox: UITextView?
     
     // Message editing
+    let TEXTVIEW_TAG = 1000
+    var prevCursorPosition = 0
     var currCursorPosition = 0
+    var prevStartToCursorText = ""
+    var currStartToCursorText = ""
     var isBackSpace = false
     var currLetter = ""
     
@@ -55,7 +59,7 @@ class ChatViewController: JSQMessagesViewController {
         self.observeMessages()
         self.observeTyping()
         
-//        self.collectionView.collectionViewLayout.bubbleSizeCalculator = 
+        //        self.collectionView.collectionViewLayout.bubbleSizeCalculator =
         //let childUpdates = ["/\(chatRoomName)/test": "update"]
         //ref.updateChildValues(childUpdates)
         
@@ -260,32 +264,68 @@ extension ChatViewController {
     
     override func textViewDidBeginEditing(textView: UITextView) {
         chatingTextBox = textView
+        textView.tag = TEXTVIEW_TAG
     }
     
     override func textViewDidChangeSelection(textView: UITextView) {
-        if let selectedRange = textView.selectedTextRange {
-            
-            self.currCursorPosition = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: selectedRange.start)
-            
-            //            var text: String = textView.text!
-            //            var substring: String = text.substringToIndex(text.startIndex.advancedBy(currCursorPosition))
-            //            var lastWord: String = substring.componentsSeparatedByString(" ").last!
-            //            print("substring - \(substring)")
-            //            print("lastword - \(lastWord)")
-            //            print("text length - \(textView.text.characters.count)")
+        if textView.tag == TEXTVIEW_TAG {
+            if let selectedRange = textView.selectedTextRange {
+                self.prevCursorPosition = self.currCursorPosition
+                self.currCursorPosition = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: selectedRange.start)
+                
+                var text: String = textView.text!
+                let end = text.endIndex.advancedBy(0, limit: text.startIndex)
+                self.prevStartToCursorText = self.currStartToCursorText
+                self.currStartToCursorText = textView.textInRange(textView.textRangeFromPosition(textView.beginningOfDocument, toPosition: selectedRange.start)!)!
+                //                        var substring: String = text.substringToIndex(text.startIndex.advancedBy(currCursorPosition, limit: end))
+                currMessageLength = String(currStartToCursorText).utf16.count
+                currWord = currStartToCursorText.componentsSeparatedByString(" ").last!
+                
+                FirebaseHelper.searchSoundClip("\(currWord.lowercaseString)"){ matchingSoundClips in
+                    if let matchingSoundClips = matchingSoundClips{
+                        self.soundClips = matchingSoundClips
+                        let resultsCount = self.soundClips.count
+                        if resultsCount>0 {
+                            let numRows = resultsCount>4 ?  4 : resultsCount
+                            self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
+                            self.popUpTableView!.rowHeight = 48.0
+                            self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+                            self.popUpTableView!.delegate = self
+                            self.popUpTableView!.dataSource = self
+                            self.view.addSubview(self.popUpTableView!)
+                        }
+                    } else {
+                        if self.popUpTableView != nil {
+                            self.popUpTableView!.removeFromSuperview()
+                            self.popUpTableView = nil
+                        }
+                    }
+                }
+                
+                //print("prevCursorPosition - \(prevCursorPosition)")
+                //print("currCursorPosition - \(currCursorPosition)")
+                //print("prevSubstring - \(prevStartToCursorText)")
+                //print("currSubstring - \(currStartToCursorText)")
+                //print("prevSubstring utf - \(String(prevStartToCursorText).utf16.count)")
+                //print("currSubstring utf - \(String(currStartToCursorText).utf16.count)")
+                //print("lastword - \(lastWord)")
+                //print("text length - \(textView.text.characters.count)")
+                //print("substring length - \(substring.characters.count)")
+                //print("substring utf - \(String(substring).utf16.count)")
+            }
         }
     }
     
     override func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-//        self.currLetter = text
-//        let  char = text.cStringUsingEncoding(NSUTF8StringEncoding)!
-//        let isBackSpace = strcmp(char, "\\b")
-//        if (isBackSpace == -92) {
-//            self.isBackSpace = true
-//        } else {
-//            self.isBackSpace = false
-//        }
-//        
+        //        self.currLetter = text
+        //        let  char = text.cStringUsingEncoding(NSUTF8StringEncoding)!
+        //        let isBackSpace = strcmp(char, "\\b")
+        //        if (isBackSpace == -92) {
+        //            self.isBackSpace = true
+        //        } else {
+        //            self.isBackSpace = false
+        //        }
+        //
         if text == "" && range.length > 0 {
             let stringToDelete = (textView.text! as NSString).substringWithRange(range)
             self.isBackSpace = true
@@ -294,55 +334,31 @@ extension ChatViewController {
             self.isBackSpace = false
             self.currLetter = text
         }
+        if text == UIPasteboard.generalPasteboard().string {
+            chatingTextBox!.insertText("")
+        }
         return true
     }
     
     override func textViewDidChange(textView: UITextView) {
         super.textViewDidChange(textView)
-        
         let message = textView.text
-        currMessageLength = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: textView.endOfDocument)
+//        currMessageLength = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: textView.endOfDocument)
         
-        var keywordArr = message.componentsSeparatedByString(" ")
-        currWord = keywordArr[keywordArr.count-1]
-        
-        if currCursorPosition == currMessageLength {
-            FirebaseHelper.searchSoundClip("\(currWord.lowercaseString)"){ matchingSoundClips in
-                if let matchingSoundClips = matchingSoundClips{
-                    self.soundClips = matchingSoundClips
-                    let resultsCount = self.soundClips.count
-                    if resultsCount>0 {
-                        let numRows = resultsCount>4 ?  4 : resultsCount
-                        self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
-                        self.popUpTableView!.rowHeight = 48.0
-                        self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-                        self.popUpTableView!.delegate = self
-                        self.popUpTableView!.dataSource = self
-                        self.view.addSubview(self.popUpTableView!)
-                    }
-                } else {
-                    if self.popUpTableView != nil {
-                        self.popUpTableView!.removeFromSuperview()
-                        self.popUpTableView = nil
-                    }
+        for index in (0..<attrStringIndex.count).reverse() {
+            if attrStringIndex[index][0] >= prevCursorPosition {
+                attrStringIndex[index][0] = attrStringIndex[index][0] + (currCursorPosition-prevCursorPosition)
+            } else if attrStringIndex[index][0] + attrStringIndex[index][1] >= prevCursorPosition {
+                print("endIndex - \(attrStringIndex[index][0] + attrStringIndex[index][1])")
+                attrStringIndex.removeAtIndex(index)
+                soundFileUrls.removeAtIndex(index)
+                let attributedString = NSMutableAttributedString(string:chatingTextBox!.text, attributes: [NSFontAttributeName: UIFont.init(name: "Helvetica Neue", size: 16.0)!])
+                for stringIndex in attrStringIndex {
+                    attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(stringIndex[0],stringIndex[1]))
                 }
-            }
-        } else {
-            if isBackSpace {
-                for index in 0..<attrStringIndex.count {
-                    if attrStringIndex[index][0] >= currCursorPosition - 1 {
-                        print("BackSpace before - \(attrStringIndex[index][0])")
-                        attrStringIndex[index][0] = attrStringIndex[index][0] - String(currLetter).utf16.count
-                        print("BackSpace after - \(attrStringIndex[index][0])")
-                    }
-                }
-            } else {
-                for index in 0..<attrStringIndex.count {
-                    if attrStringIndex[index][0] >= currCursorPosition - 1 {
-                        print("Typing before - \(attrStringIndex[index][0])")
-                        attrStringIndex[index][0] = attrStringIndex[index][0] + String(currLetter).utf16.count
-                        print("Typing before - \(attrStringIndex[index][0])")
-                    }
+                chatingTextBox!.attributedText = attributedString
+                if let newPosition = chatingTextBox!.positionFromPosition(chatingTextBox!.beginningOfDocument, inDirection: UITextLayoutDirection.Right, offset: prevCursorPosition) {
+                    chatingTextBox!.selectedTextRange = chatingTextBox!.textRangeFromPosition(newPosition, toPosition: newPosition)
                 }
             }
         }
@@ -372,7 +388,8 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
         
         let currWordCount = String(currWord).utf16.count
         self.attrStringIndex.append([currMessageLength - currWordCount, currWordCount])
-
+        print("currMessageLength - \(currMessageLength)")
+        print("currWordCount - \(currWordCount)")
         if self.popUpTableView != nil {
             self.popUpTableView!.removeFromSuperview()
             self.popUpTableView = nil
@@ -383,6 +400,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
             if self.attrStringIndex.count != 0 {
                 for stringIndex in attrStringIndex {
                     attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(stringIndex[0],stringIndex[1]))
+                    print("added index - \(stringIndex[0])")
                 }
             }
             chatingTextBox.attributedText = attributedString
