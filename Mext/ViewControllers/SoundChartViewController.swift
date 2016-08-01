@@ -19,13 +19,11 @@ class SoundChartViewController: UIViewController {
                 self.trendingSoundsContainer.alpha = 1
                 self.mySoundsContainer.alpha = 0
             })
-            print("0")
         } else {
             UIView.animateWithDuration(0.5, animations: {
                 self.trendingSoundsContainer.alpha = 0
                 self.mySoundsContainer.alpha = 1
             })
-            print("1")
         }
     }
 }
