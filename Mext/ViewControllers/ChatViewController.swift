@@ -275,15 +275,37 @@ extension ChatViewController {
             self.prevStartToCursorText = self.currStartToCursorText
             self.currStartToCursorText = textView.textInRange(textView.textRangeFromPosition(textView.beginningOfDocument, toPosition: selectedRange.start)!)!
             //                        var substring: String = text.substringToIndex(text.startIndex.advancedBy(currCursorPosition, limit: end))
-            var lastWord: String = currStartToCursorText.componentsSeparatedByString(" ").last!
-            print("prevCursorPosition - \(prevCursorPosition)")
-            print("currCursorPosition - \(currCursorPosition)")
-            if attrStringIndex.count>0 { print("First index \(attrStringIndex[0][0])")}
+            currMessageLength = String(currStartToCursorText).utf16.count
+            currWord = currStartToCursorText.componentsSeparatedByString(" ").last!
+            
+            FirebaseHelper.searchSoundClip("\(currWord.lowercaseString)"){ matchingSoundClips in
+                if let matchingSoundClips = matchingSoundClips{
+                    self.soundClips = matchingSoundClips
+                    let resultsCount = self.soundClips.count
+                    if resultsCount>0 {
+                        let numRows = resultsCount>4 ?  4 : resultsCount
+                        self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
+                        self.popUpTableView!.rowHeight = 48.0
+                        self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+                        self.popUpTableView!.delegate = self
+                        self.popUpTableView!.dataSource = self
+                        self.view.addSubview(self.popUpTableView!)
+                    }
+                } else {
+                    if self.popUpTableView != nil {
+                        self.popUpTableView!.removeFromSuperview()
+                        self.popUpTableView = nil
+                    }
+                }
+            }
+            
+            //print("prevCursorPosition - \(prevCursorPosition)")
+            //print("currCursorPosition - \(currCursorPosition)")
             //print("prevSubstring - \(prevStartToCursorText)")
             //print("currSubstring - \(currStartToCursorText)")
             //print("prevSubstring utf - \(String(prevStartToCursorText).utf16.count)")
             //print("currSubstring utf - \(String(currStartToCursorText).utf16.count)")
-            print("lastword - \(lastWord)")
+            //print("lastword - \(lastWord)")
             //print("text length - \(textView.text.characters.count)")
             //print("substring length - \(substring.characters.count)")
             //print("substring utf - \(String(substring).utf16.count)")
@@ -316,49 +338,23 @@ extension ChatViewController {
     
     override func textViewDidChange(textView: UITextView) {
         super.textViewDidChange(textView)
-        print("textViewDidChange")
         let message = textView.text
-        currMessageLength = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: textView.endOfDocument)
+//        currMessageLength = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: textView.endOfDocument)
         
-        var keywordArr = message.componentsSeparatedByString(" ")
-        currWord = keywordArr[keywordArr.count-1]
-        
-        if currCursorPosition == currMessageLength {
-            FirebaseHelper.searchSoundClip("\(currWord.lowercaseString)"){ matchingSoundClips in
-                if let matchingSoundClips = matchingSoundClips{
-                    self.soundClips = matchingSoundClips
-                    let resultsCount = self.soundClips.count
-                    if resultsCount>0 {
-                        let numRows = resultsCount>4 ?  4 : resultsCount
-                        self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
-                        self.popUpTableView!.rowHeight = 48.0
-                        self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-                        self.popUpTableView!.delegate = self
-                        self.popUpTableView!.dataSource = self
-                        self.view.addSubview(self.popUpTableView!)
-                    }
-                } else {
-                    if self.popUpTableView != nil {
-                        self.popUpTableView!.removeFromSuperview()
-                        self.popUpTableView = nil
-                    }
+        for index in (0..<attrStringIndex.count).reverse() {
+            if attrStringIndex[index][0] >= prevCursorPosition {
+                attrStringIndex[index][0] = attrStringIndex[index][0] + (currCursorPosition-prevCursorPosition)
+            } else if attrStringIndex[index][0] + attrStringIndex[index][1] >= prevCursorPosition {
+                print("endIndex - \(attrStringIndex[index][0] + attrStringIndex[index][1])")
+                attrStringIndex.removeAtIndex(index)
+                soundFileUrls.removeAtIndex(index)
+                let attributedString = NSMutableAttributedString(string:chatingTextBox!.text, attributes: [NSFontAttributeName: UIFont.init(name: "Helvetica Neue", size: 16.0)!])
+                for stringIndex in attrStringIndex {
+                    attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(stringIndex[0],stringIndex[1]))
                 }
-            }
-        } else {
-            for index in (0..<attrStringIndex.count).reverse() {
-                if attrStringIndex[index][0] >= prevCursorPosition {
-                    attrStringIndex[index][0] = attrStringIndex[index][0] + (currCursorPosition-prevCursorPosition)
-                } else if attrStringIndex[index][0] + attrStringIndex[index][1] >= prevCursorPosition {
-                    attrStringIndex.removeAtIndex(index)
-                    soundFileUrls.removeAtIndex(index)
-                    let attributedString = NSMutableAttributedString(string:chatingTextBox!.text + " ", attributes: [NSFontAttributeName: UIFont.init(name: "Helvetica Neue", size: 16.0)!])
-                    for stringIndex in attrStringIndex {
-                        attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(stringIndex[0],stringIndex[1]))
-                    }
-                    chatingTextBox!.attributedText = attributedString
-                    if let newPosition = chatingTextBox!.positionFromPosition(chatingTextBox!.beginningOfDocument, inDirection: UITextLayoutDirection.Right, offset: prevCursorPosition) {
-                        chatingTextBox!.selectedTextRange = chatingTextBox!.textRangeFromPosition(newPosition, toPosition: newPosition)
-                    }
+                chatingTextBox!.attributedText = attributedString
+                if let newPosition = chatingTextBox!.positionFromPosition(chatingTextBox!.beginningOfDocument, inDirection: UITextLayoutDirection.Right, offset: prevCursorPosition) {
+                    chatingTextBox!.selectedTextRange = chatingTextBox!.textRangeFromPosition(newPosition, toPosition: newPosition)
                 }
             }
         }
@@ -388,7 +384,8 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
         
         let currWordCount = String(currWord).utf16.count
         self.attrStringIndex.append([currMessageLength - currWordCount, currWordCount])
-        
+        print("currMessageLength - \(currMessageLength)")
+        print("currWordCount - \(currWordCount)")
         if self.popUpTableView != nil {
             self.popUpTableView!.removeFromSuperview()
             self.popUpTableView = nil
@@ -399,6 +396,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
             if self.attrStringIndex.count != 0 {
                 for stringIndex in attrStringIndex {
                     attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(stringIndex[0],stringIndex[1]))
+                    print("added index - \(stringIndex[0])")
                 }
             }
             chatingTextBox.attributedText = attributedString
