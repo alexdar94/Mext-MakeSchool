@@ -42,6 +42,7 @@ class ChatViewController: JSQMessagesViewController {
     var chatingTextBox: UITextView?
     
     // Message editing
+    let TEXTVIEW_TAG = 1000
     var prevCursorPosition = 0
     var currCursorPosition = 0
     var prevStartToCursorText = ""
@@ -263,52 +264,55 @@ extension ChatViewController {
     
     override func textViewDidBeginEditing(textView: UITextView) {
         chatingTextBox = textView
+        textView.tag = TEXTVIEW_TAG
     }
     
     override func textViewDidChangeSelection(textView: UITextView) {
-        if let selectedRange = textView.selectedTextRange {
-            self.prevCursorPosition = self.currCursorPosition
-            self.currCursorPosition = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: selectedRange.start)
-            
-            var text: String = textView.text!
-            let end = text.endIndex.advancedBy(0, limit: text.startIndex)
-            self.prevStartToCursorText = self.currStartToCursorText
-            self.currStartToCursorText = textView.textInRange(textView.textRangeFromPosition(textView.beginningOfDocument, toPosition: selectedRange.start)!)!
-            //                        var substring: String = text.substringToIndex(text.startIndex.advancedBy(currCursorPosition, limit: end))
-            currMessageLength = String(currStartToCursorText).utf16.count
-            currWord = currStartToCursorText.componentsSeparatedByString(" ").last!
-            
-            FirebaseHelper.searchSoundClip("\(currWord.lowercaseString)"){ matchingSoundClips in
-                if let matchingSoundClips = matchingSoundClips{
-                    self.soundClips = matchingSoundClips
-                    let resultsCount = self.soundClips.count
-                    if resultsCount>0 {
-                        let numRows = resultsCount>4 ?  4 : resultsCount
-                        self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
-                        self.popUpTableView!.rowHeight = 48.0
-                        self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-                        self.popUpTableView!.delegate = self
-                        self.popUpTableView!.dataSource = self
-                        self.view.addSubview(self.popUpTableView!)
-                    }
-                } else {
-                    if self.popUpTableView != nil {
-                        self.popUpTableView!.removeFromSuperview()
-                        self.popUpTableView = nil
+        if textView.tag == TEXTVIEW_TAG {
+            if let selectedRange = textView.selectedTextRange {
+                self.prevCursorPosition = self.currCursorPosition
+                self.currCursorPosition = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: selectedRange.start)
+                
+                var text: String = textView.text!
+                let end = text.endIndex.advancedBy(0, limit: text.startIndex)
+                self.prevStartToCursorText = self.currStartToCursorText
+                self.currStartToCursorText = textView.textInRange(textView.textRangeFromPosition(textView.beginningOfDocument, toPosition: selectedRange.start)!)!
+                //                        var substring: String = text.substringToIndex(text.startIndex.advancedBy(currCursorPosition, limit: end))
+                currMessageLength = String(currStartToCursorText).utf16.count
+                currWord = currStartToCursorText.componentsSeparatedByString(" ").last!
+                
+                FirebaseHelper.searchSoundClip("\(currWord.lowercaseString)"){ matchingSoundClips in
+                    if let matchingSoundClips = matchingSoundClips{
+                        self.soundClips = matchingSoundClips
+                        let resultsCount = self.soundClips.count
+                        if resultsCount>0 {
+                            let numRows = resultsCount>4 ?  4 : resultsCount
+                            self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
+                            self.popUpTableView!.rowHeight = 48.0
+                            self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+                            self.popUpTableView!.delegate = self
+                            self.popUpTableView!.dataSource = self
+                            self.view.addSubview(self.popUpTableView!)
+                        }
+                    } else {
+                        if self.popUpTableView != nil {
+                            self.popUpTableView!.removeFromSuperview()
+                            self.popUpTableView = nil
+                        }
                     }
                 }
+                
+                //print("prevCursorPosition - \(prevCursorPosition)")
+                //print("currCursorPosition - \(currCursorPosition)")
+                //print("prevSubstring - \(prevStartToCursorText)")
+                //print("currSubstring - \(currStartToCursorText)")
+                //print("prevSubstring utf - \(String(prevStartToCursorText).utf16.count)")
+                //print("currSubstring utf - \(String(currStartToCursorText).utf16.count)")
+                //print("lastword - \(lastWord)")
+                //print("text length - \(textView.text.characters.count)")
+                //print("substring length - \(substring.characters.count)")
+                //print("substring utf - \(String(substring).utf16.count)")
             }
-            
-            //print("prevCursorPosition - \(prevCursorPosition)")
-            //print("currCursorPosition - \(currCursorPosition)")
-            //print("prevSubstring - \(prevStartToCursorText)")
-            //print("currSubstring - \(currStartToCursorText)")
-            //print("prevSubstring utf - \(String(prevStartToCursorText).utf16.count)")
-            //print("currSubstring utf - \(String(currStartToCursorText).utf16.count)")
-            //print("lastword - \(lastWord)")
-            //print("text length - \(textView.text.characters.count)")
-            //print("substring length - \(substring.characters.count)")
-            //print("substring utf - \(String(substring).utf16.count)")
         }
     }
     
