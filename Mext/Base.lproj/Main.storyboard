@@ -166,14 +166,19 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DAf-Xb-3DG">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="barTintColor" red="0.99607843137254903" green="0.34901960784313724" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem title="Message Inbox" id="B1f-BJ-twz">
+                                    <navigationItem title="Mext Inbox" id="B1f-BJ-twz">
                                         <barButtonItem key="leftBarButtonItem" title="Item" id="TWq-9U-0mc">
                                             <connections>
                                                 <segue destination="t4S-D4-cB1" kind="show" id="I3L-fq-Pbd"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="YD2-fS-rAJ">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <segue destination="VOY-ee-nuV" kind="show" identifier="toContacts" id="YmT-2z-Blk"/>
                                             </connections>
@@ -197,20 +202,26 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
-                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="NSColor" red="0.99607843137254903" green="0.34901960784313724" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nws-2J-GwX">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nws-2J-GwX">
                                                     <rect key="frame" x="512" y="5" width="80" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="ZCj-Gc-bZQ"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Label">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.99607843137254903" green="0.34901960784313724" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hf-DP-jzk">
@@ -295,9 +306,14 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2DK-BL-Qvi">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="barTintColor" red="0.99607843139999996" green="0.34901960780000002" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Mext" id="yTW-fQ-Vou">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="ipK-Xj-3FJ">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <segue destination="stt-cH-4I6" kind="unwind" unwindAction="unwindToMessageInboxViewController:" id="8bN-Vq-7CB"/>
                                             </connections>
@@ -311,6 +327,7 @@
                                     <segment title="Trending"/>
                                     <segment title="My Sounds"/>
                                 </segments>
+                                <color key="tintColor" red="0.14117647058823529" green="0.8784313725490196" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="onSegmentChanged:" destination="t4S-D4-cB1" eventType="valueChanged" id="b6e-L9-mMx"/>
                                 </connections>
@@ -381,11 +398,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="C8o-di-cJ6">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="gEU-xf-G5h">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="oVc-HX-rMc" kind="unwind" unwindAction="unwindToMessageInboxViewController:" id="53I-Gi-RiL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="navBar" destination="C8o-di-cJ6" id="7cO-JX-vxo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jf6-Ql-MkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="oVc-HX-rMc" userLabel="Exit" sceneMemberID="exit"/>
@@ -406,14 +427,20 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b0h-Xx-JyS">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="barTintColor" red="0.99607843139999996" green="0.34901960780000002" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Contacts" id="8NH-S9-818">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="CFz-ND-Aqw">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <segue destination="PTc-Gb-7MT" kind="unwind" unwindAction="unwindToMessageInboxViewController:" id="M3n-t3-S40"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="u65-2g-HI3">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <segue destination="6gv-iG-0uG" kind="show" identifier="toAddFriendVC" id="hYp-xb-EAf"/>
                                             </connections>
@@ -440,12 +467,12 @@
                                                     </constraints>
                                                     <state key="normal" image="nobody_m.original"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMb-yi-8Uq">
-                                                    <rect key="frame" x="60" y="9" width="524" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMb-yi-8Uq">
+                                                    <rect key="frame" x="60" y="13" width="524" height="21"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
-                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="NSColor" red="0.99607843137254903" green="0.34901960784313724" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
                                                             </attributes>
                                                         </fragment>
@@ -513,9 +540,11 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AdF-Et-xQP">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="barTintColor" red="0.99607843139999996" green="0.34901960780000002" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem title="Title" id="fJB-MN-9Yy">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="FPa-tJ-QAL">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <segue destination="zrx-rk-jNZ" kind="unwind" unwindAction="unwindToContactsViewController:" id="NOr-Ub-ALt"/>
                                             </connections>
@@ -525,6 +554,7 @@
                             </navigationBar>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="iZb-oi-UwF">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="barTintColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="6gv-iG-0uG" id="TPh-UH-oM6"/>
@@ -663,6 +693,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="h4n-lg-zz3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.94509803920000002" green="0.62352941179999999" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

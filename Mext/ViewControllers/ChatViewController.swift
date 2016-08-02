@@ -7,14 +7,16 @@ import FirebaseDatabase
 class ChatViewController: JSQMessagesViewController {
     let TAG = "ChatViewController"
     
+    @IBOutlet weak var navBar: UINavigationItem!
+    
     var currUser: User!
     var chatRoom: ChatRoom!
     var chatRoomName: String {
         return chatRoom.UID
     }
     
-    let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor(red: 10/255, green: 180/255, blue: 230/255, alpha: 1.0))
-    let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor.lightGrayColor())
+    let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(HexColorHelper.hexStringToUIColor("#24e0ab"))
+    let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(HexColorHelper.hexStringToUIColor("#ffe46e"))
     
     var messages = [Message]()
     

@@ -30,6 +30,7 @@
 		FAB4B4001D3404E2007E5B5C /* SoundClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB4B3FF1D3404E2007E5B5C /* SoundClip.swift */; };
 		FAB4B4041D349AF9007E5B5C /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB4B4031D349AF9007E5B5C /* FirebaseHelper.swift */; };
 		FAB4B4061D34BE16007E5B5C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB4B4051D34BE16007E5B5C /* Message.swift */; };
+		FAB9D0D11D50737E0005F631 /* HexColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9D0D01D50737E0005F631 /* HexColorHelper.swift */; };
 		FAC482CD1D3D73C500F83E91 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC482CC1D3D73C500F83E91 /* User.swift */; };
 		FAC482CF1D3D789E00F83E91 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC482CE1D3D789E00F83E91 /* ContactsViewController.swift */; };
 		FAC482D11D3D854200F83E91 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC482D01D3D854200F83E91 /* ChatRoom.swift */; };
@@ -110,6 +111,7 @@
 		FAB4B3FF1D3404E2007E5B5C /* SoundClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundClip.swift; sourceTree = "<group>"; };
 		FAB4B4031D349AF9007E5B5C /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		FAB4B4051D34BE16007E5B5C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = ../View/Message.swift; sourceTree = "<group>"; };
+		FAB9D0D01D50737E0005F631 /* HexColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexColorHelper.swift; sourceTree = "<group>"; };
 		FAC482CC1D3D73C500F83E91 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FAC482CE1D3D789E00F83E91 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		FAC482D01D3D854200F83E91 /* ChatRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				FA87532B1D31B13100EBDF6A /* MusicPlayerHelper.swift */,
 				FAB4B4031D349AF9007E5B5C /* FirebaseHelper.swift */,
 				FA24801E1D4C68CC00988A8A /* EmojiChecker.swift */,
+				FAB9D0D01D50737E0005F631 /* HexColorHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 			files = (
 				FAB09E181D3D403C001E0115 /* MessageInboxTableViewCell.swift in Sources */,
 				FAB4B4041D349AF9007E5B5C /* FirebaseHelper.swift in Sources */,
+				FAB9D0D11D50737E0005F631 /* HexColorHelper.swift in Sources */,
 				FA0DD19F1D276AD30089F512 /* LoginViewController.swift in Sources */,
 				FAA051731D3954E200BB20AC /* MessageInboxViewController.swift in Sources */,
 				FAF051231D50091B00FA22FC /* UIViewController+DismissKeyboard.swift in Sources */,
