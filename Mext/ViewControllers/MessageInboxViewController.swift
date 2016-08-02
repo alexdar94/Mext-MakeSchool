@@ -13,6 +13,7 @@ import FirebaseAuth
 class MessageInboxViewController: UIViewController {
     let TAG = "MessageInboxViewController"
     
+    @IBOutlet weak var soundChartBarButton: UIBarButtonItem!
     @IBOutlet weak var messageInboxTableView: UITableView!
     
     var currUser: User!
@@ -25,6 +26,7 @@ class MessageInboxViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         FirebaseHelper.getUserChatRoomUIDs(self.currUser.UID){ chatRoomKeys in
             
             if let chatRoomKeys = chatRoomKeys {
@@ -65,7 +67,7 @@ class MessageInboxViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         //performSegueWithIdentifier("temp", sender: nil)
-        //FirebaseHelper.searchUser("J")
+        soundChartBarButton.image = UIImage(named: "sound")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -60,7 +60,6 @@ class ChatViewController: JSQMessagesViewController {
         self.observeMessages()
         self.observeTyping()
         self.hideKeyboardWhenTappedAround()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardDidShow), name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardDidHide), name: UIKeyboardDidHideNotification, object: nil)
     }
     
@@ -388,9 +387,6 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
 
 // MARK: Keyboard dismiss listener
 extension ChatViewController {
-    func keyboardDidShow(notif: NSNotification) {
-    }
-    
     func keyboardDidHide(notif: NSNotification) {
         if self.popUpTableView != nil {
             self.popUpTableView!.removeFromSuperview()
