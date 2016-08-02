@@ -69,6 +69,7 @@ class ContactsViewController: UIViewController {
                 let navVc = segue.destinationViewController as! UINavigationController
                 let chatViewController = navVc.viewControllers.first as! ChatViewController
                 chatViewController.chatRoom = chatVCChatRoom
+                chatViewController.currUser = currUser
             } else if identifier == "toAddFriendVC" {
                 let addFriendVC = segue.destinationViewController as! AddFriendViewController
                 addFriendVC.currUser = currUser

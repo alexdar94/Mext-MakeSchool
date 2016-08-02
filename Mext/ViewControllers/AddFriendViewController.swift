@@ -31,6 +31,7 @@ class AddFriendViewController: UIViewController {
             self.friendUIDs = friendUIDs
             print(friendUIDs)
         }
+        self.hideKeyboardWhenTappedAround() 
     }
     
 }

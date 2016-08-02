@@ -29,6 +29,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         // Facebook sign in
         facebookLoginButton.delegate = self
         facebookLoginButton.readPermissions = ["email","user_friends"]
+        self.hideKeyboardWhenTappedAround() 
     }
     
     override func viewDidAppear(animated: Bool) {

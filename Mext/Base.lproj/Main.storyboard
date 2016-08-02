@@ -272,7 +272,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="62w-jo-Cje">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="FU5-rH-eXM"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="add" id="FU5-rH-eXM"/>
                     </navigationItem>
                     <connections>
                         <outlet property="messageInboxTableView" destination="a6p-E0-PkY" id="qqx-Xe-04z"/>
@@ -678,6 +678,10 @@
         <scene sceneID="LBN-Fl-vYE">
             <objects>
                 <viewController id="JyM-Mk-aVE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wvK-3g-2ay"/>
+                        <viewControllerLayoutGuide type="bottom" id="5ZI-RK-tsb"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IOi-TQ-cZz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="397"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -700,6 +704,10 @@
         <scene sceneID="9ui-o8-1Mc">
             <objects>
                 <viewController id="xRD-q9-ud9" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ivZ-fo-fw4"/>
+                        <viewControllerLayoutGuide type="bottom" id="fX8-86-ha5"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wME-jM-SUl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="397"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

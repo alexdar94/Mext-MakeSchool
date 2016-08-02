@@ -77,6 +77,7 @@ class MessageInboxViewController: UIViewController {
                 let navVc = segue.destinationViewController as! UINavigationController
                 let chatViewController = navVc.viewControllers.first as! ChatViewController
                 chatViewController.chatRoom = chatRooms![messageInboxTableView.indexPathForSelectedRow!.row]
+                chatViewController.currUser = currUser
             }
         }
     }

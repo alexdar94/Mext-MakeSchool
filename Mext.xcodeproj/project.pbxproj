@@ -37,6 +37,7 @@
 		FAD74F031D441C6A0022B881 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD74EF21D4419D90022B881 /* Alamofire.framework */; };
 		FAD74F041D441C6A0022B881 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FAD74EF21D4419D90022B881 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FAE8BBA51D4FEF0500816EB3 /* SoundChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE8BBA41D4FEF0500816EB3 /* SoundChartViewController.swift */; };
+		FAF051231D50091B00FA22FC /* UIViewController+DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF051221D50091B00FA22FC /* UIViewController+DismissKeyboard.swift */; };
 		FAFAC3E91D276D38005BA926 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAFAC3E81D276D38005BA926 /* GoogleService-Info.plist */; };
 		FAFAC3EE1D277434005BA926 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAC3ED1D277434005BA926 /* ChatViewController.swift */; };
 /* End PBXBuildFile section */
@@ -116,6 +117,7 @@
 		FAD74EF21D4419D90022B881 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = "/Users/Alex/Library/Developer/Xcode/DerivedData/Mext-bdqzsrnreuikfxhauqqabzxxfvkn/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<absolute>"; };
 		FAD74EF81D441A7B0022B881 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = AlamofireImage.framework; path = "/Users/Alex/Library/Developer/Xcode/DerivedData/Mext-bdqzsrnreuikfxhauqqabzxxfvkn/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<absolute>"; };
 		FAE8BBA41D4FEF0500816EB3 /* SoundChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundChartViewController.swift; sourceTree = "<group>"; };
+		FAF051221D50091B00FA22FC /* UIViewController+DismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DismissKeyboard.swift"; sourceTree = "<group>"; };
 		FAFAC3E81D276D38005BA926 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAFAC3ED1D277434005BA926 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		FF0B378683EA343F1732402A /* Pods-Mext.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mext.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mext/Pods-Mext.release.xcconfig"; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				FA7559AD1D3894C300F5DD39 /* UIViewController+Alerts.h */,
 				FA7559AB1D3894B600F5DD39 /* UIViewController+Alerts.m */,
 				FA0A7C571D4D776100708429 /* CustomBubbleSizeCalculator.swift */,
+				FAF051221D50091B00FA22FC /* UIViewController+DismissKeyboard.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -368,6 +371,11 @@
 					FA0DD1981D276AD30089F512 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = C95MVP435D;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+						};
 					};
 					FA0DD1AC1D276AD30089F512 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -559,6 +567,7 @@
 				FAB4B4041D349AF9007E5B5C /* FirebaseHelper.swift in Sources */,
 				FA0DD19F1D276AD30089F512 /* LoginViewController.swift in Sources */,
 				FAA051731D3954E200BB20AC /* MessageInboxViewController.swift in Sources */,
+				FAF051231D50091B00FA22FC /* UIViewController+DismissKeyboard.swift in Sources */,
 				FA3A64471D2F68800074515A /* MusicSuggestionTableViewCell.swift in Sources */,
 				FAB4B4061D34BE16007E5B5C /* Message.swift in Sources */,
 				FA7559A31D3854A700F5DD39 /* SignUpViewController.swift in Sources */,
@@ -723,7 +732,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Mext/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.neverland.Mext;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neverland.mext949;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mext/Mext-Bridging-Header.h";
@@ -742,7 +751,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Mext/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.neverland.Mext;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neverland.mext949;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mext/Mext-Bridging-Header.h";

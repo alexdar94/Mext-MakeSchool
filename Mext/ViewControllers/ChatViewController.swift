@@ -7,6 +7,7 @@ import FirebaseDatabase
 class ChatViewController: JSQMessagesViewController {
     let TAG = "ChatViewController"
     
+    var currUser: User!
     var chatRoom: ChatRoom!
     var chatRoomName: String {
         return chatRoom.UID
@@ -58,23 +59,9 @@ class ChatViewController: JSQMessagesViewController {
         self.setup()
         self.observeMessages()
         self.observeTyping()
-        
-        //        self.collectionView.collectionViewLayout.bubbleSizeCalculator =
-        //let childUpdates = ["/\(chatRoomName)/test": "update"]
-        //ref.updateChildValues(childUpdates)
-        
-        //        let tempRef = FirebaseHelper.soundClipsRef(chatRoomName)
-        //        tempRef.queryOrderedByChild("tag").queryEqualToValue("hello")
-        //            .observeEventType(.ChildAdded, withBlock: { (snapshot) in
-        //                print(snapshot)
-        //                let text = snapshot.value!["soundName"]! as! String
-        //                print(text)
-        //            })
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.hideKeyboardWhenTappedAround()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardDidShow), name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardDidHide), name: UIKeyboardDidHideNotification, object: nil)
     }
     
     func reloadMessagesView() {
@@ -85,22 +72,9 @@ class ChatViewController: JSQMessagesViewController {
 
 // MARK: Setup
 extension ChatViewController {
-    //    func retrieveMessages() {
-    //        let messagesQuery = ref.child(chatRoomName).queryLimitedToLast(25)
-    //        messagesQuery.observeEventType(.Value, withBlock: { snapshot in
-    //            for message in snapshot.children.allObjects {
-    //                if let text = message.value["text"]{
-    //                    let message = JSQMessage(senderId: message.key, displayName: message.key, text: String(text!))
-    //                    self.messages += [message]
-    //                }
-    //            }
-    //            self.reloadMessagesView()
-    //        })
-    //    }
-    
     func setup() {
-        self.senderId = "a"
-        self.senderDisplayName = "a"
+        self.senderId = currUser.UID
+        self.senderDisplayName = currUser.displayName
     }
     
     func addMessage(id: String, text: String, soundFileUrls: [String]?, attrStringIndex: [[Int]]?) {
@@ -228,10 +202,8 @@ extension ChatViewController {
         if URL.scheme == "playMusic"{
             MusicPlayerHelper.playSoundClipFromUrl(absoluteString.substringFromIndex(absoluteString.startIndex.advancedBy(12)))
         }
-        
         return true
     }
-    
 }
 
 //MARK: Toolbar
@@ -251,11 +223,14 @@ extension ChatViewController {
         FirebaseHelper.updateChatRoomLastMessage(chatRoomName, lastMessage: text)
         finishSendingMessage()
         
+        if self.popUpTableView != nil {
+            self.popUpTableView!.removeFromSuperview()
+            self.popUpTableView = nil
+            print("remove")
+        }
         isTyping = false
         soundFileUrls = []
         attrStringIndex = [[Int]]()
-        
-        
     }
     
     override func didPressAccessoryButton(sender: UIButton!) {
@@ -281,23 +256,27 @@ extension ChatViewController {
                 currMessageLength = String(currStartToCursorText).utf16.count
                 currWord = currStartToCursorText.componentsSeparatedByString(" ").last!
                 
-                FirebaseHelper.searchSoundClip("\(currWord.lowercaseString)"){ matchingSoundClips in
-                    if let matchingSoundClips = matchingSoundClips{
-                        self.soundClips = matchingSoundClips
-                        let resultsCount = self.soundClips.count
-                        if resultsCount>0 {
-                            let numRows = resultsCount>4 ?  4 : resultsCount
-                            self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
-                            self.popUpTableView!.rowHeight = 48.0
-                            self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-                            self.popUpTableView!.delegate = self
-                            self.popUpTableView!.dataSource = self
-                            self.view.addSubview(self.popUpTableView!)
-                        }
-                    } else {
-                        if self.popUpTableView != nil {
-                            self.popUpTableView!.removeFromSuperview()
-                            self.popUpTableView = nil
+                if !currWord.containsString(".") && !currWord.containsString("#") &&
+                    !currWord.containsString("$") && !currWord.containsString("[") &&
+                    !currWord.containsString("]") {
+                    FirebaseHelper.searchSoundClip("\(currWord.lowercaseString)"){ matchingSoundClips in
+                        if let matchingSoundClips = matchingSoundClips{
+                            self.soundClips = matchingSoundClips
+                            let resultsCount = self.soundClips.count
+                            if resultsCount>0 {
+                                let numRows = resultsCount>4 ?  4 : resultsCount
+                                self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
+                                self.popUpTableView!.rowHeight = 48.0
+                                self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+                                self.popUpTableView!.delegate = self
+                                self.popUpTableView!.dataSource = self
+                                self.view.addSubview(self.popUpTableView!)
+                            }
+                        } else {
+                            if self.popUpTableView != nil {
+                                self.popUpTableView!.removeFromSuperview()
+                                self.popUpTableView = nil
+                            }
                         }
                     }
                 }
@@ -342,8 +321,6 @@ extension ChatViewController {
     
     override func textViewDidChange(textView: UITextView) {
         super.textViewDidChange(textView)
-        let message = textView.text
-//        currMessageLength = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: textView.endOfDocument)
         
         for index in (0..<attrStringIndex.count).reverse() {
             if attrStringIndex[index][0] >= prevCursorPosition {
@@ -394,7 +371,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
             self.popUpTableView!.removeFromSuperview()
             self.popUpTableView = nil
         }
-        
+        print("selected")
         if let chatingTextBox = chatingTextBox {
             let attributedString = NSMutableAttributedString(string:chatingTextBox.text + " ", attributes: [NSFontAttributeName: UIFont.init(name: "Helvetica Neue", size: 16.0)!])
             if self.attrStringIndex.count != 0 {
@@ -407,4 +384,17 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
         }
     }
     
+}
+
+// MARK: Keyboard dismiss listener
+extension ChatViewController {
+    func keyboardDidShow(notif: NSNotification) {
+    }
+    
+    func keyboardDidHide(notif: NSNotification) {
+        if self.popUpTableView != nil {
+            self.popUpTableView!.removeFromSuperview()
+            self.popUpTableView = nil
+        }
+    }
 }
