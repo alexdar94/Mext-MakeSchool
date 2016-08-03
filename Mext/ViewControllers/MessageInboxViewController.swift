@@ -67,7 +67,7 @@ class MessageInboxViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         //performSegueWithIdentifier("temp", sender: nil)
-        soundChartBarButton.image = UIImage(named: "sound")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        soundChartBarButton.image = UIImage(named: "audio_navbar")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -3,6 +3,7 @@ import Firebase
 import JSQMessagesViewController
 import UIKit
 import FirebaseDatabase
+import Toast_Swift
 
 class ChatViewController: JSQMessagesViewController {
     let TAG = "ChatViewController"
@@ -15,8 +16,8 @@ class ChatViewController: JSQMessagesViewController {
         return chatRoom.UID
     }
     
-    let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(HexColorHelper.hexStringToUIColor("#24e0ab"))
-    let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(HexColorHelper.hexStringToUIColor("#ffe46e"))
+    let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(HexColorHelper.APPTHEME_GREEN)
+    let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(HexColorHelper.APPTHEME_YELLOW)
     
     var messages = [Message]()
     
@@ -28,6 +29,7 @@ class ChatViewController: JSQMessagesViewController {
     
     // Popup suggestion tableview for text
     var popUpTableView: UITableView? = nil
+    let POPUPTAG = 10000001
     var soundClips: [SoundClip] = []
     var soundFileUrls = [String]()
     var attrStringIndex = [[Int]]()
@@ -53,6 +55,8 @@ class ChatViewController: JSQMessagesViewController {
     var isBackSpace = false
     var currLetter = ""
     
+    var firstLetterIsSpace = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,7 +65,7 @@ class ChatViewController: JSQMessagesViewController {
         self.setup()
         self.observeMessages()
         self.observeTyping()
-        self.hideKeyboardWhenTappedAround()
+        //self.hideKeyboardWhenTappedAround()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardDidHide), name: UIKeyboardDidHideNotification, object: nil)
     }
     
@@ -192,7 +196,7 @@ extension ChatViewController {
         
         
         //                attributedString.addAttribute(NSForegroundColorAttributeName, value: GradientColor(UIGradientStyle.TopToBottom, frame: CGRect(x: 0, y: 0, width: 1000, height: 1000), colors: [UIColor.redColor(), UIColor.grayColor()]), range: myRange)
-        cell.textView!.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.greenColor()]
+        cell.textView!.linkTextAttributes = [NSForegroundColorAttributeName: HexColorHelper.APPTHEME_PINK]
         cell.textView!.attributedText = attributedString
         cell.textView!.delegate = self
         return cell
@@ -211,6 +215,12 @@ extension ChatViewController {
 extension ChatViewController {
     
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
+        
+        if firstLetterIsSpace {
+            self.view.makeToast("No blank space in the start of the sentence")
+            return
+        }
+        
         let itemRef = FirebaseHelper.messagesRef(chatRoomName).childByAutoId()
         let messageItem = [
             "text": text,
@@ -227,7 +237,6 @@ extension ChatViewController {
         if self.popUpTableView != nil {
             self.popUpTableView!.removeFromSuperview()
             self.popUpTableView = nil
-            print("remove")
         }
         isTyping = false
         soundFileUrls = []
@@ -265,12 +274,13 @@ extension ChatViewController {
                             self.soundClips = matchingSoundClips
                             let resultsCount = self.soundClips.count
                             if resultsCount>0 {
-                                let numRows = resultsCount>4 ?  4 : resultsCount
+                                let numRows = resultsCount>3 ?  3 : resultsCount
                                 self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
                                 self.popUpTableView!.rowHeight = 48.0
                                 self.popUpTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
                                 self.popUpTableView!.delegate = self
                                 self.popUpTableView!.dataSource = self
+                                self.popUpTableView!.tag = self.POPUPTAG
                                 self.view.addSubview(self.popUpTableView!)
                             }
                         } else {
@@ -323,16 +333,20 @@ extension ChatViewController {
     override func textViewDidChange(textView: UITextView) {
         super.textViewDidChange(textView)
         
+        let text = textView.text
+        if text != "" {
+            firstLetterIsSpace = text[text.startIndex.advancedBy(0)...text.startIndex.advancedBy(0)] == " "
+        }
+        
         for index in (0..<attrStringIndex.count).reverse() {
             if attrStringIndex[index][0] >= prevCursorPosition {
                 attrStringIndex[index][0] = attrStringIndex[index][0] + (currCursorPosition-prevCursorPosition)
             } else if attrStringIndex[index][0] + attrStringIndex[index][1] >= prevCursorPosition {
-                print("endIndex - \(attrStringIndex[index][0] + attrStringIndex[index][1])")
                 attrStringIndex.removeAtIndex(index)
                 soundFileUrls.removeAtIndex(index)
                 let attributedString = NSMutableAttributedString(string:chatingTextBox!.text, attributes: [NSFontAttributeName: UIFont.init(name: "Helvetica Neue", size: 16.0)!])
                 for stringIndex in attrStringIndex {
-                    attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(stringIndex[0],stringIndex[1]))
+                    attributedString.addAttribute(NSForegroundColorAttributeName, value: HexColorHelper.APPTHEME_PINK, range: NSMakeRange(stringIndex[0],stringIndex[1]))
                 }
                 chatingTextBox!.attributedText = attributedString
                 if let newPosition = chatingTextBox!.positionFromPosition(chatingTextBox!.beginningOfDocument, inDirection: UITextLayoutDirection.Right, offset: prevCursorPosition) {
@@ -372,12 +386,11 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
             self.popUpTableView!.removeFromSuperview()
             self.popUpTableView = nil
         }
-        print("selected")
         if let chatingTextBox = chatingTextBox {
             let attributedString = NSMutableAttributedString(string:chatingTextBox.text + " ", attributes: [NSFontAttributeName: UIFont.init(name: "Helvetica Neue", size: 16.0)!])
             if self.attrStringIndex.count != 0 {
                 for stringIndex in attrStringIndex {
-                    attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor() , range: NSMakeRange(stringIndex[0],stringIndex[1]))
+                    attributedString.addAttribute(NSForegroundColorAttributeName, value: HexColorHelper.APPTHEME_PINK, range: NSMakeRange(stringIndex[0],stringIndex[1]))
                     print("added index - \(stringIndex[0])")
                 }
             }
@@ -393,6 +406,16 @@ extension ChatViewController {
         if self.popUpTableView != nil {
             self.popUpTableView!.removeFromSuperview()
             self.popUpTableView = nil
+        }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let touch: UITouch = touches.first!
+        if touch.view!.tag != POPUPTAG {
+            if self.popUpTableView != nil {
+                self.popUpTableView!.removeFromSuperview()
+                self.popUpTableView = nil
+            }
         }
     }
 }

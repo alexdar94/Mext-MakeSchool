@@ -9,6 +9,11 @@
 import Foundation
 
 class HexColorHelper {
+    static let APPTHEME_PINK = HexColorHelper.hexStringToUIColor("#fe696a")
+    static let APPTHEME_ORANGE = 0
+    static let APPTHEME_GREEN = HexColorHelper.hexStringToUIColor("#ffe46e")
+    static let APPTHEME_YELLOW = HexColorHelper.hexStringToUIColor("#24e0ab")
+    
     static func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
         

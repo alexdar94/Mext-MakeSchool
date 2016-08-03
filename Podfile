@@ -10,6 +10,7 @@ target 'Mext' do
   pod 'Firebase'
   pod 'JSQMessagesViewController'
   pod 'Firebase/Database'
+  pod 'Toast-Swift', '~> 1.3.0'
 
   # Pods for Auth
   pod 'FirebaseUI'

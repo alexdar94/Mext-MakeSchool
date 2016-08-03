@@ -173,6 +173,7 @@
                                 <items>
                                     <navigationItem title="Mext Inbox" id="B1f-BJ-twz">
                                         <barButtonItem key="leftBarButtonItem" title="Item" id="TWq-9U-0mc">
+                                            <inset key="imageInsets" minX="6" minY="4" maxX="6" maxY="4"/>
                                             <connections>
                                                 <segue destination="t4S-D4-cB1" kind="show" id="I3L-fq-Pbd"/>
                                             </connections>
@@ -324,8 +325,8 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4bW-wX-kvL">
                                 <rect key="frame" x="20" y="84" width="560" height="29"/>
                                 <segments>
-                                    <segment title="Trending"/>
-                                    <segment title="My Sounds"/>
+                                    <segment title="Trending Muji"/>
+                                    <segment title="My Muji"/>
                                 </segments>
                                 <color key="tintColor" red="0.14117647058823529" green="0.8784313725490196" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -333,24 +334,24 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6H-IY-7Rd">
-                                <rect key="frame" x="0.0" y="132" width="600" height="397"/>
+                                <rect key="frame" x="0.0" y="132" width="600" height="388"/>
                                 <connections>
                                     <segue destination="xRD-q9-ud9" kind="embed" id="6Pv-Uu-zkr"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZe-EA-hU4">
-                                <rect key="frame" x="0.0" y="132" width="600" height="397"/>
+                                <rect key="frame" x="0.0" y="132" width="600" height="388"/>
                                 <connections>
                                     <segue destination="JyM-Mk-aVE" kind="embed" id="hQK-AC-2aq"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqt-Ea-2p4">
-                                <rect key="frame" x="273" y="537" width="55" height="55"/>
+                                <rect key="frame" x="270.5" y="528" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="WaW-Js-4g9"/>
-                                    <constraint firstAttribute="width" constant="55" id="vYx-WB-5M0"/>
+                                    <constraint firstAttribute="height" constant="60" id="WaW-Js-4g9"/>
+                                    <constraint firstAttribute="width" constant="60" id="vYx-WB-5M0"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="record"/>
+                                <state key="normal" title="Button" image="mic"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -367,7 +368,7 @@
                             <constraint firstAttribute="trailing" secondItem="pZe-EA-hU4" secondAttribute="trailing" id="gkL-Ka-CDk"/>
                             <constraint firstItem="4bW-wX-kvL" firstAttribute="top" secondItem="2DK-BL-Qvi" secondAttribute="bottom" constant="20" id="kDd-sd-oGl"/>
                             <constraint firstItem="pZe-EA-hU4" firstAttribute="top" secondItem="4bW-wX-kvL" secondAttribute="bottom" constant="20" id="kDg-Z0-cwL"/>
-                            <constraint firstItem="Nhx-py-jkT" firstAttribute="top" secondItem="bqt-Ea-2p4" secondAttribute="bottom" constant="8" id="keu-Zj-RMu"/>
+                            <constraint firstItem="Nhx-py-jkT" firstAttribute="top" secondItem="bqt-Ea-2p4" secondAttribute="bottom" constant="12" id="keu-Zj-RMu"/>
                             <constraint firstItem="2DK-BL-Qvi" firstAttribute="top" secondItem="RfY-AX-0Gy" secondAttribute="top" constant="20" id="ngJ-AU-FVV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4bW-wX-kvL" secondAttribute="trailing" id="t33-63-q6E"/>
                             <constraint firstItem="q6H-IY-7Rd" firstAttribute="top" secondItem="4bW-wX-kvL" secondAttribute="bottom" constant="20" id="ylE-nf-KGq"/>
@@ -541,6 +542,9 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AdF-Et-xQP">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="barTintColor" red="0.99607843139999996" green="0.34901960780000002" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Title" id="fJB-MN-9Yy">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="FPa-tJ-QAL">
@@ -554,7 +558,7 @@
                             </navigationBar>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="iZb-oi-UwF">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <color key="barTintColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.14117647059999999" green="0.87843137250000003" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="6gv-iG-0uG" id="TPh-UH-oM6"/>
@@ -578,20 +582,27 @@
                                                         <constraint firstAttribute="width" constant="44" id="fET-U4-rhb"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzc-tr-vdd">
-                                                    <rect key="frame" x="60" y="18" width="452" height="21"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzc-tr-vdd">
+                                                    <rect key="frame" x="60" y="18" width="412" height="21"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Label">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.99607843137254903" green="0.41176470588235292" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nt7-Ma-1rm">
-                                                    <rect key="frame" x="527" y="7" width="42" height="42"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nt7-Ma-1rm">
+                                                    <rect key="frame" x="503" y="17" width="80" height="22"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="70" id="YN8-yu-HSZ"/>
-                                                        <constraint firstAttribute="height" constant="44" id="fx9-6l-bnT"/>
+                                                        <constraint firstAttribute="width" constant="80" id="YN8-yu-HSZ"/>
+                                                        <constraint firstAttribute="height" constant="22" id="fx9-6l-bnT"/>
                                                     </constraints>
-                                                    <state key="normal" image="add"/>
-                                                    <state key="selected" image="check"/>
+                                                    <state key="normal" image="friend"/>
+                                                    <state key="selected" image="unfriend"/>
                                                     <connections>
                                                         <action selector="addFriendButtonTapped:" destination="joA-oa-7ec" eventType="touchUpInside" id="bBu-Kk-QTV"/>
                                                     </connections>
@@ -599,7 +610,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="dzc-tr-vdd" firstAttribute="leading" secondItem="Q6Y-9M-94w" secondAttribute="trailing" constant="8" id="7f9-CN-YA8"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="dzc-tr-vdd" secondAttribute="trailing" constant="80" id="AYL-uy-Cpu"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="dzc-tr-vdd" secondAttribute="trailing" constant="120" id="AYL-uy-Cpu"/>
                                                 <constraint firstItem="Q6Y-9M-94w" firstAttribute="centerY" secondItem="fgg-U9-H6b" secondAttribute="centerY" id="HE3-dO-rQs"/>
                                                 <constraint firstItem="Nt7-Ma-1rm" firstAttribute="centerY" secondItem="fgg-U9-H6b" secondAttribute="centerY" id="JgM-7X-HaZ"/>
                                                 <constraint firstItem="Q6Y-9M-94w" firstAttribute="leading" secondItem="fgg-U9-H6b" secondAttribute="leadingMargin" id="KsQ-Iy-ag1"/>
@@ -716,13 +727,13 @@
                         <viewControllerLayoutGuide type="bottom" id="5ZI-RK-tsb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IOi-TQ-cZz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="397"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="388"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syw-Mc-o1A">
                                 <rect key="frame" x="89" y="150" width="174" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -742,13 +753,13 @@
                         <viewControllerLayoutGuide type="bottom" id="fX8-86-ha5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wME-jM-SUl">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="397"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="388"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Sounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDS-jy-lJs">
                                 <rect key="frame" x="355" y="173" width="117" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -761,10 +772,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="42" height="42"/>
-        <image name="check" width="42" height="42"/>
+        <image name="friend" width="301" height="60"/>
+        <image name="mic" width="175" height="175"/>
         <image name="nobody_m.original" width="1024" height="1024"/>
-        <image name="record" width="120" height="120"/>
+        <image name="unfriend" width="301" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5vo-VD-72L"/>
