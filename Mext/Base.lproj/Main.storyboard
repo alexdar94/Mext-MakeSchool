@@ -126,6 +126,9 @@
                                     <action selector="didTapSignUp:" destination="l39-op-Ott" eventType="touchUpInside" id="Lpb-cm-6ib"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O7k-ni-pCO">
+                                <rect key="frame" x="155" y="428" width="240" height="128"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -146,6 +149,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="sRU-tV-nTF" id="5Fp-cH-2BI"/>
                         <outlet property="passwordTextField" destination="pAd-He-aD4" id="KFq-W2-nJ3"/>
+                        <outlet property="profilePictureImageView" destination="O7k-ni-pCO" id="h3l-Xk-ReW"/>
                         <outlet property="usernameTextField" destination="p1o-lp-tx8" id="H9i-rb-tFo"/>
                     </connections>
                 </viewController>

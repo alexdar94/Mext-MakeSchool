@@ -12,8 +12,8 @@ import FirebaseDatabase
 
 // MARK: Messages Endpoint
 class FirebaseHelper {
-
-static let TAG = "FirebaseHelper"
+    
+    static let TAG = "FirebaseHelper"
     
     static let ref = FIRDatabase.database().reference()
     
@@ -177,19 +177,27 @@ extension FirebaseHelper{
         return chatRoomsRef().child("\(chatRoomUID)/lastMessageTime")
     }
     
-    static func getChatRoom(chatRoomUID: String, onComplete: ChatRoom -> Void ) {
-        chatRoomRef(chatRoomUID).observeSingleEventOfType(.Value, withBlock: { snapshot in
-            if let value = snapshot.value as? [String: AnyObject] {
-                onComplete(ChatRoom(UID: chatRoomUID
-                    , lastMessage: value["lastMessage"] as! String
-                    , FIRLastMessageTimeStamp: ["lastMessageTime": value["lastMessageTime"]!]
-                    , title: value["title"] as! String
-                    , chatRoomPictureUrl: value["chatRoomPictureUrl"] as! String))
-            } else {
-                print("Firebase ChatRoom Endpoint - null")
+    static func getChatRoom(currUserUID:String, chatRoomUID: String, onComplete: ChatRoom -> Void ) {
+        getChatRoomMemberUIDs(chatRoomUID){ chatRoomMemberUIDs in
+            if let chatRoomMemberUIDs = chatRoomMemberUIDs{
+                let chatPartnerUID = chatRoomMemberUIDs.filter{$0 != currUserUID}
+                getUser(chatPartnerUID[0]){ user in
+                    if let user = user {
+                        chatRoomRef(chatRoomUID).observeSingleEventOfType(.Value, withBlock: { snapshot in
+                            if let value = snapshot.value as? [String: AnyObject] {
+                                onComplete(ChatRoom(UID: chatRoomUID
+                                    , lastMessage: value["lastMessage"] as! String
+                                    , FIRLastMessageTimeStamp: ["lastMessageTime": value["lastMessageTime"]!]
+                                    , title: user.displayName
+                                    , chatRoomPictureUrl: user.photoUrl))
+                            } else {
+                                print("Firebase ChatRoom Endpoint - null")
+                            }
+                        })
+                    }
+                }
             }
-            
-        })
+        }
     }
     
     static func saveNewChatRoom(chatRoomUID: String, newChatRoom: ChatRoom){
@@ -230,6 +238,17 @@ extension FirebaseHelper{
         newChatRoomMemberRef.updateChildValues(newChatRoomMember_JSON)
     }
     
+    static func getChatRoomMemberUIDs(chatRoomUID: String, onComplete: [String]? -> Void){
+        chatRoomMembersRef().child(chatRoomUID).observeSingleEventOfType(.Value, withBlock: { snapshot in
+            var chatRoomMemberUIDs: [String]? = nil
+            if let value = snapshot.value as? [String: AnyObject] {
+                chatRoomMemberUIDs = Array(value.keys)
+            } else {
+                print("Firebase chatRoomMemberUIDs Endpoint - null")
+            }
+            onComplete(chatRoomMemberUIDs)
+        })
+    }
 }
 
 // MARK: Friendships Endpoint
@@ -238,17 +257,17 @@ extension FirebaseHelper{
         return ref.child("Friendships")
     }
     
-//    static func getUserFriendUIDs(userUID: String, onComplete: [String]? -> Void ) {
-//        userFriendsRef(userUID).observeEventType(.Value, withBlock: { snapshot in
-//            var friendKeys: [String]? = nil
-//            if let value = snapshot.value as? [String: AnyObject] {
-//                friendKeys = Array(value.keys)
-//            } else {
-//                print("Firebase Friends Endpoint - null")
-//            }
-//            onComplete(friendKeys)
-//        })
-//    }
+    //    static func getUserFriendUIDs(userUID: String, onComplete: [String]? -> Void ) {
+    //        userFriendsRef(userUID).observeEventType(.Value, withBlock: { snapshot in
+    //            var friendKeys: [String]? = nil
+    //            if let value = snapshot.value as? [String: AnyObject] {
+    //                friendKeys = Array(value.keys)
+    //            } else {
+    //                print("Firebase Friends Endpoint - null")
+    //            }
+    //            onComplete(friendKeys)
+    //        })
+    //    }
     
     static func getUserFriendUIDs(fromUserUID: String, onComplete: [String]? -> Void ) {
         friendshipsRef().queryOrderedByChild("fromUser").queryEqualToValue(fromUserUID)

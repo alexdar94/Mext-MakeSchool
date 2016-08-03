@@ -31,8 +31,8 @@ class MessageInboxViewController: UIViewController {
         FirebaseHelper.getUserChatRoomUIDs(self.currUser.UID){ chatRoomKeys in
             
             if let chatRoomKeys = chatRoomKeys {
-                for uid in chatRoomKeys {
-                    FirebaseHelper.getChatRoom(uid, onComplete: { chatRoom in
+                for chatRoomUID in chatRoomKeys {
+                    FirebaseHelper.getChatRoom(self.currUser.UID, chatRoomUID: chatRoomUID, onComplete: { chatRoom in
                         
                         if (self.chatRooms?.append(chatRoom)) == nil {
                             self.chatRooms = [chatRoom]

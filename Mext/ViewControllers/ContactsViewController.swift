@@ -111,7 +111,7 @@ extension ContactsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         FirebaseHelper.getExistingChatRoomKey(currUser.UID, chatPartnerUID: friends[contactsTableView.indexPathForSelectedRow!.row].UID){ chatRoomKey in
             if let chatRoomKey = chatRoomKey {
-                FirebaseHelper.getChatRoom(chatRoomKey){ chatRoom in
+                FirebaseHelper.getChatRoom(self.currUser.UID,chatRoomUID: chatRoomKey){ chatRoom in
                     self.chatVCChatRoom = chatRoom
                     self.performSegueWithIdentifier("toChat", sender: nil)
                 }

@@ -16,11 +16,15 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var profilePictureImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.hideKeyboardWhenTappedAround() 
+        self.hideKeyboardWhenTappedAround()
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
+        profilePictureImageView.userInteractionEnabled = true
+        profilePictureImageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -64,4 +68,8 @@ class SignUpViewController: UIViewController {
         
     }
     
+    func imageTapped(img: AnyObject)
+    {
+        
+    }
 }
