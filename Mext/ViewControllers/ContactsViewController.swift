@@ -131,5 +131,8 @@ extension ContactsViewController: UITableViewDataSource, UITableViewDelegate {
                 self.performSegueWithIdentifier("toChat", sender: nil)
             }
         }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+    
 }

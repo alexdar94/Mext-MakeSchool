@@ -119,4 +119,9 @@ extension MessageInboxViewController: UITableViewDataSource{
             //            tableView.reloadData()
         }
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // do stuff
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
 }
