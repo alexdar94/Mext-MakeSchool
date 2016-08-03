@@ -64,8 +64,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     @IBAction func didTapSignOut(sender: AnyObject) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.signOut()
+        
     }
 }
 

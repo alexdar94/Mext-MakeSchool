@@ -16,6 +16,7 @@ class MessageInboxViewController: UIViewController {
     @IBOutlet weak var soundChartBarButton: UIBarButtonItem!
     @IBOutlet weak var messageInboxTableView: UITableView!
     
+    @IBOutlet weak var signOutBarButton: UIBarButtonItem!
     var currUser: User!
     var currUserUID: String!
     var chatRooms: [ChatRoom]! {
@@ -68,6 +69,7 @@ class MessageInboxViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         //performSegueWithIdentifier("temp", sender: nil)
         soundChartBarButton.image = UIImage(named: "audio_navbar")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        signOutBarButton.image = UIImage(named: "signout")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -86,6 +88,11 @@ class MessageInboxViewController: UIViewController {
     
     @IBAction func unwindToMessageInboxViewController(segue: UIStoryboardSegue) {
         
+    }
+    
+    @IBAction func didTapSignOut(sender: AnyObject) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.signOut()
     }
 }
 

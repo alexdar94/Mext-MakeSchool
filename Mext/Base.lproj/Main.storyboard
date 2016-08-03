@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -178,12 +179,19 @@
                                                 <segue destination="t4S-D4-cB1" kind="show" id="I3L-fq-Pbd"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="YD2-fS-rAJ">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <segue destination="VOY-ee-nuV" kind="show" identifier="toContacts" id="YmT-2z-Blk"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem image="signout" id="YgE-2F-gn8">
+                                                <connections>
+                                                    <action selector="didTapSignOut:" destination="4oS-ak-yVF" id="fFn-WA-2pc"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem systemItem="compose" id="YD2-fS-rAJ">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <segue destination="VOY-ee-nuV" kind="show" identifier="toContacts" id="YmT-2z-Blk"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -286,6 +294,7 @@
                     <navigationItem key="navigationItem" id="62w-jo-Cje"/>
                     <connections>
                         <outlet property="messageInboxTableView" destination="a6p-E0-PkY" id="qqx-Xe-04z"/>
+                        <outlet property="signOutBarButton" destination="YgE-2F-gn8" id="f7x-op-hUa"/>
                         <outlet property="soundChartBarButton" destination="TWq-9U-0mc" id="GOm-Vu-HNT"/>
                     </connections>
                 </viewController>
@@ -775,6 +784,7 @@
         <image name="friend" width="301" height="60"/>
         <image name="mic" width="175" height="175"/>
         <image name="nobody_m.original" width="1024" height="1024"/>
+        <image name="signout" width="25" height="26"/>
         <image name="unfriend" width="301" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
