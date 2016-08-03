@@ -126,8 +126,8 @@
                                     <action selector="didTapSignUp:" destination="l39-op-Ott" eventType="touchUpInside" id="Lpb-cm-6ib"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O7k-ni-pCO">
-                                <rect key="frame" x="155" y="428" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="O7k-ni-pCO">
+                                <rect key="frame" x="186" y="101" width="240" height="128"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -785,6 +785,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="42" height="42"/>
         <image name="friend" width="301" height="60"/>
         <image name="mic" width="175" height="175"/>
         <image name="nobody_m.original" width="1024" height="1024"/>
