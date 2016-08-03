@@ -238,6 +238,7 @@ extension ChatViewController {
             self.popUpTableView!.removeFromSuperview()
             self.popUpTableView = nil
         }
+        chatingTextBox?.textColor = UIColor.blackColor()
         isTyping = false
         soundFileUrls = []
         attrStringIndex = [[Int]]()
