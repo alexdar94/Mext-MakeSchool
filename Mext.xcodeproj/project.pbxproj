@@ -19,6 +19,7 @@
 		FA0DD1B21D276AD30089F512 /* MextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DD1B11D276AD30089F512 /* MextTests.swift */; };
 		FA0DD1BD1D276AD30089F512 /* MextUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DD1BC1D276AD30089F512 /* MextUITests.swift */; };
 		FA24801F1D4C68CC00988A8A /* EmojiChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24801E1D4C68CC00988A8A /* EmojiChecker.swift */; };
+		FA30C61C1D525D85005352C4 /* FirebaseStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA30C61B1D525D85005352C4 /* FirebaseStorageHelper.swift */; };
 		FA3A64471D2F68800074515A /* MusicSuggestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A64461D2F68800074515A /* MusicSuggestionTableViewCell.swift */; };
 		FA60537C1D458D3400720599 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60537B1D458D3400720599 /* AddFriendViewController.swift */; };
 		FA6053801D45ABD400720599 /* AddFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60537F1D45ABD400720599 /* AddFriendTableViewCell.swift */; };
@@ -99,6 +100,7 @@
 		FA0DD1BC1D276AD30089F512 /* MextUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MextUITests.swift; sourceTree = "<group>"; };
 		FA0DD1BE1D276AD30089F512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA24801E1D4C68CC00988A8A /* EmojiChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiChecker.swift; sourceTree = "<group>"; };
+		FA30C61B1D525D85005352C4 /* FirebaseStorageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageHelper.swift; sourceTree = "<group>"; };
 		FA3A64461D2F68800074515A /* MusicSuggestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSuggestionTableViewCell.swift; sourceTree = "<group>"; };
 		FA60537B1D458D3400720599 /* AddFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		FA60537F1D45ABD400720599 /* AddFriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendTableViewCell.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				FA24801E1D4C68CC00988A8A /* EmojiChecker.swift */,
 				FAB9D0D01D50737E0005F631 /* HexColorHelper.swift */,
 				FAC3129C1D51BF8D008794D9 /* PhotoTakingHelper.swift */,
+				FA30C61B1D525D85005352C4 /* FirebaseStorageHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAB09E181D3D403C001E0115 /* MessageInboxTableViewCell.swift in Sources */,
+				FA30C61C1D525D85005352C4 /* FirebaseStorageHelper.swift in Sources */,
 				FAB4B4041D349AF9007E5B5C /* FirebaseHelper.swift in Sources */,
 				FAB9D0D11D50737E0005F631 /* HexColorHelper.swift in Sources */,
 				FA0DD19F1D276AD30089F512 /* LoginViewController.swift in Sources */,

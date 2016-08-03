@@ -45,8 +45,11 @@ class SignUpViewController: UIViewController {
                         }
                         
                         if let FIRUser = FIRAuth.auth()?.currentUser {
-                            let user = User(UID: FIRUser.uid, email: FIRUser.email!, displayName: username, photoUrl: "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg", phoneNumber: "0123" )
-                            FirebaseHelper.saveNewUser(user)
+                            
+                            FirebaseStorageHelper.uploadPhoto(FIRUser.uid, image: self.profilePictureImageView.image!) { photoUrl in
+                                let user = User(UID: FIRUser.uid, email: FIRUser.email!, displayName: username, photoUrl: photoUrl, phoneNumber: "0123" )
+                                FirebaseHelper.saveNewUser(user)
+                            }
 //                            let changeRequest = user.profileChangeRequest()
 //                            
 //                            changeRequest.displayName = username
