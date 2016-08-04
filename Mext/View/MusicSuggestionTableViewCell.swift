@@ -42,7 +42,7 @@ class MusicSuggestionTableViewCell: UITableViewCell {
         
         songName = UILabel()
         songName.frame = CGRectMake(gap_image + imageSize + gap_image, gap_label, labelWidth, labelHeight)
-        songName.textColor = UIColor.blackColor()
+        songName.textColor = HexColorHelper.APPTHEME_PINK
         //songName.centerYAnchor.constraintEqualToAnchor(contentView.centerYAnchor).active = true
         //NSLayoutConstraint(item: songName, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0).active = true
         contentView.addSubview(songName)

@@ -20,6 +20,9 @@
 		FA0DD1BD1D276AD30089F512 /* MextUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DD1BC1D276AD30089F512 /* MextUITests.swift */; };
 		FA24801F1D4C68CC00988A8A /* EmojiChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24801E1D4C68CC00988A8A /* EmojiChecker.swift */; };
 		FA30C61C1D525D85005352C4 /* FirebaseStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA30C61B1D525D85005352C4 /* FirebaseStorageHelper.swift */; };
+		FA30C61E1D53052A005352C4 /* TrendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA30C61D1D53052A005352C4 /* TrendingTableViewCell.swift */; };
+		FA30C6201D5308F6005352C4 /* TrendingMujiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA30C61F1D5308F6005352C4 /* TrendingMujiViewController.swift */; };
+		FA30C6221D530917005352C4 /* MyMujiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA30C6211D530917005352C4 /* MyMujiViewController.swift */; };
 		FA3A64471D2F68800074515A /* MusicSuggestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A64461D2F68800074515A /* MusicSuggestionTableViewCell.swift */; };
 		FA60537C1D458D3400720599 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60537B1D458D3400720599 /* AddFriendViewController.swift */; };
 		FA6053801D45ABD400720599 /* AddFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60537F1D45ABD400720599 /* AddFriendTableViewCell.swift */; };
@@ -101,6 +104,9 @@
 		FA0DD1BE1D276AD30089F512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA24801E1D4C68CC00988A8A /* EmojiChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiChecker.swift; sourceTree = "<group>"; };
 		FA30C61B1D525D85005352C4 /* FirebaseStorageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageHelper.swift; sourceTree = "<group>"; };
+		FA30C61D1D53052A005352C4 /* TrendingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingTableViewCell.swift; sourceTree = "<group>"; };
+		FA30C61F1D5308F6005352C4 /* TrendingMujiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingMujiViewController.swift; sourceTree = "<group>"; };
+		FA30C6211D530917005352C4 /* MyMujiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMujiViewController.swift; sourceTree = "<group>"; };
 		FA3A64461D2F68800074515A /* MusicSuggestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSuggestionTableViewCell.swift; sourceTree = "<group>"; };
 		FA60537B1D458D3400720599 /* AddFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		FA60537F1D45ABD400720599 /* AddFriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendTableViewCell.swift; sourceTree = "<group>"; };
@@ -284,6 +290,7 @@
 				FAB09E171D3D403C001E0115 /* MessageInboxTableViewCell.swift */,
 				FAC8188F1D41DE1600B837B4 /* ContactTableViewCell.swift */,
 				FA60537F1D45ABD400720599 /* AddFriendTableViewCell.swift */,
+				FA30C61D1D53052A005352C4 /* TrendingTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,6 +305,8 @@
 				FAC482CE1D3D789E00F83E91 /* ContactsViewController.swift */,
 				FA60537B1D458D3400720599 /* AddFriendViewController.swift */,
 				FAE8BBA41D4FEF0500816EB3 /* SoundChartViewController.swift */,
+				FA30C61F1D5308F6005352C4 /* TrendingMujiViewController.swift */,
+				FA30C6211D530917005352C4 /* MyMujiViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -583,7 +592,9 @@
 				FAB4B4061D34BE16007E5B5C /* Message.swift in Sources */,
 				FA7559A31D3854A700F5DD39 /* SignUpViewController.swift in Sources */,
 				FAC482CD1D3D73C500F83E91 /* User.swift in Sources */,
+				FA30C6221D530917005352C4 /* MyMujiViewController.swift in Sources */,
 				FAFAC3EE1D277434005BA926 /* ChatViewController.swift in Sources */,
+				FA30C61E1D53052A005352C4 /* TrendingTableViewCell.swift in Sources */,
 				FAE8BBA51D4FEF0500816EB3 /* SoundChartViewController.swift in Sources */,
 				FA0DD19D1D276AD30089F512 /* AppDelegate.swift in Sources */,
 				FA0A7C581D4D776100708429 /* CustomBubbleSizeCalculator.swift in Sources */,
@@ -597,6 +608,7 @@
 				FAC818901D41DE1600B837B4 /* ContactTableViewCell.swift in Sources */,
 				FA24801F1D4C68CC00988A8A /* EmojiChecker.swift in Sources */,
 				FA6053801D45ABD400720599 /* AddFriendTableViewCell.swift in Sources */,
+				FA30C6201D5308F6005352C4 /* TrendingMujiViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

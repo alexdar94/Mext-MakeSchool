@@ -142,7 +142,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let firebaseAuth = FIRAuth.auth()
         do {
             try firebaseAuth?.signOut()
-            
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }

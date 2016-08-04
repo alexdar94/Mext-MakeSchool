@@ -89,14 +89,6 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
             // should check if specific permissions missing
             print("Result: \(result)")
             
-            if result.grantedPermissions.contains("email") {
-                print()
-            }
-            
-            if result.grantedPermissions.contains("user_friends") {
-                print("user friends returned")
-            }
-            
             var fbRequest = FBSDKGraphRequest(graphPath:"me", parameters: ["fields": "email,user_friends"]);
             fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
                 
