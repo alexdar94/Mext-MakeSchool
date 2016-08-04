@@ -13,6 +13,7 @@ import AlamofireImage
 class ContactsViewController: UIViewController {
     let TAG = "ContactsViewController"
     
+    @IBOutlet weak var notificationBarButton: UIBarButtonItem!
     @IBOutlet weak var contactsTableView: UITableView!
     
     var currUser: User!
@@ -61,6 +62,7 @@ class ContactsViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         //performSegueWithIdentifier("temp", sender: nil)
+        //notificationBarButton.image = UIImage(named: "notification")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

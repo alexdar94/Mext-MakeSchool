@@ -484,12 +484,21 @@
                                                 <segue destination="PTc-Gb-7MT" kind="unwind" unwindAction="unwindToMessageInboxViewController:" id="M3n-t3-S40"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="u65-2g-HI3">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <segue destination="6gv-iG-0uG" kind="show" identifier="toAddFriendVC" id="hYp-xb-EAf"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem systemItem="add" id="u65-2g-HI3">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <segue destination="6gv-iG-0uG" kind="show" identifier="toAddFriendVC" id="hYp-xb-EAf"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Item" image="notification" id="Lia-ke-hJf">
+                                                <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <segue destination="lId-ir-TeU" kind="show" id="LPi-XL-kDp"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -563,6 +572,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="contactsTableView" destination="d4c-da-FhX" id="4D6-q1-WpK"/>
+                        <outlet property="notificationBarButton" destination="Lia-ke-hJf" id="x5N-d9-d0I"/>
                         <segue destination="hwY-XU-ykk" kind="show" identifier="toChat" id="ASL-Kn-si8"/>
                     </connections>
                 </viewController>
@@ -570,6 +580,49 @@
                 <exit id="PTc-Gb-7MT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4369" y="1005"/>
+        </scene>
+        <!--Friend Request View Controller-->
+        <scene sceneID="NdQ-BD-9SM">
+            <objects>
+                <viewController id="lId-ir-TeU" customClass="FriendRequestViewController" customModule="Mext" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="34r-bC-hOm"/>
+                        <viewControllerLayoutGuide type="bottom" id="sog-Ua-Tb8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kce-K8-zdJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZH-Gc-Sqd">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="barTintColor" red="0.99607843139999996" green="0.34901960780000002" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Friend Request" id="y5l-gl-6bM">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="sA2-UO-Z6K">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <segue destination="0Ev-7d-3Wl" kind="unwind" unwindAction="unwindToContactsViewController:" id="7CP-Ky-pZt"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4ZH-Gc-Sqd" secondAttribute="trailing" id="OHU-l9-g8f"/>
+                            <constraint firstItem="4ZH-Gc-Sqd" firstAttribute="top" secondItem="Kce-K8-zdJ" secondAttribute="top" constant="20" id="OXh-OC-6qw"/>
+                            <constraint firstItem="4ZH-Gc-Sqd" firstAttribute="leading" secondItem="Kce-K8-zdJ" secondAttribute="leading" id="yaa-5Y-itb"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m7J-le-8Av" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0Ev-7d-3Wl" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4369" y="1785"/>
         </scene>
         <!--Add Friend View Controller-->
         <scene sceneID="sRy-AB-jQw">
@@ -862,10 +915,11 @@
         <image name="friend" width="301" height="60"/>
         <image name="mic" width="175" height="175"/>
         <image name="nobody_m.original" width="1024" height="1024"/>
+        <image name="notification" width="32" height="32"/>
         <image name="signout" width="25" height="26"/>
         <image name="unfriend" width="301" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5vo-VD-72L"/>
+        <segue reference="ASL-Kn-si8"/>
     </inferredMetricsTieBreakers>
 </document>
