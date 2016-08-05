@@ -24,6 +24,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardWhenTappedAround()
+        profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.size.width / 2
         let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profilePictureTapped:"))
         profilePictureImageView.userInteractionEnabled = true
         profilePictureImageView.addGestureRecognizer(tapGestureRecognizer)
@@ -83,4 +84,5 @@ class SignUpViewController: UIViewController {
             self.profilePictureImageView.image = image
         }
     }
+    
 }

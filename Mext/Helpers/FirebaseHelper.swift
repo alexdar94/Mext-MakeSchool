@@ -257,18 +257,6 @@ extension FirebaseHelper{
         return ref.child("Friendships")
     }
     
-    //    static func getUserFriendUIDs(userUID: String, onComplete: [String]? -> Void ) {
-    //        userFriendsRef(userUID).observeEventType(.Value, withBlock: { snapshot in
-    //            var friendKeys: [String]? = nil
-    //            if let value = snapshot.value as? [String: AnyObject] {
-    //                friendKeys = Array(value.keys)
-    //            } else {
-    //                print("Firebase Friends Endpoint - null")
-    //            }
-    //            onComplete(friendKeys)
-    //        })
-    //    }
-    
     static func getUserFriendUIDs(fromUserUID: String, onComplete: [String]? -> Void ) {
         friendshipsRef().queryOrderedByChild("fromUser").queryEqualToValue(fromUserUID)
             .observeEventType(.Value, withBlock: { snapshot in
@@ -287,9 +275,9 @@ extension FirebaseHelper{
     static func saveFriendship(fromUserUID: String, toUserUID: String){
         let newFriendshipRef = FirebaseHelper.friendshipsRef().child("\(fromUserUID)\(toUserUID)")
         let newFriendship_JSON = [
-            "fromUser": fromUserUID
+            "fromUser": "pending\(fromUserUID)"
             , "toUser": toUserUID
-            , "status": "pending"
+            , "status": "pending\(toUserUID)"
         ]
         newFriendshipRef.setValue(newFriendship_JSON)
     }
@@ -297,6 +285,23 @@ extension FirebaseHelper{
     static func removeFriendship(fromUserUID: String, toUserUID: String){
         friendshipsRef().child("\(fromUserUID)\(toUserUID)").removeValue()
     }
+    
+    static func getPendingFriendRequest(userUID: String, onComplete: [User]? -> Void ) {
+        friendshipsRef().queryOrderedByChild("toUser").queryEqualToValue("pending\(userUID)")
+            .observeEventType(.Value, withBlock: { snapshot in
+                var friendUIDs: [String]?
+                for friendshipJSON in snapshot.children.allObjects {
+                    if let friendUID = friendshipJSON.value["fromUser"] as? String {
+                        if (friendUIDs?.append(friendUID)) == nil {
+                            friendUIDs = [friendUID]
+                        }
+                    }
+                }
+                
+                
+            })
+    }
+    
 }
 
 // MARK: UID Gen
