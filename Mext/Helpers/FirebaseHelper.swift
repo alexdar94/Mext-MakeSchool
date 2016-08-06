@@ -73,6 +73,10 @@ extension FirebaseHelper{
         return userRef(userUID).child("friends")
     }
     
+    static func userPhotoUrlRef(userUID: String) -> FIRDatabaseReference {
+        return userRef(userUID).child("photoUrl")
+    }
+    
     static func getUser(userUID: String, onComplete: User? -> Void ) {
         
         userRef(userUID).observeSingleEventOfType(.Value, withBlock: { snapshot in
@@ -86,6 +90,10 @@ extension FirebaseHelper{
             
             onComplete(user)
         })
+    }
+    
+    static func updateUserProfilePicUrl(userUID: String, photoUrl: String){
+        userPhotoUrlRef(userUID).setValue(photoUrl)
     }
     
     static func getUserChatRoomUIDs(userUID: String, onComplete: [String]? -> Void ) {
