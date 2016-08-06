@@ -50,6 +50,7 @@ extension FriendRequestViewController: UITableViewDataSource {
             filter: filter
         )
         
+        cell.delegate = self
         return cell
     }
     
@@ -74,6 +75,7 @@ extension FriendRequestViewController: FriendRequestTableViewCellDelegate {
     
     func cell(cell: FriendRequestTableViewCell, didTapDecline row: Int) {
         FirebaseHelper.declineFriendRequest(currUser.UID, requestingUserUID: friendRequests![row].UID)
+        friendRequests?.removeAtIndex(row)
     }
     
 }

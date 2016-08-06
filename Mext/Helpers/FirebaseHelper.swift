@@ -307,9 +307,10 @@ extension FirebaseHelper{
     }
     
     static func getPendingFriendRequest(userUID: String, onComplete: [User]? -> Void ) {
+        var friendRequests: [User]?
+        
         friendshipsRef().queryOrderedByChild("status").queryEqualToValue("pending\(userUID)")
             .observeEventType(.Value, withBlock: { snapshot in
-                var friendRequests: [User]?
                 for friendshipJSON in snapshot.children.allObjects {
                     if let friendUID = friendshipJSON.value["fromUser"] as? String {
                         getUser(friendUID.substringWithRange(Range<String.Index>(start: friendUID.startIndex.advancedBy(7), end: friendUID.endIndex))) { user in
@@ -318,11 +319,12 @@ extension FirebaseHelper{
                                     friendRequests = [user]
                                 }
                             }
+                            onComplete(friendRequests)
                         }
                     }
                 }
-                onComplete(friendRequests)
             })
+        onComplete(friendRequests)
     }
     
     static func acceptFriendRequest(currUserUID: String, requestingUserUID: String){
