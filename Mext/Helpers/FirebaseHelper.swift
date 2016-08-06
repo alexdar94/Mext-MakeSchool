@@ -257,6 +257,18 @@ extension FirebaseHelper{
         return ref.child("Friendships")
     }
     
+    static func friendshipRef(fromUserUID: String, toUserUID: String) -> FIRDatabaseReference {
+        return friendshipsRef().child("\(fromUserUID)\(toUserUID)")
+    }
+    
+    static func friendshipFromUserRef(fromUserUID: String, toUserUID: String) -> FIRDatabaseReference {
+        return friendshipRef(fromUserUID, toUserUID: toUserUID).child("fromUser")
+    }
+    
+    static func friendshipStatusRef(fromUserUID: String, toUserUID: String) -> FIRDatabaseReference {
+        return friendshipRef(fromUserUID, toUserUID: toUserUID).child("status")
+    }
+    
     static func getUserFriendUIDs(fromUserUID: String, onComplete: [String]? -> Void ) {
         friendshipsRef().queryOrderedByChild("fromUser").queryEqualToValue(fromUserUID)
             .observeEventType(.Value, withBlock: { snapshot in
@@ -272,8 +284,8 @@ extension FirebaseHelper{
             })
     }
     
-    static func saveFriendship(fromUserUID: String, toUserUID: String){
-        let newFriendshipRef = FirebaseHelper.friendshipsRef().child("\(fromUserUID)\(toUserUID)")
+    static func addFriendship(fromUserUID: String, toUserUID: String){
+        let newFriendshipRef = friendshipsRef().child("\(fromUserUID)\(toUserUID)")
         let newFriendship_JSON = [
             "fromUser": "pending\(fromUserUID)"
             , "toUser": toUserUID
@@ -283,25 +295,44 @@ extension FirebaseHelper{
     }
     
     static func removeFriendship(fromUserUID: String, toUserUID: String){
-        friendshipsRef().child("\(fromUserUID)\(toUserUID)").removeValue()
+        friendshipRef(fromUserUID, toUserUID: toUserUID).removeValue()
     }
     
     static func getPendingFriendRequest(userUID: String, onComplete: [User]? -> Void ) {
-        friendshipsRef().queryOrderedByChild("toUser").queryEqualToValue("pending\(userUID)")
+        friendshipsRef().queryOrderedByChild("status").queryEqualToValue("pending\(userUID)")
             .observeEventType(.Value, withBlock: { snapshot in
-                var friendUIDs: [String]?
+                var friendRequests: [User]?
                 for friendshipJSON in snapshot.children.allObjects {
                     if let friendUID = friendshipJSON.value["fromUser"] as? String {
-                        if (friendUIDs?.append(friendUID)) == nil {
-                            friendUIDs = [friendUID]
+                        getUser(friendUID.substringWithRange(Range<String.Index>(start: friendUID.startIndex.advancedBy(7), end: friendUID.endIndex))) { user in
+                            if let user = user {
+                                if (friendRequests?.append(user)) == nil {
+                                    friendRequests = [user]
+                                }
+                            }
                         }
                     }
                 }
-                
-                
+                onComplete(friendRequests)
             })
     }
     
+    static func acceptFriendRequest(currUserUID: String, requestingUserUID: String){
+        friendshipStatusRef(requestingUserUID, toUserUID: currUserUID).setValue("accepted")
+        friendshipFromUserRef(requestingUserUID, toUserUID: currUserUID).setValue(requestingUserUID)
+        
+        let newFriendshipRef = friendshipsRef().child("\(currUserUID)\(requestingUserUID)")
+        let newFriendship_JSON = [
+            "fromUser": currUserUID
+            , "toUser": requestingUserUID
+            , "status": "accepted"
+        ]
+        newFriendshipRef.setValue(newFriendship_JSON)
+    }
+    
+    static func declineFriendRequest(currUserUID: String, requestingUserUID: String){
+        removeFriendship(requestingUserUID, toUserUID: currUserUID)
+    }
 }
 
 // MARK: UID Gen

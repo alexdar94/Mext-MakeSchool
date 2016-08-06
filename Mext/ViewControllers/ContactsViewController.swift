@@ -75,6 +75,9 @@ class ContactsViewController: UIViewController {
             } else if identifier == "toAddFriendVC" {
                 let addFriendVC = segue.destinationViewController as! AddFriendViewController
                 addFriendVC.currUser = currUser
+            } else if identifier == "toFriendRequestVC" {
+                let friendRequestVC = segue.destinationViewController as! FriendRequestViewController
+                friendRequestVC.currUser = currUser
             }
         }
     }

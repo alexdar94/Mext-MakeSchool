@@ -59,7 +59,6 @@ extension AddFriendViewController: UITableViewDataSource, UITableViewDelegate {
         let user = self.matchingUsers![indexPath.row]
         
         cell.user = user
-        print(user.UID)
         if let friendUIDs = friendUIDs {
             cell.canFriend = !friendUIDs.contains(user.UID)
         }
@@ -84,7 +83,7 @@ extension AddFriendViewController: UITableViewDataSource, UITableViewDelegate {
 extension AddFriendViewController: AddFriendTableViewCellDelegate {
     
     func cell(cell: AddFriendTableViewCell, didSelectFriendUser user: User) {
-        FirebaseHelper.saveFriendship(currUserUID, toUserUID: user.UID)
+        FirebaseHelper.addFriendship(currUserUID, toUserUID: user.UID)
         friendUIDs?.append(user.UID)
     }
     
