@@ -18,6 +18,8 @@ class ChatViewController: JSQMessagesViewController {
     
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(HexColorHelper.APPTHEME_GREEN)
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(HexColorHelper.APPTHEME_YELLOW)
+    var currUserPhoto: UIImage! = UIImage(named:"nobody_m.original")!
+    var chatPartnerPhoto: UIImage! = UIImage(named:"nobody_m.original")!
     
     var messages = [Message]()
     
@@ -80,6 +82,18 @@ extension ChatViewController {
     func setup() {
         self.senderId = currUser.UID
         self.senderDisplayName = currUser.displayName
+        
+//        let data = NSData(contentsOfURL: NSURL(string: currUser.photoUrl)!)!
+//        let image = UIImage(data: data)!
+//        image.af_inflate()
+//        
+//        currUserPhoto = image
+//        
+//        let data1 = NSData(contentsOfURL: NSURL(string: chatRoom.chatRoomPictureUrl)!)!
+//        let image1 = UIImage(data: data1)!
+//        image1.af_inflate()
+//        
+//        currUserPhoto = image1
     }
     
     func addMessage(id: String, text: String, soundFileUrls: [String]?, attrStringIndex: [[Int]]?) {
@@ -167,8 +181,14 @@ extension ChatViewController {
         }
     }
     
-    override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
-        return nil
+    override func collectionView(collectionView: JSQMessagesCollectionView, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath) -> JSQMessageAvatarImageDataSource? {
+        let data = messages[indexPath.row]
+        switch(data.senderId) {
+        case self.senderId:
+            return JSQMessagesAvatarImageFactory.avatarImageWithPlaceholder(currUserPhoto, diameter: 12)
+        default:
+            return JSQMessagesAvatarImageFactory.avatarImageWithPlaceholder(chatPartnerPhoto, diameter: 12)
+        }
     }
     
     override func collectionView(collectionView: UICollectionView,

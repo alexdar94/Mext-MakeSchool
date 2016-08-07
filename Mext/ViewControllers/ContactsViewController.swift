@@ -137,7 +137,7 @@ extension ContactsViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        //tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 }
