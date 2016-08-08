@@ -33,3 +33,23 @@ extension FirebaseStorageHelper {
         }
     }
 }
+
+// MARK: Sound Clips
+extension FirebaseStorageHelper {
+    static let soundClipsRef = storageRef.child("SoundClips")
+    
+    static func uploadSoundClips(currUserUID: String, image: UIImage, onComplete: String -> Void){
+        let imageData = UIImageJPEGRepresentation(image, 0.8)
+        let imagePath = currUserUID + ".jpg"
+        let metadata = FIRStorageMetadata()
+        metadata.contentType = "image/jpeg"
+        self.userProfilePicRef.child(imagePath)
+            .putData(imageData!, metadata: metadata) { (metadata, error) in
+                if let error = error {
+                    print("Error uploading: \(error)")
+                    return
+                }
+                onComplete(metadata!.downloadURL()!.absoluteString)
+        }
+    }
+}

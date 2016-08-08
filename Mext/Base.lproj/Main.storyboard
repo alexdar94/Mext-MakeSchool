@@ -449,6 +449,7 @@
                                 <state key="normal" title="Button" image="mic"/>
                                 <connections>
                                     <action selector="didTapRecord:" destination="t4S-D4-cB1" eventType="touchUpInside" id="KQ8-qB-c48"/>
+                                    <segue destination="rtM-kE-9ug" kind="show" id="I2g-Mk-Xhz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -926,6 +927,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="As3-WN-qoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2635" y="985"/>
+        </scene>
+        <!--Upload Sound View Controller-->
+        <scene sceneID="pxE-G7-OVb">
+            <objects>
+                <viewController id="rtM-kE-9ug" customClass="UploadSoundViewController" customModule="Mext" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ocW-n9-iNc"/>
+                        <viewControllerLayoutGuide type="bottom" id="EUP-B3-h8w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k2l-WF-QQz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U3u-8k-OrK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2593" y="1764"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="D0R-yF-95o">

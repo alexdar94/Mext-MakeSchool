@@ -31,8 +31,20 @@ class SoundChartViewController: UIViewController {
     }
     
     @IBAction func didTapRecord(sender: AnyObject) {
-        recordingHelper = RecordingHelper(viewController: self) { (sound: MPMediaItem?) in
-            print(sound)
+        recordingHelper = RecordingHelper(viewController: self) { (sounds: MPMediaItemCollection?) in
+            //print(sound)
+            print(sounds![0]?.name)
+            var appMusicPlayer: MPMusicPlayerController = MPMusicPlayerController.applicationMusicPlayer()
+            appMusicPlayer.setQueueWithItemCollection(sounds!)
+            appMusicPlayer.play()
+            
+//            var item: MPMediaItem = collection.items()[0]
+//            var url: NSURL = item(valueForProperty: MPMediaItemPropertyAssetURL)
+//            self.dismissModalViewControllerAnimated(true)
+            // Play the item using AVPlayer
+//            var playerItem: AVPlayerItem = AVPlayerItem(URL: url)
+//            var player: AVPlayer = AVPlayer(playerItem: playerItem)
+//            player.play()
         }
     }
 }

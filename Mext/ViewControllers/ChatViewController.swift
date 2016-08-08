@@ -296,6 +296,10 @@ extension ChatViewController {
                             self.soundClips = matchingSoundClips
                             let resultsCount = self.soundClips.count
                             if resultsCount>0 {
+                                if self.popUpTableView != nil {
+                                    self.popUpTableView!.removeFromSuperview()
+                                    self.popUpTableView = nil
+                                }
                                 let numRows = resultsCount>3 ?  3 : resultsCount
                                 self.popUpTableView = UITableView(frame: CGRectMake(0, self.inputToolbar.frame.origin.y - CGFloat(48*numRows), self.inputToolbar.frame.width, CGFloat(48*numRows)))
                                 self.popUpTableView!.rowHeight = 48.0

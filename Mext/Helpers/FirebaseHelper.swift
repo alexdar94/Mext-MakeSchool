@@ -60,7 +60,7 @@ extension FirebaseHelper{
         var trendingSoundClips: [SoundClip]?
         let trendingQuery = soundClipsRef().queryLimitedToLast(10)
         
-        trendingQuery.queryOrderedByChild("favorite").observeEventType(.Value, withBlock: { snapshot in
+        trendingQuery.queryOrderedByChild("favorite").observeSingleEventOfType(.Value, withBlock: { snapshot in
             for soundClipJSON in snapshot.children.allObjects {
                 var tags = [String]()
                 if let tagsJSON = soundClipJSON.value["tag"] as? [String: AnyObject]{
@@ -80,6 +80,19 @@ extension FirebaseHelper{
             onComplete(trendingSoundClips)
         })
         onComplete(trendingSoundClips)
+    }
+    
+    static func addSoundClip(soundClip: SoundClip){
+        let newSoundClipRef = soundClipsRef().childByAutoId()
+        let newSoundClip_JSON = [
+            "by": soundClip.uploaderName,
+            "favorite": soundClip.favorite,
+            "soundFileUrl": soundClip.soundFileUrl,
+            "soundName": soundClip.soundName,
+            "source": soundClip.source,
+            "tag": soundClip.tag
+        ]
+        newSoundClipRef.setValue(newSoundClip_JSON)
     }
 }
 

@@ -11,7 +11,8 @@ import UIKit
 import MediaPlayer
 import AVFoundation
 
-typealias RecordingHelperCallback = MPMediaItem? -> Void
+//typealias RecordingHelperCallback = MPMediaItem? -> Void
+typealias RecordingHelperCallback = MPMediaItemCollection? -> Void
 
 class RecordingHelper: NSObject {
     
@@ -59,10 +60,14 @@ extension RecordingHelper: MPMediaPickerControllerDelegate, AVAudioPlayerDelegat
     
     func mediaPicker(mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
         //User selected a/an item(s).
-        for mpMediaItem in mediaItemCollection.items {
-            //print("Add \(mpMediaItem) to a playlist, prep the player, etc.")
-            callback(mpMediaItem)
-        }
+//        for mpMediaItem in mediaItemCollection.items {
+//            //print("Add \(mpMediaItem) to a playlist, prep the player, etc.")
+//            callback(mpMediaItem)
+//        }
+//        callback(mediaItemCollection.items[0])
+        print(mediaItemCollection.items[0])
+        mediaPicker.dismissViewControllerAnimated(true, completion: nil)
+        callback(mediaItemCollection)
     }
     
     func mediaPickerDidCancel(mediaPicker: MPMediaPickerController) {
