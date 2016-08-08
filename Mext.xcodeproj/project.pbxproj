@@ -10,6 +10,7 @@
 		164F3412F1ED539A4F1204A5 /* Pods_Mext.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6EF0122682C84997CA723F2 /* Pods_Mext.framework */; };
 		80CB916914C73A27C8A3528D /* Pods_MextTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AA148D0AC0F4DCCA2D3321 /* Pods_MextTests.framework */; };
 		CD63D1FCF3546B971692B871 /* Pods_MextUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B61B79828AC660EB1741B4 /* Pods_MextUITests.framework */; };
+		FA0845DA1D56C3790083278C /* RecordingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0845D91D56C3790083278C /* RecordingHelper.swift */; };
 		FA0A7C581D4D776100708429 /* CustomBubbleSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0A7C571D4D776100708429 /* CustomBubbleSizeCalculator.swift */; };
 		FA0DD19D1D276AD30089F512 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DD19C1D276AD30089F512 /* AppDelegate.swift */; };
 		FA0DD19F1D276AD30089F512 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DD19E1D276AD30089F512 /* LoginViewController.swift */; };
@@ -90,6 +91,7 @@
 		D6EF0122682C84997CA723F2 /* Pods_Mext.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mext.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F25AA563D171A1F7935E41D5 /* Pods-MextUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MextUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MextUITests/Pods-MextUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F2B61B79828AC660EB1741B4 /* Pods_MextUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MextUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA0845D91D56C3790083278C /* RecordingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingHelper.swift; sourceTree = "<group>"; };
 		FA0A7C571D4D776100708429 /* CustomBubbleSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBubbleSizeCalculator.swift; sourceTree = "<group>"; };
 		FA0DD1991D276AD30089F512 /* Mext.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mext.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0DD19C1D276AD30089F512 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				FAB9D0D01D50737E0005F631 /* HexColorHelper.swift */,
 				FAC3129C1D51BF8D008794D9 /* PhotoTakingHelper.swift */,
 				FA30C61B1D525D85005352C4 /* FirebaseStorageHelper.swift */,
+				FA0845D91D56C3790083278C /* RecordingHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAB09E181D3D403C001E0115 /* MessageInboxTableViewCell.swift in Sources */,
+				FA0845DA1D56C3790083278C /* RecordingHelper.swift in Sources */,
 				FA30C61C1D525D85005352C4 /* FirebaseStorageHelper.swift in Sources */,
 				FAB4B4041D349AF9007E5B5C /* FirebaseHelper.swift in Sources */,
 				FAB9D0D11D50737E0005F631 /* HexColorHelper.swift in Sources */,

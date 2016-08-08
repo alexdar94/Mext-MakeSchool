@@ -107,9 +107,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="G9c-tQ-Ymh"/>
                                 <exclude reference="Vju-Nk-Foh"/>
                                 <exclude reference="aaK-Oi-OMl"/>
+                                <exclude reference="G9c-tQ-Ymh"/>
                             </mask>
                         </variation>
                     </view>
@@ -447,6 +447,9 @@
                                     <constraint firstAttribute="width" constant="60" id="vYx-WB-5M0"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="mic"/>
+                                <connections>
+                                    <action selector="didTapRecord:" destination="t4S-D4-cB1" eventType="touchUpInside" id="KQ8-qB-c48"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -969,8 +972,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="580" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZx-HF-ukh">
-                                                    <rect key="frame" x="28" y="8" width="364" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZx-HF-ukh">
+                                                    <rect key="frame" x="28" y="8" width="494" height="20"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
@@ -981,8 +984,8 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRu-9b-PbM">
-                                                    <rect key="frame" x="28" y="28" width="364" height="17.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRu-9b-PbM">
+                                                    <rect key="frame" x="28" y="28" width="494" height="17.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -992,9 +995,9 @@
                                                 <constraint firstItem="CRu-9b-PbM" firstAttribute="top" secondItem="2gm-mn-Mwd" secondAttribute="topMargin" constant="20" id="1ZB-DD-YPr"/>
                                                 <constraint firstItem="pZx-HF-ukh" firstAttribute="top" secondItem="2gm-mn-Mwd" secondAttribute="topMargin" id="KIO-N1-nNg"/>
                                                 <constraint firstItem="CRu-9b-PbM" firstAttribute="leading" secondItem="2gm-mn-Mwd" secondAttribute="leadingMargin" constant="20" id="TV6-Yx-rUU"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="CRu-9b-PbM" secondAttribute="trailing" constant="200" id="V2U-Bx-aen"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="CRu-9b-PbM" secondAttribute="trailing" constant="50" id="V2U-Bx-aen"/>
                                                 <constraint firstItem="pZx-HF-ukh" firstAttribute="leading" secondItem="2gm-mn-Mwd" secondAttribute="leadingMargin" constant="20" id="YcE-Rs-mEo"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="pZx-HF-ukh" secondAttribute="trailing" constant="200" id="xhJ-II-i6P"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="pZx-HF-ukh" secondAttribute="trailing" constant="50" id="xhJ-II-i6P"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1017,6 +1020,9 @@
                             <constraint firstItem="nZk-wW-jK0" firstAttribute="top" secondItem="wvK-3g-2ay" secondAttribute="bottom" id="pxp-kb-jVW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="trendingTableView" destination="nZk-wW-jK0" id="Fs5-Bp-djR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YS2-Z4-qN3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -63,6 +63,7 @@ class ChatViewController: JSQMessagesViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = chatRoom.title
+        self.inputToolbar.contentView.leftBarButtonItem = nil
         //self.collectionView.collectionViewLayout.bubbleSizeCalculator = CustomBubbleSizeCalculator()
         self.setup()
         self.observeMessages()

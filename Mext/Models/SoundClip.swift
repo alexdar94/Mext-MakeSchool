@@ -15,12 +15,16 @@ class SoundClip {
     var soundFileUrl: String
     var soundName: String
     var source: String
+    var favorite: Int
+    var uploaderName: String
     
-    init(tag: [String], text: String, soundFileUrl: String, soundName: String, source: String){
+    init(tag: [String], text: String, soundFileUrl: String, soundName: String, source: String, favorite: Int, uploaderName: String){
         self.tag = tag
         self.text = text
         self.soundFileUrl = soundFileUrl
         self.soundName = soundName
         self.source = source
+        self.favorite = favorite
+        self.uploaderName = uploaderName
     }
 }

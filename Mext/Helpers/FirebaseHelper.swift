@@ -44,7 +44,9 @@ extension FirebaseHelper{
                         , text: soundClipJSON.value["text"] as! String
                         , soundFileUrl: soundClipJSON.value["soundFileUrl"] as! String
                         , soundName: soundClipJSON.value["soundName"] as! String
-                        , source: soundClipJSON.value["source"] as! String)
+                        , source: soundClipJSON.value["source"] as! String
+                        , favorite: soundClipJSON.value["favorite"] as! Int
+                        , uploaderName: soundClipJSON.value["by"] as! String)
                     if (matchingSoundClips?.append(soundClip)) == nil {
                         matchingSoundClips = [soundClip]
                     }
@@ -52,6 +54,32 @@ extension FirebaseHelper{
                 onComplete(matchingSoundClips)
             })
         onComplete(matchingSoundClips)
+    }
+    
+    static func getTrendingSoundClip(onComplete: [SoundClip]? -> Void){
+        var trendingSoundClips: [SoundClip]?
+        let trendingQuery = soundClipsRef().queryLimitedToLast(10)
+        
+        trendingQuery.queryOrderedByChild("favorite").observeEventType(.Value, withBlock: { snapshot in
+            for soundClipJSON in snapshot.children.allObjects {
+                var tags = [String]()
+                if let tagsJSON = soundClipJSON.value["tag"] as? [String: AnyObject]{
+                    tags = Array(tagsJSON.keys)
+                }
+                let soundClip = SoundClip(tag: tags
+                    , text: soundClipJSON.value["text"] as! String
+                    , soundFileUrl: soundClipJSON.value["soundFileUrl"] as! String
+                    , soundName: soundClipJSON.value["soundName"] as! String
+                    , source: soundClipJSON.value["source"] as! String
+                    , favorite: soundClipJSON.value["favorite"] as! Int
+                    , uploaderName: soundClipJSON.value["by"] as! String)
+                if (trendingSoundClips?.append(soundClip)) == nil {
+                    trendingSoundClips = [soundClip]
+                }
+            }
+            onComplete(trendingSoundClips)
+        })
+        onComplete(trendingSoundClips)
     }
 }
 

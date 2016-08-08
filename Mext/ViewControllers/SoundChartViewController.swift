@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import MediaPlayer
+import AVFoundation
 
 class SoundChartViewController: UIViewController {
+    var recordingHelper: RecordingHelper?
 
     @IBOutlet weak var mySoundsContainer: UIView!
     @IBOutlet weak var trendingSoundsContainer: UIView!
@@ -24,6 +27,12 @@ class SoundChartViewController: UIViewController {
                 self.trendingSoundsContainer.alpha = 0
                 self.mySoundsContainer.alpha = 1
             })
+        }
+    }
+    
+    @IBAction func didTapRecord(sender: AnyObject) {
+        recordingHelper = RecordingHelper(viewController: self) { (sound: MPMediaItem?) in
+            print(sound)
         }
     }
 }
