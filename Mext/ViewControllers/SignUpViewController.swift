@@ -25,9 +25,9 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardWhenTappedAround()
         profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.size.width / 2
-        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profilePictureTapped:"))
-        profilePictureImageView.userInteractionEnabled = true
-        profilePictureImageView.addGestureRecognizer(tapGestureRecognizer)
+//        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profilePictureTapped:"))
+//        profilePictureImageView.userInteractionEnabled = true
+//        profilePictureImageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -51,6 +51,7 @@ class SignUpViewController: UIViewController {
                             
                             FirebaseStorageHelper.uploadPhoto(FIRUser.uid, image: self.profilePictureImageView.image!) { photoUrl in
                                 FirebaseHelper.updateUserProfilePicUrl(user.UID, photoUrl: photoUrl)
+                                print("Uploaded photo: \(photoUrl)")
                             }
 //                            let changeRequest = user.profileChangeRequest()
 //                            
@@ -75,8 +76,12 @@ class SignUpViewController: UIViewController {
         
     }
     
-    func profilePictureTapped(img: AnyObject)
-    {
+//    func profilePictureTapped(img: AnyObject)
+//    {
+//        takePhoto()
+//    }
+    
+    @IBAction func didTapCamera(sender: AnyObject) {
         takePhoto()
     }
     

@@ -14,6 +14,10 @@ import FBSDKLoginKit
 class LoginViewController: UIViewController, GIDSignInUIDelegate {
     let TAG = "LoginViewController"
     
+    
+    @IBOutlet weak var bottomHeight: NSLayoutConstraint!
+    
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!

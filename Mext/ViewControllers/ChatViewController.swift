@@ -76,6 +76,11 @@ class ChatViewController: JSQMessagesViewController {
         self.collectionView?.reloadData()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let audioPlayer = MusicPlayerHelper.audioPlayer {
+            audioPlayer.pause()
+        }
+    }
 }
 
 // MARK: Setup
@@ -84,17 +89,17 @@ extension ChatViewController {
         self.senderId = currUser.UID
         self.senderDisplayName = currUser.displayName
         
-//        let data = NSData(contentsOfURL: NSURL(string: currUser.photoUrl)!)!
-//        let image = UIImage(data: data)!
-//        image.af_inflate()
-//        
-//        currUserPhoto = image
-//        
-//        let data1 = NSData(contentsOfURL: NSURL(string: chatRoom.chatRoomPictureUrl)!)!
-//        let image1 = UIImage(data: data1)!
-//        image1.af_inflate()
-//        
-//        currUserPhoto = image1
+        //        let data = NSData(contentsOfURL: NSURL(string: currUser.photoUrl)!)!
+        //        let image = UIImage(data: data)!
+        //        image.af_inflate()
+        //
+        //        currUserPhoto = image
+        //
+        //        let data1 = NSData(contentsOfURL: NSURL(string: chatRoom.chatRoomPictureUrl)!)!
+        //        let image1 = UIImage(data: data1)!
+        //        image1.af_inflate()
+        //
+        //        currUserPhoto = image1
     }
     
     func addMessage(id: String, text: String, soundFileUrls: [String]?, attrStringIndex: [[Int]]?) {
