@@ -28,11 +28,10 @@ class MessageInboxViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FirebaseHelper.getUserChatRoomUIDs(self.currUser.UID){ chatRoomKeys in
-            
+        FirebaseHelper.getUserChatRoomUIDs(self.currUserUID){ chatRoomKeys in
             if let chatRoomKeys = chatRoomKeys {
                 for chatRoomUID in chatRoomKeys {
-                    FirebaseHelper.getChatRoom(self.currUser.UID, chatRoomUID: chatRoomUID, onComplete: { chatRoom in
+                    FirebaseHelper.getChatRoom(self.currUserUID, chatRoomUID: chatRoomUID, onComplete: { chatRoom in
                         
                         if (self.chatRooms?.append(chatRoom)) == nil {
                             self.chatRooms = [chatRoom]

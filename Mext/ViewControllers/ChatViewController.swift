@@ -79,6 +79,7 @@ class ChatViewController: JSQMessagesViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let audioPlayer = MusicPlayerHelper.audioPlayer {
             audioPlayer.pause()
+            MusicPlayerHelper.audioPlayer = nil
         }
     }
 }

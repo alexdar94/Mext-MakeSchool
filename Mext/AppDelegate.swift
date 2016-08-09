@@ -54,29 +54,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     
     func isLogin () {
+        
+        //let semaphore = dispatch_semaphore_create(0)
+        
+        // create timeout of 10 seconds in nanoseconds.
+        //let timeout = 10 * UInt64(NSEC_PER_SEC)
+        
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
-            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             dispatch_async(dispatch_get_main_queue(), {
                 if let user = user {
                     // User is signed in.
                     print("\(self.logTag) login")
                     let messageInboxViewController = storyboard.instantiateViewControllerWithIdentifier("MessageInboxViewController") as! MessageInboxViewController
                     
+                    messageInboxViewController.currUserUID = user.uid
+                    self.window?.rootViewController = messageInboxViewController
+                    self.window?.makeKeyAndVisible()
                     FirebaseHelper.getUser(user.uid){ user -> Void in
                         messageInboxViewController.currUser = user
-                        self.window?.rootViewController = messageInboxViewController
+//                        self.window?.rootViewController = messageInboxViewController
+//                        self.window?.makeKeyAndVisible()
+                        //dispatch_semaphore_signal(semaphore)
                     }
+                    
+                    //dispatch_semaphore_wait(semaphore, timeout)
                 } else {
                     // No user is signed in.
                     print("\(self.logTag) not login")
                     let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginNavigationController") as! UINavigationController
                     
                     self.window?.rootViewController = loginViewController
+                    self.window?.makeKeyAndVisible()
                 }
                 
+                // decrease semaphore locks from 1 to 0
+                //dispatch_semaphore_signal(semaphore)
             })
-            
         }
+        
+        // raises semaphore locks from 0 to 1
+        // but only for 10 seconds.
+        //dispatch_semaphore_wait(semaphore, timeout)
     }
     
     // MARK: Google Sign In

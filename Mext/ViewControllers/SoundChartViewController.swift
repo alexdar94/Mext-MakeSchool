@@ -33,7 +33,7 @@ class SoundChartViewController: UIViewController {
     @IBAction func didTapRecord(sender: AnyObject) {
         recordingHelper = RecordingHelper(viewController: self) { (sounds: MPMediaItemCollection?) in
             //print(sound)
-            print(sounds![0]?.name)
+            //print(sounds![0]?.)
             var appMusicPlayer: MPMusicPlayerController = MPMusicPlayerController.applicationMusicPlayer()
             appMusicPlayer.setQueueWithItemCollection(sounds!)
             appMusicPlayer.play()
