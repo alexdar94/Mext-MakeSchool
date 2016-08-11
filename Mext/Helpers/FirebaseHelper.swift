@@ -17,8 +17,8 @@ class FirebaseHelper {
     
     static let ref = FIRDatabase.database().reference()
     
-    static func messagesRef(chatRoomName : String) -> FIRDatabaseReference {
-        return ref.child("Messages/\(chatRoomName)")
+    static func messagesRef(chatRoomUID: String) -> FIRDatabaseReference {
+        return ref.child("Messages/\(chatRoomUID)")
     }
     
 }
@@ -299,9 +299,15 @@ extension FirebaseHelper{
     }
     
     static func deleteChatRoom(chatRoomUID: String, user1UID: String, user2UID: String){
+        print("deleting chatroom")
         chatRoomRef(chatRoomUID).removeValue()
+        
         userChatRoomRef(user1UID, chatRoomUID: chatRoomUID).removeValue()
         userChatRoomRef(user2UID, chatRoomUID: chatRoomUID).removeValue()
+        
+        specificChatRoomMembersRef(chatRoomUID).removeValue()
+        
+        messagesRef(chatRoomUID).removeValue()
     }
 }
 
@@ -309,6 +315,10 @@ extension FirebaseHelper{
 extension FirebaseHelper{
     static func chatRoomMembersRef() -> FIRDatabaseReference {
         return ref.child("ChatRoomMembers")
+    }
+    
+    static func specificChatRoomMembersRef(chatRoomUID: String) -> FIRDatabaseReference {
+        return chatRoomMembersRef().child(chatRoomUID)
     }
     
     static func saveNewChatRoomMemberRelationship(chatRoomUID: String, userUID: String){

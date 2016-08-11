@@ -16,6 +16,7 @@ class ContactsViewController: UIViewController {
     @IBOutlet weak var notificationBarButton: UIBarButtonItem!
     @IBOutlet weak var contactsTableView: UITableView!
     
+    @IBOutlet weak var findUserBarButton: UIBarButtonItem!
     var currUser: User!
     var friends: [User]! {
         didSet{

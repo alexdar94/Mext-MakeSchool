@@ -88,8 +88,18 @@ extension AddFriendViewController: AddFriendTableViewCellDelegate {
     }
     
     func cell(cell: AddFriendTableViewCell, didSelectUnfriendUser user: User) {
+        FirebaseHelper.getExistingChatRoomKey(currUserUID, chatPartnerUID: user.UID) { chatRoomUID in
+            if let chatRoomUID = chatRoomUID {
+                FirebaseHelper.deleteChatRoom(chatRoomUID, user1UID: self.currUserUID, user2UID: user.UID)
+            } else {
+                self.view.makeToast("No blank space in the start of the sentence")
+                return
+            }
+        }
+        
         FirebaseHelper.deleteFriendship(currUserUID, toUserUID: user.UID)
         FirebaseHelper.deleteFriendship(user.UID, toUserUID: currUserUID)
+        
         self.friendUIDs = friendUIDs!.filter({$0 != user.UID})
     }
     

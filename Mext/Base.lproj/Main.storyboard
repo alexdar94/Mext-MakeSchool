@@ -562,7 +562,7 @@
                                             </connections>
                                         </barButtonItem>
                                         <rightBarButtonItems>
-                                            <barButtonItem systemItem="add" id="u65-2g-HI3">
+                                            <barButtonItem image="findUser" id="u65-2g-HI3">
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
                                                     <segue destination="6gv-iG-0uG" kind="show" identifier="toAddFriendVC" id="hYp-xb-EAf"/>
@@ -645,6 +645,7 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="contactsTableView" destination="d4c-da-FhX" id="4D6-q1-WpK"/>
+                        <outlet property="findUserBarButton" destination="u65-2g-HI3" id="9Yy-K6-HhK"/>
                         <outlet property="notificationBarButton" destination="Lia-ke-hJf" id="x5N-d9-d0I"/>
                         <segue destination="hwY-XU-ykk" kind="show" identifier="toChat" id="ASL-Kn-si8"/>
                     </connections>
@@ -1090,6 +1091,7 @@
     <resources>
         <image name="accept" width="293" height="78"/>
         <image name="decline" width="293" height="78"/>
+        <image name="findUser" width="30" height="30"/>
         <image name="friend" width="301" height="60"/>
         <image name="mext" width="202" height="115"/>
         <image name="mic" width="175" height="175"/>
@@ -1102,6 +1104,6 @@
         <image name="unfriend" width="301" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5vo-VD-72L"/>
+        <segue reference="ASL-Kn-si8"/>
     </inferredMetricsTieBreakers>
 </document>
