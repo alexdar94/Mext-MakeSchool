@@ -24,12 +24,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        
         // Google sign in
         GIDSignIn.sharedInstance().uiDelegate = self
-        //GIDSignIn.sharedInstance().signInSilently()
         
         // Facebook sign in
         facebookLoginButton.delegate = self

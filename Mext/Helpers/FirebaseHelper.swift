@@ -233,7 +233,7 @@ extension FirebaseHelper{
         var matchingUsers: [User]?
         FirebaseHelper.usersRef().queryOrderedByChild("lowerCaseDisplayName").queryStartingAtValue(searchText)
             .queryEndingAtValue("\(searchText)\u{f8ff}").queryLimitedToFirst(100)
-            .observeEventType(.Value, withBlock: { snapshot in
+            .observeSingleEventOfType(.Value, withBlock: { snapshot in
                 for userJSON in snapshot.children.allObjects {
                     let user = User(UID: userJSON.key
                         , email: userJSON.value["email"] as! String
