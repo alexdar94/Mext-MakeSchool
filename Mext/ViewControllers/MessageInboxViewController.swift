@@ -27,42 +27,65 @@ class MessageInboxViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        FirebaseHelper.getUserChatRoomUIDs(self.currUserUID){ chatRoomKeys in
-            if let chatRoomKeys = chatRoomKeys {
-                for chatRoomUID in chatRoomKeys {
-                    FirebaseHelper.getChatRoom(self.currUserUID, chatRoomUID: chatRoomUID, onComplete: { chatRoom in
-                        
-                        if (self.chatRooms?.append(chatRoom)) == nil {
-                            self.chatRooms = [chatRoom]
-                        }
-                        
-                        FirebaseHelper.getChangedChatRoom(chatRoom.UID){ snapshot in
-                            if let index = self.chatRooms.indexOf({$0.UID == chatRoom.UID}) {
-                                switch snapshot.key {
-                                case "chatRoomPictureUrl": self.chatRooms[index].chatRoomPictureUrl = snapshot.value as! String
-                                case "lastMessage": self.chatRooms[index].lastMessage = snapshot.value as! String
-                                case "lastMessageTime": self.chatRooms[index].FIRLastMessageTimeStamp = ["lastMessageTime": snapshot.value!]
-                                case "title": self.chatRooms[index].title = snapshot.value as! String
-                                default: print("")
-                                }
-                                self.messageInboxTableView.reloadData()
+        FirebaseHelper.getUserChatRoomUID(self.currUserUID){ chatRoomUID in
+            if let chatRoomUID = chatRoomUID {
+                print(chatRoomUID)
+                FirebaseHelper.getChatRoom(self.currUserUID, chatRoomUID: chatRoomUID, onComplete: { chatRoom in
+                    
+                    if (self.chatRooms?.append(chatRoom)) == nil {
+                        self.chatRooms = [chatRoom]
+                    }
+                    
+                    FirebaseHelper.getChangedChatRoom(chatRoom.UID){ snapshot in
+                        if let index = self.chatRooms.indexOf({$0.UID == chatRoom.UID}) {
+                            switch snapshot.key {
+                            case "chatRoomPictureUrl": self.chatRooms[index].chatRoomPictureUrl = snapshot.value as! String
+                            case "lastMessage": self.chatRooms[index].lastMessage = snapshot.value as! String
+                            case "lastMessageTime": self.chatRooms[index].FIRLastMessageTimeStamp = ["lastMessageTime": snapshot.value!]
+                            case "title": self.chatRooms[index].title = snapshot.value as! String
+                            default: print("")
                             }
+                            self.messageInboxTableView.reloadData()
                         }
-                    })
-                }
-            } else {
-                print("\(self.TAG) - No chat room")
+                    }
+                })
             }
+            //        FirebaseHelper.getUserChatRoomUIDs(self.currUserUID){ chatRoomKeys in
+            //            if let chatRoomKeys = chatRoomKeys {
+            //                for chatRoomUID in chatRoomKeys {
+            //                    FirebaseHelper.getChatRoom(self.currUserUID, chatRoomUID: chatRoomUID, onComplete: { chatRoom in
+            //
+            //                        if (self.chatRooms?.append(chatRoom)) == nil {
+            //                            self.chatRooms = [chatRoom]
+            //                        }
+            //
+            //                        FirebaseHelper.getChangedChatRoom(chatRoom.UID){ snapshot in
+            //                            if let index = self.chatRooms.indexOf({$0.UID == chatRoom.UID}) {
+            //                                switch snapshot.key {
+            //                                case "chatRoomPictureUrl": self.chatRooms[index].chatRoomPictureUrl = snapshot.value as! String
+            //                                case "lastMessage": self.chatRooms[index].lastMessage = snapshot.value as! String
+            //                                case "lastMessageTime": self.chatRooms[index].FIRLastMessageTimeStamp = ["lastMessageTime": snapshot.value!]
+            //                                case "title": self.chatRooms[index].title = snapshot.value as! String
+            //                                default: print("")
+            //                                }
+            //                                self.messageInboxTableView.reloadData()
+            //                            }
+            //                        }
+            //                    })
+            //                }
+            //            } else {
+            //                print("\(self.TAG) - No chat room")
+            //            }
+            //        }
+            
+            //print("MessageInboxViewController Email : \(currUser.email)")
+            //        if let uid = currUserUID {
+            //            FirebaseHelper.getUser(uid){ in
+            //
+            //            }
+            //        }
+            
         }
-        
-        //print("MessageInboxViewController Email : \(currUser.email)")
-        //        if let uid = currUserUID {
-        //            FirebaseHelper.getUser(uid){ in
-        //
-        //            }
-        //        }
-        
     }
     
     override func viewDidAppear(animated: Bool) {

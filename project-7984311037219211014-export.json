@@ -1,15 +1,10 @@
 {
   "ChatRoomMembers" : {
-    "-KNEZVuOcv-oDAnu5Qg4" : [ null, true, true ],
     "-KNEbaMcxX9hDu0VJy5X" : [ null, true, true ],
     "-KNEbdt-WGJX5H939ScF" : [ null, true, true ],
     "-KNUACfr71_c0quUJtKU" : {
       "JQSW41TtQRYyfOCIEfBH41qx3FU2" : true,
       "oLEqzm978bSx2kkSu3hvAAoubiW2" : true
-    },
-    "-KO7S6c968rYHFQiNb1e" : {
-      "JQSW41TtQRYyfOCIEfBH41qx3FU2" : true,
-      "feKUo4B9aSO0TwLbIQ7v6z6MraI3" : true
     },
     "-KOC4s8A2ACoUxYVHbtc" : {
       "S8whq96Mi8QHvmiugXAn95NRuFB3" : true,
@@ -18,6 +13,18 @@
     "-KOW4sG_fMcy_u7FNIP7" : {
       "4WUfu69sWVhHXM1s9PqkFf9Pkl82" : true,
       "JQSW41TtQRYyfOCIEfBH41qx3FU2" : true
+    },
+    "-KOqXC0GbrbEKbLQFrUY" : {
+      "CVp6DpWziLP7QGYlNayaQK0x4eg1" : true,
+      "JQSW41TtQRYyfOCIEfBH41qx3FU2" : true
+    },
+    "-KOqYfvxMpt6L8ljwwRc" : {
+      "CVp6DpWziLP7QGYlNayaQK0x4eg1" : true,
+      "feKUo4B9aSO0TwLbIQ7v6z6MraI3" : true
+    },
+    "-KOvmhxWbBjFANOaKrvQ" : {
+      "JQSW41TtQRYyfOCIEfBH41qx3FU2" : true,
+      "feKUo4B9aSO0TwLbIQ7v6z6MraI3" : true
     }
   },
   "ChatRooms" : {
@@ -42,13 +49,6 @@
       "title" : "John Mayer",
       "userIsTyping" : true
     },
-    "-KO7S6c968rYHFQiNb1e" : {
-      "chatRoomPictureUrl" : "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg",
-      "lastMessage" : "M",
-      "lastMessageTime" : 1470515523258,
-      "title" : "test1",
-      "userIsTyping" : true
-    },
     "-KOC4s8A2ACoUxYVHbtc" : {
       "chatRoomPictureUrl" : "http://a5.files.biography.com/image/upload/c_fit,cs_srgb,dpr_1.0,q_80,w_620/MTM2OTI2NTkwNzE3MTQyNjIz.jpg",
       "lastMessage" : "Hey Justin",
@@ -58,9 +58,30 @@
     },
     "-KOW4sG_fMcy_u7FNIP7" : {
       "chatRoomPictureUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/UserProfilePicture-Large%2F4WUfu69sWVhHXM1s9PqkFf9Pkl82.jpg?alt=media&token=f41e7288-1266-4ac7-90b6-bf2bf610c821",
-      "lastMessage" : "Hey",
-      "lastMessageTime" : 1470507805755,
+      "lastMessage" : "Hello",
+      "lastMessageTime" : 1470777549194,
       "title" : "New User",
+      "userIsTyping" : false
+    },
+    "-KOqXC0GbrbEKbLQFrUY" : {
+      "chatRoomPictureUrl" : "http://3.bp.blogspot.com/-k6mmw9BbX4E/VXtPzM22rgI/AAAAAAAAAp0/axlLjiF-QKI/s1600/potato.gif",
+      "lastMessage" : "Hello",
+      "lastMessageTime" : 1470952277227,
+      "title" : "def",
+      "userIsTyping" : false
+    },
+    "-KOqYfvxMpt6L8ljwwRc" : {
+      "chatRoomPictureUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/UserProfilePicture-Large%2FCVp6DpWziLP7QGYlNayaQK0x4eg1.jpg?alt=media&token=ad0a9f15-ccca-4177-8297-1314ecd56370",
+      "lastMessage" : "Baby",
+      "lastMessageTime" : 1470952845522,
+      "title" : "the dream team",
+      "userIsTyping" : false
+    },
+    "-KOvmhxWbBjFANOaKrvQ" : {
+      "chatRoomPictureUrl" : "http://3.bp.blogspot.com/-k6mmw9BbX4E/VXtPzM22rgI/AAAAAAAAAp0/axlLjiF-QKI/s1600/potato.gif",
+      "lastMessage" : "Yo",
+      "lastMessageTime" : 1470955712835,
+      "title" : "def",
       "userIsTyping" : false
     }
   },
@@ -70,10 +91,45 @@
       "status" : "accepted",
       "toUser" : "JQSW41TtQRYyfOCIEfBH41qx3FU2"
     },
+    "CVp6DpWziLP7QGYlNayaQK0x4eg14WUfu69sWVhHXM1s9PqkFf9Pkl82" : {
+      "fromUser" : "pendingCVp6DpWziLP7QGYlNayaQK0x4eg1",
+      "status" : "pending4WUfu69sWVhHXM1s9PqkFf9Pkl82",
+      "toUser" : "4WUfu69sWVhHXM1s9PqkFf9Pkl82"
+    },
+    "CVp6DpWziLP7QGYlNayaQK0x4eg1JQSW41TtQRYyfOCIEfBH41qx3FU2" : {
+      "fromUser" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+      "status" : "accepted",
+      "toUser" : "JQSW41TtQRYyfOCIEfBH41qx3FU2"
+    },
+    "CVp6DpWziLP7QGYlNayaQK0x4eg1S8whq96Mi8QHvmiugXAn95NRuFB3" : {
+      "fromUser" : "pendingCVp6DpWziLP7QGYlNayaQK0x4eg1",
+      "status" : "pendingS8whq96Mi8QHvmiugXAn95NRuFB3",
+      "toUser" : "S8whq96Mi8QHvmiugXAn95NRuFB3"
+    },
+    "CVp6DpWziLP7QGYlNayaQK0x4eg1feKUo4B9aSO0TwLbIQ7v6z6MraI3" : {
+      "fromUser" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+      "status" : "accepted",
+      "toUser" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3"
+    },
+    "CVp6DpWziLP7QGYlNayaQK0x4eg1oLEqzm978bSx2kkSu3hvAAoubiW2" : {
+      "fromUser" : "pendingCVp6DpWziLP7QGYlNayaQK0x4eg1",
+      "status" : "pendingoLEqzm978bSx2kkSu3hvAAoubiW2",
+      "toUser" : "oLEqzm978bSx2kkSu3hvAAoubiW2"
+    },
+    "CVp6DpWziLP7QGYlNayaQK0x4eg1y9SNcc4hHvT9ujf8WLdV6p4xRlp2" : {
+      "fromUser" : "pendingCVp6DpWziLP7QGYlNayaQK0x4eg1",
+      "status" : "pendingy9SNcc4hHvT9ujf8WLdV6p4xRlp2",
+      "toUser" : "y9SNcc4hHvT9ujf8WLdV6p4xRlp2"
+    },
     "JQSW41TtQRYyfOCIEfBH41qx3FU24WUfu69sWVhHXM1s9PqkFf9Pkl82" : {
       "fromUser" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
       "status" : "accepted",
       "toUser" : "4WUfu69sWVhHXM1s9PqkFf9Pkl82"
+    },
+    "JQSW41TtQRYyfOCIEfBH41qx3FU2CVp6DpWziLP7QGYlNayaQK0x4eg1" : {
+      "fromUser" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
+      "status" : "accepted",
+      "toUser" : "CVp6DpWziLP7QGYlNayaQK0x4eg1"
     },
     "JQSW41TtQRYyfOCIEfBH41qx3FU2S8whq96Mi8QHvmiugXAn95NRuFB3" : {
       "fromUser" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
@@ -82,7 +138,7 @@
     },
     "JQSW41TtQRYyfOCIEfBH41qx3FU2feKUo4B9aSO0TwLbIQ7v6z6MraI3" : {
       "fromUser" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
-      "status" : "pending",
+      "status" : "accepted",
       "toUser" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3"
     },
     "JQSW41TtQRYyfOCIEfBH41qx3FU2oLEqzm978bSx2kkSu3hvAAoubiW2" : {
@@ -100,9 +156,14 @@
       "status" : "pending",
       "toUser" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3"
     },
+    "feKUo4B9aSO0TwLbIQ7v6z6MraI3CVp6DpWziLP7QGYlNayaQK0x4eg1" : {
+      "fromUser" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+      "status" : "accepted",
+      "toUser" : "CVp6DpWziLP7QGYlNayaQK0x4eg1"
+    },
     "feKUo4B9aSO0TwLbIQ7v6z6MraI3JQSW41TtQRYyfOCIEfBH41qx3FU2" : {
       "fromUser" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
-      "status" : "pending",
+      "status" : "accepted",
       "toUser" : "JQSW41TtQRYyfOCIEfBH41qx3FU2"
     },
     "feKUo4B9aSO0TwLbIQ7v6z6MraI3S8whq96Mi8QHvmiugXAn95NRuFB3" : {
@@ -114,6 +175,11 @@
       "fromUser" : "oLEqzm978bSx2kkSu3hvAAoubiW2",
       "status" : "pending",
       "toUser" : "JQSW41TtQRYyfOCIEfBH41qx3FU2"
+    },
+    "y9SNcc4hHvT9ujf8WLdV6p4xRlp2feKUo4B9aSO0TwLbIQ7v6z6MraI3" : {
+      "fromUser" : "pendingy9SNcc4hHvT9ujf8WLdV6p4xRlp2",
+      "status" : "pendingfeKUo4B9aSO0TwLbIQ7v6z6MraI3",
+      "toUser" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3"
     }
   },
   "Messages" : {
@@ -167,32 +233,6 @@
         "text" : "\uD83D\uDE0D I am Alex lee"
       }
     },
-    "-KO7S6c968rYHFQiNb1e" : {
-      "-KO7S81IofFTO0u_0cT1" : {
-        "senderId" : "a",
-        "text" : "Hey Colin"
-      },
-      "-KOReezNSF5OjmTU95fN" : {
-        "attrStringIndex" : [ [ 0, 3 ] ],
-        "senderId" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
-        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FSmoke%20Weed%20Everyday.mp3?alt=media&token=e26e8d8b-4bb5-44cd-a134-d1d565910982" ],
-        "text" : "420"
-      },
-      "-KORyag1x45CPvF9N-51" : {
-        "attrStringIndex" : [ [ 6, 8 ] ],
-        "senderId" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
-        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fbirthday_sesame.mp3?alt=media&token=8e29e2f5-5d84-4a11-90ef-7cf728422b73" ],
-        "text" : "Happy birthday Colin!"
-      },
-      "-KOWUxhBIJljuXNxAUvM" : {
-        "senderId" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
-        "text" : "Hey"
-      },
-      "-KOWYXt0boaJam5Nqp4j" : {
-        "senderId" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
-        "text" : "M"
-      }
-    },
     "-KOC4s8A2ACoUxYVHbtc" : {
       "-KOC4tfxsNjleOceHG76" : {
         "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
@@ -207,105 +247,297 @@
       "-KOW55j7sXW1sXuq1btB" : {
         "senderId" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
         "text" : "Hey"
+      },
+      "-KOlA52GMijGCEyNf4nh" : {
+        "attrStringIndex" : [ [ 0, 5 ] ],
+        "senderId" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fhello-its-me.mp3?alt=media&token=b23d5274-e0db-46d7-a4f6-05f2a1df5189" ],
+        "text" : "Hello"
       }
     },
-    "messages" : {
-      "-KN88_7jCWFLqngeZV-C" : {
-        "senderId" : "a",
-        "text" : "Abc"
+    "-KOqXC0GbrbEKbLQFrUY" : {
+      "-KOqZWp9q_rMM12PTcsC" : {
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "text" : "Hi"
       },
-      "-KN88dtauOKv7ShhJ4LX" : {
-        "senderId" : "a",
-        "text" : "H hello hello"
+      "-KOqZXxbxwq-QJrAiNKY" : {
+        "attrStringIndex" : [ [ 0, 2 ] ],
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FFrozen_06-08-2016_19-17-59.m4a?alt=media&token=b869b9b6-57ce-4597-9a54-16843dcb7408" ],
+        "text" : "Hi"
+      },
+      "-KOsMmqSVBLGFvMxOQjD" : {
+        "attrStringIndex" : [ [ 0, 4 ] ],
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FFuck_This_Shit_Im_out_06-08-2016_19-18-49.m4a?alt=media&token=4e0894c6-738a-44dc-a613-4008b52eb3c0" ],
+        "text" : "Fuck"
+      },
+      "-KOsMqLY5TNRlGS_i72T" : {
+        "attrStringIndex" : [ [ 0, 4 ], [ 0, 4 ] ],
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Ffuck-you-ceelo.mp3?alt=media&token=d146bd09-c782-42ae-b054-dbf55f0dab25", "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Ffuck-you-ceelo.mp3?alt=media&token=d146bd09-c782-42ae-b054-dbf55f0dab25" ],
+        "text" : "Fuck"
+      },
+      "-KOsNKVPYEj0TOOBhzeO" : {
+        "attrStringIndex" : [ [ 0, 3 ] ],
+        "senderId" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FHehehe_wtf_06-08-2016_19-27-03.m4a?alt=media&token=d5d93c52-9e57-48e4-89c7-f8d1e2256e1a" ],
+        "text" : "WTF teddy"
+      },
+      "-KOsPHj4sl3C1cIpSErE" : {
+        "attrStringIndex" : [ [ 5, 5 ] ],
+        "senderId" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fi_wanna_take_a_nap_06-08-2016_19-32-28.m4a?alt=media&token=00ea3023-6ef8-44ad-8b6e-2f9b5f638442" ],
+        "text" : "Good night teddy"
+      },
+      "-KOuZpFJwIXAjePjOGv5" : {
+        "attrStringIndex" : [ [ 0, 4 ] ],
+        "senderId" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FFuck_This_Shit_Im_out_06-08-2016_19-18-49.m4a?alt=media&token=4e0894c6-738a-44dc-a613-4008b52eb3c0" ],
+        "text" : "Fuck you"
+      },
+      "-KOvXFWSfl0xSrrG3v_K" : {
+        "attrStringIndex" : [ [ 0, 4 ] ],
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fwhatdoyoumean_justinbieber.mp3?alt=media&token=6debf937-c05f-4fc7-a01f-fca2da02c066" ],
+        "text" : "What do you mean?"
+      },
+      "-KOv_-bMlNx40r2G5tqr" : {
+        "attrStringIndex" : [ [ 0, 5 ] ],
+        "senderId" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Ffuck%20you%20teddy.m4a?alt=media&token=5280f96e-0bcf-442e-a984-802a65c7c6f3" ],
+        "text" : "Teddy"
+      },
+      "-KOv_AjU_Wa67hXOFjZz" : {
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "text" : "Hello"
+      },
+      "-KOv__TAO1dy_YeNKWIf" : {
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "text" : "Hello"
+      },
+      "-KOv_cEfHrIjYhF5a9up" : {
+        "attrStringIndex" : [ [ 0, 5 ] ],
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fhello-its-me.mp3?alt=media&token=b23d5274-e0db-46d7-a4f6-05f2a1df5189" ],
+        "text" : "Hello"
+      }
+    },
+    "-KOqYfvxMpt6L8ljwwRc" : {
+      "-KOqYj_zUoEtLOh--l1e" : {
+        "attrStringIndex" : [ [ 0, 2 ] ],
+        "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FSmoke%20Weed%20Everyday.mp3?alt=media&token=e26e8d8b-4bb5-44cd-a134-d1d565910982" ],
+        "text" : "\uD83C\uDF41"
+      },
+      "-KOqYuRZjHLO59MHNmXO" : {
+        "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+        "text" : "\uD83E\uDD11"
+      },
+      "-KOqZ2seykWyHjqgRlst" : {
+        "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+        "text" : "Hi"
+      },
+      "-KOq_09yKO484-aa4Uwz" : {
+        "attrStringIndex" : [ [ 0, 2 ], [ 3, 2 ], [ 6, 2 ], [ 9, 2 ], [ 12, 2 ] ],
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FSmoke%20Weed%20Everyday.mp3?alt=media&token=e26e8d8b-4bb5-44cd-a134-d1d565910982", "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FSmoke%20Weed%20Everyday.mp3?alt=media&token=e26e8d8b-4bb5-44cd-a134-d1d565910982", "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FSmoke%20Weed%20Everyday.mp3?alt=media&token=e26e8d8b-4bb5-44cd-a134-d1d565910982", "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FSmoke%20Weed%20Everyday.mp3?alt=media&token=e26e8d8b-4bb5-44cd-a134-d1d565910982", "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FSmoke%20Weed%20Everyday.mp3?alt=media&token=e26e8d8b-4bb5-44cd-a134-d1d565910982" ],
+        "text" : "\uD83C\uDF41 \uD83C\uDF41 \uD83C\uDF41 \uD83C\uDF41 \uD83C\uDF41"
+      },
+      "-KOq_5G-3vmavgMTS7fc" : {
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "text" : "\uD83C\uDF89"
+      },
+      "-KOvVpI9c-sMrDa7IZuz" : {
+        "attrStringIndex" : [ [ 0, 2 ] ],
+        "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FSmoke%20Weed%20Everyday.mp3?alt=media&token=e26e8d8b-4bb5-44cd-a134-d1d565910982" ],
+        "text" : "\uD83C\uDF41"
+      },
+      "-KOvVy_mBrrCKblnXTU_" : {
+        "attrStringIndex" : [ [ 0, 4 ] ],
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fwhatdoyoumean_justinbieber.mp3?alt=media&token=6debf937-c05f-4fc7-a01f-fca2da02c066" ],
+        "text" : "What"
+      },
+      "-KOvWAO7LcglpvnDwf6c" : {
+        "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+        "text" : "\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02"
+      },
+      "-KOvWIEKAXe53Vhoa2u0" : {
+        "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+        "text" : "\uD83D\uDE21\uD83D\uDCA9\uD83D\uDCA9\uD83D\uDCA9"
+      },
+      "-KOvWQL7KtDnDzw1bLQz" : {
+        "attrStringIndex" : [ [ 0, 2 ], [ 3, 2 ], [ 6, 2 ] ],
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FHONEY_IM_GOOD_06-08-2016_19-31-09.m4a?alt=media&token=155e6c33-ad3f-40c3-9004-561cb8f639db", "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FHONEY_IM_GOOD_06-08-2016_19-31-09.m4a?alt=media&token=155e6c33-ad3f-40c3-9004-561cb8f639db", "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FHONEY_IM_GOOD_06-08-2016_19-31-09.m4a?alt=media&token=155e6c33-ad3f-40c3-9004-561cb8f639db" ],
+        "text" : "\uD83D\uDC4D \uD83D\uDC4D \uD83D\uDC4D"
+      },
+      "-KOvWUyoiddRS3h29tfT" : {
+        "attrStringIndex" : [ [ 2, 0 ], [ 0, 2 ] ],
+        "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FBye_Bitch_06-08-2016_19-13-44.m4a?alt=media&token=e14d2494-5dcd-412a-af33-9ea4b0e69b24", "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FThe_Joker_06-08-2016_20-11-24.m4a?alt=media&token=3cfdd938-f62f-4218-86b8-3e8c35aff73f" ],
+        "text" : "\uD83D\uDE21"
+      },
+      "-KOvWjpn_KpZ0KwRWOa7" : {
+        "attrStringIndex" : [ [ 0, 4 ] ],
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FFuck_This_Shit_Im_out_06-08-2016_19-18-49.m4a?alt=media&token=4e0894c6-738a-44dc-a613-4008b52eb3c0" ],
+        "text" : "Fuck"
+      },
+      "-KOvX6lgXq6wvkRjSJKF" : {
+        "attrStringIndex" : [ [ 0, 2 ] ],
+        "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FBitch_Please__06-08-2016_19-13-10.m4a?alt=media&token=4fb77eaf-8954-4185-8826-0be6619e0b98" ],
+        "text" : "\uD83D\uDE21"
+      },
+      "-KOvXpfVLVwjBhlir99V" : {
+        "attrStringIndex" : [ [ 0, 4 ] ],
+        "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fcall_me_baby_please_06-08-2016_19-15-23.m4a?alt=media&token=3bc149ea-ce1c-4973-b63e-b440564bc91a" ],
+        "text" : "Baby"
+      },
+      "-KOvY5ZGIJYI9HkxNIrA" : {
+        "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+        "text" : "Oh shitshit shit"
+      },
+      "-KOvZ0ZUvhWrJwFsE9Vu" : {
+        "attrStringIndex" : [ [ 0, 4 ] ],
+        "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FJustin_Bieber_06-08-2016_19-43-19.m4a?alt=media&token=d7bbdbaa-9da2-405d-bb66-a48d2a787ff5" ],
+        "text" : "Baby"
+      },
+      "-KOv_hLH-jwodzUBALdT" : {
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "text" : "Colin"
+      },
+      "-KOv_k2mZq-dynyDHuR4" : {
+        "attrStringIndex" : [ [ 0, 5 ] ],
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FFuck%20You%20Colin.m4a?alt=media&token=21167ef6-68e4-4702-9127-44350f9bab3a" ],
+        "text" : "Colin"
+      },
+      "-KOvb5uvke0XlHGcNHkb" : {
+        "attrStringIndex" : [ [ 0, 5 ] ],
+        "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Ffuck%20you%20teddy.m4a?alt=media&token=5280f96e-0bcf-442e-a984-802a65c7c6f3" ],
+        "text" : "Teddy yeah"
+      },
+      "-KOvbYE1wFJVGfRHku5n" : {
+        "attrStringIndex" : [ [ 0, 4 ] ],
+        "senderId" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FWHAT_06-08-2016_20-17-30.m4a?alt=media&token=675046f4-dacc-4941-ab44-06df9d4fe938" ],
+        "text" : "What ?"
+      },
+      "-KOvbn-JdeZp7r4upYfq" : {
+        "attrStringIndex" : [ [ 0, 4 ] ],
+        "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+        "soundFileUrls" : [ "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fcall_me_baby_please_06-08-2016_19-15-23.m4a?alt=media&token=3bc149ea-ce1c-4973-b63e-b440564bc91a" ],
+        "text" : "Baby"
+      }
+    },
+    "-KOvmhxWbBjFANOaKrvQ" : {
+      "-KOvmimUAJXC8OcC2FhR" : {
+        "senderId" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
+        "text" : "Yo"
       }
     }
   },
   "SoundClips" : [ null, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fhello-hello-i-dont-know.mp3?alt=media&token=69d40618-645e-4ca4-8881-14e5773c738f",
     "soundName" : "Hello, Good Bye",
     "source" : "The Beatles",
     "tag" : {
-      "hello" : true
+      "hello" : true,
+      "\uD83D\uDE4B\uD83C\uDFFB" : true
     },
-    "favorite" : 0,
     "text" : "hello, hello, I don't know why you say good bye, I say hello"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fhello-hello-hello.mp3?alt=media&token=a44c7815-b386-4336-8259-140547de25d9",
     "soundName" : "Hello, Hello",
     "source" : "Mari Ferrari",
     "tag" : {
-      "hello" : true
+      "hello" : true,
+      "\uD83D\uDE4B\uD83C\uDFFB" : true
     },
-    "favorite" : 0,
     "text" : "hello, hello, hello"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Ffuck-you-ceelo.mp3?alt=media&token=d146bd09-c782-42ae-b054-dbf55f0dab25",
     "soundName" : "Fuck You",
     "source" : "Ceelo Green",
     "tag" : {
       "fuck" : true
     },
-    "favorite" : 0,
     "text" : "Fuck You"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fhello-beautiful-thing.mp3?alt=media&token=7c782f13-7466-4d30-ae11-0cc96e3ac3a8",
     "soundName" : "Hello, You Beautiful Thing",
     "source" : "Jason Mraz",
     "tag" : {
-      "hello" : true
+      "hello" : true,
+      "\uD83D\uDE4B\uD83C\uDFFB" : true
     },
-    "favorite" : 0,
     "text" : "hello, you beautiful thing"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fhello.mp3?alt=media&token=1d28a701-efd4-4f25-8be8-26a512501e95",
     "soundName" : "Hello",
     "source" : "G-Eazy",
     "tag" : {
-      "hello" : true
+      "hello" : true,
+      "\uD83D\uDE4B\uD83C\uDFFB" : true
     },
-    "favorite" : 0,
     "text" : "hello"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fhello-bitches.mp3?alt=media&token=294489d4-c35e-4761-888e-eea7abb672cf",
     "soundName" : "Hello Bitches",
     "source" : "CL",
     "tag" : {
-      "hello" : true
+      "hello" : true,
+      "\uD83D\uDE4B\uD83C\uDFFB" : true
     },
-    "favorite" : 0,
     "text" : "hello bitches"
   }, {
     "by" : "Mext",
+    "favorite" : 9,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fhello-its-me.mp3?alt=media&token=b23d5274-e0db-46d7-a4f6-05f2a1df5189",
     "soundName" : "Hello",
     "source" : "Adele",
     "tag" : {
       "hello" : true,
-      "\uD83D\uDE0D" : true
+      "\uD83D\uDE4B\uD83C\uDFFB" : true
     },
-    "favorite" : 0,
     "text" : "hello, it's me"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FThe%20Lion%20Sleeps%20Tonight.mp3?alt=media&token=e2ddfbc7-b62f-45f4-8626-174f0edc56f1",
     "soundName" : "The Lion Sleeps Tonight",
     "source" : "The Tokens",
     "tag" : {
       "happy" : true,
       "yay" : true,
+      "\uD83D\uDCA4" : true,
       "\uD83D\uDE02" : true,
-      "\uD83D\uDE07" : true
+      "\uD83D\uDE07" : true,
+      "\uD83D\uDE34" : true
     },
-    "favorite" : 0,
     "text" : "Wimoweh"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FSmoke%20Weed%20Everyday_Thug%20Life.mp3?alt=media&token=e3ddc0f6-f315-489d-b0a8-d63a5ddfd4bc",
     "soundName" : "Smoke Weed Everyday",
     "source" : "Snoop Dogg",
@@ -315,10 +547,10 @@
       "thug" : true,
       "\uD83D\uDE0E" : true
     },
-    "favorite" : 0,
     "text" : "Thug life"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FSmoke%20Weed%20Everyday.mp3?alt=media&token=e26e8d8b-4bb5-44cd-a134-d1d565910982",
     "soundName" : "Smoke Weed Everyday",
     "source" : "Snoop Dogg",
@@ -328,101 +560,112 @@
       "\uD83C\uDF41" : true,
       "\uD83D\uDE0E" : true
     },
-    "favorite" : 0,
     "text" : "Smoke weed everday"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fbirthday_chipmunks.mp3?alt=media&token=2e4202a6-209a-42f7-872f-af2267ca236c",
     "soundName" : "Happy birthday",
     "source" : "Chipmunk",
     "tag" : {
-      "birthday" : true
+      "birthday" : true,
+      "\uD83C\uDF82" : true
     },
-    "favorite" : 0,
     "text" : "happy birthday"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fbirthday_donkey.mp3?alt=media&token=4e064a09-442a-49ae-85b2-674f96b4eca4",
     "soundName" : "Happy birthday",
     "source" : "Donkey",
     "tag" : {
-      "birthday" : true
+      "birthday" : true,
+      "\uD83C\uDF81" : true,
+      "\uD83C\uDF82" : true
     },
-    "favorite" : 0,
     "text" : "birthday"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fbirthday_katyperry.mp3?alt=media&token=d1b01fb4-9cc5-425c-8360-6f4a3ed520fe",
     "soundName" : "Birthday",
     "source" : "Katy Perry",
     "tag" : {
-      "birthday" : true
+      "birthday" : true,
+      "\uD83C\uDF81" : true,
+      "\uD83C\uDF82" : true
     },
-    "favorite" : 0,
     "text" : "Happy birthday"
   }, {
     "by" : "Mext",
+    "favorite" : 8,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fbirthday_sesame.mp3?alt=media&token=8e29e2f5-5d84-4a11-90ef-7cf728422b73",
     "soundName" : "Happy birthday",
     "source" : "The Sesame Street",
     "tag" : {
-      "birthday" : true
+      "birthday" : true,
+      "\uD83C\uDF81" : true,
+      "\uD83C\uDF82" : true,
+      "\uD83C\uDF88" : true
     },
-    "favorite" : 0,
     "text" : "Happy birthday"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fbirthday_thepenguin.mp3?alt=media&token=16a83343-4659-4afd-94f4-65060490b23a",
     "soundName" : "Happy Birthday",
     "source" : "The Penguin",
     "tag" : {
-      "birthday" : true
+      "birthday" : true,
+      "\uD83C\uDF81" : true,
+      "\uD83C\uDF82" : true
     },
-    "favorite" : 0,
     "text" : "Happy birthday"
   }, {
     "by" : "Mext",
+    "favorite" : 5,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fsorry_justinbieber.mp3?alt=media&token=5278c70b-5f1e-4948-a12c-477af374d2c9",
     "soundName" : "Sorry",
     "source" : "Justin Bieber",
     "tag" : {
       "sorry" : true
     },
-    "favorite" : 0,
     "text" : "Is it too late now to say sorry?"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fwhatdoyoumean_justinbieber.mp3?alt=media&token=6debf937-c05f-4fc7-a01f-fca2da02c066",
     "soundName" : "What Do You Mean",
     "source" : "Justin Bieber",
     "tag" : {
-      "what" : true
+      "what" : true,
+      "\uD83E\uDD14" : true
     },
-    "favorite" : 0,
     "text" : "What do you mean?"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2F_Who_the_hell_cares__06-08-2016_17-57-33.m4a?alt=media&token=5db6ba91-f3f7-4817-9da5-7a4bf67d248c",
     "soundName" : "Who the hell cares",
     "source" : "-",
     "tag" : {
-      "wth" : true,
-      "cares" : true
+      "cares" : true,
+      "wth" : true
     },
-    "favorite" : 0,
     "text" : "who the hell cares"
- }, {
+  }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FAnd_His_Name_Is_John_Cena_06-08-2016_19-05-38.m4a?alt=media&token=c833c1f4-e785-43ba-b44d-43ad783abd96",
     "soundName" : "And His Name is John Cena",
     "source" : "-",
     "tag" : {
       "cena" : true
     },
-    "favorite" : 0,
     "text" : "and his name is john cena"
- }, {
+  }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Farigato__06-08-2016_19-04-28.m4a?alt=media&token=61c3db28-ac50-4eea-b170-8325170a684c",
     "soundName" : "Arigato",
     "source" : "-",
@@ -431,10 +674,10 @@
       "thk" : true,
       "ty" : true
     },
-    "favorite" : 0,
     "text" : "arigato"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FBarack_Obama__Yes__we_can__06-08-2016_19-11-13.m4a?alt=media&token=14bdc3a9-fe7d-4f41-a930-defbf0697e68",
     "soundName" : "Yes We Can",
     "source" : "Obama",
@@ -442,42 +685,42 @@
       "can" : true,
       "yes" : true
     },
-    "favorite" : 0,
     "text" : "yes we can"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fbe_right_back_06-08-2016_19-06-06.m4a?alt=media&token=33d031d4-c160-4ffd-aeea-b711b441b6a0",
     "soundName" : "Be Right Back",
     "source" : "-",
     "tag" : {
       "brb" : true
     },
-    "favorite" : 0,
     "text" : "be right back"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fbe_right_back____06-08-2016_19-06-43.m4a?alt=media&token=76c73935-7d1c-4b2c-929d-0bfa6dee4b17",
     "soundName" : "Be Right Back",
     "source" : "-",
     "tag" : {
       "brb" : true
     },
-    "favorite" : 0,
     "text" : "be right back"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FBig_Bang_Fantastic_Baby_06-08-2016_19-11-38.m4a?alt=media&token=6aa1988c-f782-49bf-9658-5cad94e48667",
     "soundName" : "Fantastic baby",
     "source" : "Big Bang",
     "tag" : {
-      "fantastic" : true,
       "cool" : true,
+      "fantastic" : true,
       "wow" : true
     },
-    "favorite" : 0,
     "text" : "fantastic baby"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FBigBang___BANG_BANG_BANG_06-08-2016_19-12-22.m4a?alt=media&token=4c136f5b-0d98-4816-818f-180a7df725e9",
     "soundName" : "Bang Bang Bang",
     "source" : "Big Bang",
@@ -485,114 +728,120 @@
       "bang" : true,
       "party" : true
     },
-    "favorite" : 0,
     "text" : "bang bang bang"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FBitch_Please__06-08-2016_19-13-10.m4a?alt=media&token=4fb77eaf-8954-4185-8826-0be6619e0b98",
     "soundName" : "Bitch Please",
     "source" : "-",
     "tag" : {
-      "bitch" : true,
-      "please" : true,
-      "lol" : true,
-      "zzz" : true,
       "angry" : true,
-      "mad" : true
+      "bitch" : true,
+      "lol" : true,
+      "mad" : true,
+      "please" : true,
+      "zzz" : true,
+      "\uD83D\uDD95" : true,
+      "\uD83D\uDE21" : true
     },
-    "favorite" : 0,
     "text" : "bitch please"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fbitch_please___06-08-2016_19-07-49.m4a?alt=media&token=6bb58418-44b1-4961-88a5-1f447d1c0b07",
     "soundName" : "Bitch Please",
     "source" : "-",
     "tag" : {
+      "angry" : true,
       "bitch" : true,
+      "mad" : true,
       "please" : true,
       "zzz" : true,
-      "angry" : true,
-      "mad" : true
+      "\uD83D\uDD95" : true
     },
-    "favorite" : 0,
     "text" : "bitch please"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fbye_06-08-2016_19-08-28.m4a?alt=media&token=7f43cc7a-8055-42a8-994d-e1ab3f5ba80c",
     "soundName" : "Lay by My Side",
     "source" : "Sam Smith",
     "tag" : {
-      "love" : true,
-      "side" : true,
       "ily" : true,
-      "miss" : true
+      "love" : true,
+      "miss" : true,
+      "side" : true,
+      "❤️" : true
     },
-    "favorite" : 0,
     "text" : "can i lay by your side"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fbye_06-08-2016_19-09-12.m4a?alt=media&token=20d4b7c8-1b78-4252-b54b-05f3bf4f7139",
     "soundName" : "Ok, bye",
     "source" : "-",
     "tag" : {
+      "bb" : true,
       "bye" : true,
-      "cya" : true,
-      "bb" : true
+      "cya" : true
     },
-    "favorite" : 0,
     "text" : "ok bye"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fbye_06-08-2016_19-09-41.m4a?alt=media&token=3214d531-fa4b-40a8-af87-ae5dffe6758d",
     "soundName" : "Bye",
     "source" : "-",
     "tag" : {
+      "bb" : true,
       "bye" : true,
-      "cya" : true,
-      "bb" : true
+      "cya" : true
     },
-    "favorite" : 0,
     "text" : "ok bye"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fbye_06-08-2016_19-09-58.m4a?alt=media&token=2e8afaf4-2710-4bc4-894c-ecf606373077",
     "soundName" : "Bye",
     "source" : "-",
     "tag" : {
+      "bb" : true,
       "bye" : true,
-      "cya" : true,
-      "bb" : true
+      "cya" : true
     },
-    "favorite" : 0,
     "text" : "bye bye"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fbye_06-08-2016_19-10-39.m4a?alt=media&token=3a743059-fa94-4dc7-b812-91430d83a69a",
     "soundName" : "Say good bye",
     "source" : "-",
     "tag" : {
+      "bb" : true,
       "bye" : true,
-      "cya" : true,
-      "bb" : true
+      "cya" : true
     },
-    "favorite" : 0,
     "text" : "say good bye long long time ago"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FBye_Bitch_06-08-2016_19-13-44.m4a?alt=media&token=e14d2494-5dcd-412a-af33-9ea4b0e69b24",
     "soundName" : "Bye Bitch",
     "source" : "-",
     "tag" : {
+      "angry" : true,
+      "bb" : true,
       "bye" : true,
       "cya" : true,
-      "bb" : true,
       "hate" : true,
-      "angry" : true
+      "\uD83D\uDD95" : true,
+      "\uD83D\uDE21" : true
     },
-    "favorite" : 0,
     "text" : "if you dont like me, bye bitch"
   }, {
     "by" : "Mext",
+    "favorite" : 4,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fcall_me_baby_please_06-08-2016_19-15-23.m4a?alt=media&token=3bc149ea-ce1c-4973-b63e-b440564bc91a",
     "soundName" : "Call me baby, please",
     "source" : "-",
@@ -602,10 +851,10 @@
       "please" : true,
       "plz" : true
     },
-    "favorite" : 0,
     "text" : "call me baby please"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fdamn_06-08-2016_19-15-51.m4a?alt=media&token=960c99f2-d1bc-49bb-b862-8948161c0e4d",
     "soundName" : "Dayuuuum",
     "source" : "-",
@@ -613,10 +862,10 @@
       "damn" : true,
       "dayum" : true
     },
-    "favorite" : 0,
     "text" : "damn"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fdamn_06-08-2016_19-16-19.m4a?alt=media&token=39ff2e1e-bc55-4f1e-9c0a-9e25952f22ea",
     "soundName" : "Dayum",
     "source" : "-",
@@ -624,48 +873,49 @@
       "damn" : true,
       "dayum" : true
     },
-    "favorite" : 0,
     "text" : "damn"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FFrozen_06-08-2016_19-17-06.m4a?alt=media&token=bfdef67e-de06-4e51-a229-cbdec4597e85",
     "soundName" : "Love is an open door",
     "source" : "Frozen",
     "tag" : {
-      "love" : true,
       "crazy" : true,
-      "ily" : true
+      "ily" : true,
+      "love" : true,
+      "❤️" : true
     },
-    "favorite" : 0,
     "text" : "love is an open door"
   }, {
     "by" : "Mext",
+    "favorite" : 7,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FFrozen_06-08-2016_19-17-59.m4a?alt=media&token=b869b9b6-57ce-4597-9a54-16843dcb7408",
     "soundName" : "Do you wana build a snowman",
     "source" : "Frozen",
     "tag" : {
-      "snowman" : true,
+      "hello" : true,
       "hey" : true,
       "hi" : true,
-      "hello" : true
+      "snowman" : true
     },
-    "favorite" : 0,
     "text" : "do you wana build a snowman"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FFuck_This_Shit_Im_out_06-08-2016_19-18-49.m4a?alt=media&token=4e0894c6-738a-44dc-a613-4008b52eb3c0",
     "soundName" : "Fuck this shit",
     "source" : "-",
     "tag" : {
-      "fuck" : true,
       "bye" : true,
       "cya" : true,
+      "fuck" : true,
       "out" : true
     },
-    "favorite" : 0,
     "text" : "fuck this shit im out"
   }, {
     "by" : "Mext",
+    "favorite" : 6,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fgood_06-08-2016_19-19-18.m4a?alt=media&token=c216fb75-0093-4ac2-a959-c602679cae94",
     "soundName" : "Feel good",
     "source" : "-",
@@ -674,179 +924,197 @@
       "happy" : true,
       "wow" : true,
       "yay" : true,
-      "yes" : true
+      "yes" : true,
+      "\uD83D\uDC4D" : true
     },
-    "favorite" : 0,
     "text" : "i feel good"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FGood_bye_06-08-2016_19-22-28.m4a?alt=media&token=e78315ba-87eb-434f-8e23-ffe8d54180cf",
     "soundName" : "Good Bye Mfker",
     "source" : "-",
     "tag" : {
-      "bye" : true,
       "bb" : true,
+      "bye" : true,
       "cya" : true
     },
-    "favorite" : 0,
     "text" : "good bye motherfucker"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fgood_morning_06-08-2016_19-19-52.m4a?alt=media&token=675d3f02-ea1e-4943-b872-c96e7f8c73aa",
     "soundName" : "Good Morning",
     "source" : "-",
     "tag" : {
-      "morning" : true
+      "morning" : true,
+      "☀️" : true
     },
-    "favorite" : 0,
     "text" : "good morning"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fgood_morning_06-08-2016_19-20-27.m4a?alt=media&token=09c490d7-acab-45c7-b96a-36aa894e25ff",
     "soundName" : "Good Morning, How are you?",
     "source" : "-",
     "tag" : {
-      "morning" : true
+      "morning" : true,
+      "☀️" : true
     },
-    "favorite" : 0,
     "text" : "good morning"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FGood_Morning_06-08-2016_19-23-57.m4a?alt=media&token=4f85c19b-8b7f-4bde-9261-83bf55c9905d",
     "soundName" : "Good Morning",
     "source" : "-",
     "tag" : {
-      "morning" : true
+      "morning" : true,
+      "☀️" : true
     },
-    "favorite" : 0,
     "text" : "good morning"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FGood_morning__06-08-2016_19-22-59.m4a?alt=media&token=03b880c5-5c36-418a-95f2-a3bfcd1fbd0a",
     "soundName" : "Good Morning!",
     "source" : "-",
     "tag" : {
-      "morning" : true
+      "morning" : true,
+      "☀️" : true
     },
-    "favorite" : 0,
     "text" : "good morning"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fgood_morning_beautiful_06-08-2016_19-21-07.m4a?alt=media&token=965bcec9-7774-4879-8cd3-51a4352d87e9",
     "soundName" : "Good Morning Beautiful",
     "source" : "-",
     "tag" : {
-      "morning" : true
+      "morning" : true,
+      "☀️" : true
     },
-    "favorite" : 0,
     "text" : "good morning"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fgood_nite_06-08-2016_19-21-49.m4a?alt=media&token=f1050ad9-ee4b-469d-bf6a-29cd94082766",
     "soundName" : "Good night ILY",
     "source" : "-",
     "tag" : {
+      "gn" : true,
       "night" : true,
-      "nitez" : true,
       "nite" : true,
-      "gn" : true
+      "nitez" : true,
+      "\uD83D\uDCA4" : true,
+      "\uD83D\uDE34" : true
     },
-    "favorite" : 0,
     "text" : "good night"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fhahaha-minion.mp3?alt=media&token=16ae173f-e462-4cfc-9eec-696215ea1212",
     "soundName" : "Hahahaha",
     "source" : "Minion",
     "tag" : {
-      "hahaha" : true,
       "haha" : true,
-      "hehe" : true
+      "hahaha" : true,
+      "hehe" : true,
+      "\uD83D\uDE02" : true,
+      "\uD83D\uDE06" : true
     },
-    "favorite" : 0,
     "text" : "hahaha"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FHarley_Quinn___The_Voices_06-08-2016_19-26-27.m4a?alt=media&token=e74ceb04-d06e-4a37-96ec-9e9b1e47c04f",
     "soundName" : "The Voices",
     "source" : "Harley Quinn",
     "tag" : {
       "crazy" : true,
-      "kidding" : true,
-      "jk" : true
+      "jk" : true,
+      "kidding" : true
     },
-    "favorite" : 0,
     "text" : "the voices"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FHehehe_wtf_06-08-2016_19-27-03.m4a?alt=media&token=d5d93c52-9e57-48e4-89c7-f8d1e2256e1a",
     "soundName" : "Hehehe WTF",
     "source" : "-",
     "tag" : {
       "haha" : true,
+      "lol" : true,
       "wtf" : true,
-      "lol" : true
+      "\uD83D\uDE02" : true,
+      "\uD83D\uDE06" : true
     },
-    "favorite" : 0,
     "text" : "hehehe wtf"
   }, {
     "by" : "Mext",
+    "favorite" : 10,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FHello___its_John_Cena_06-08-2016_19-29-11.m4a?alt=media&token=71eefd36-5d4e-4753-9cff-57092f9fd418",
     "soundName" : "Hello, John Cena",
     "source" : "-",
     "tag" : {
       "hello" : true,
       "hey" : true,
-      "hi" : true
+      "hi" : true,
+      "\uD83D\uDE4B\uD83C\uDFFB" : true
     },
-    "favorite" : 0,
     "text" : "hello john cena"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FHi_boys____Suicide_Squad_06-08-2016_19-29-38.m4a?alt=media&token=2b190706-d796-45f8-ad0a-a0b35b7f08e7",
     "soundName" : "Hi boys",
     "source" : "Harley Quinn",
     "tag" : {
       "hi" : true
     },
-    "favorite" : 0,
     "text" : "hi boys"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fhigh_pitch_girl_laugh-Mike_Koenig-336832306.mp3?alt=media&token=52f985cb-d2e8-4991-98b7-c77c4bea51e7",
     "soundName" : "High pitch Laugh",
     "source" : "-",
     "tag" : {
-      "haha" : true
+      "haha" : true,
+      "\uD83D\uDE02" : true,
+      "\uD83D\uDE06" : true
     },
-    "favorite" : 0,
     "text" : "hahaha"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FHodor_06-08-2016_19-30-06.m4a?alt=media&token=da723286-1db3-4595-9c12-3a12793bae38",
     "soundName" : "Hodor",
     "source" : "Hodor",
     "tag" : {
-      "hi" : true,
-      "hey" : true
+      "hey" : true,
+      "hi" : true
     },
-    "favorite" : 0,
     "text" : "hodor"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FHONEY_IM_GOOD_06-08-2016_19-31-09.m4a?alt=media&token=155e6c33-ad3f-40c3-9004-561cb8f639db",
     "soundName" : "Honey I'm Good",
     "source" : "-",
     "tag" : {
-      "ok" : true,
       "fine" : true,
+      "nevermind" : true,
       "nvm" : true,
-      "nevermind" : true
+      "ok" : true,
+      "\uD83D\uDC4C" : true,
+      "\uD83D\uDC4D" : true,
+      "\uD83D\uDE15" : true
     },
-    "favorite" : 0,
     "text" : "honey im good"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FHow_about_no__06-08-2016_19-30-32.m4a?alt=media&token=2514cbbe-f14a-4d36-8091-95cbfbf03106",
     "soundName" : "How about no?",
     "source" : "-",
@@ -854,23 +1122,23 @@
       "no" : true,
       "nop" : true
     },
-    "favorite" : 0,
     "text" : "how about no"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fhungry_06-08-2016_19-24-34.m4a?alt=media&token=e59387aa-eb3f-4029-a2a3-9fb7bc2794bb",
     "soundName" : "No Food",
     "source" : "-",
     "tag" : {
-      "tired" : true,
       "hungry" : true,
+      "money" : true,
       "poor" : true,
-      "money" : true
+      "tired" : true
     },
-    "favorite" : 0,
     "text" : "no food"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fhungry_06-08-2016_19-25-07.m4a?alt=media&token=df64c2d0-2795-474f-b251-1a5662c52079",
     "soundName" : "So hungry but lazy",
     "source" : "-",
@@ -879,20 +1147,20 @@
       "lazy" : true,
       "lz" : true
     },
-    "favorite" : 0,
     "text" : "hungry but so tired"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fhungry_06-08-2016_19-25-41.m4a?alt=media&token=c0ca9a0b-06dc-4178-9beb-67de9812ff5e",
     "soundName" : "I'm hungry",
     "source" : "-",
     "tag" : {
       "hungry" : true
     },
-    "favorite" : 0,
     "text" : "hungry"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FHungry_06-08-2016_19-31-49.m4a?alt=media&token=0b690204-30cc-4d14-9f3d-19da73c8b08d",
     "soundName" : "Give me food",
     "source" : "-",
@@ -900,54 +1168,56 @@
       "food" : true,
       "hungry" : true
     },
-    "favorite" : 0,
     "text" : "give me food"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FI_could_eat_a_dog_06-08-2016_19-34-27.m4a?alt=media&token=07f89b93-8cbd-4c20-b71d-4b2525ad1070",
     "soundName" : "I'm so hungry",
     "source" : "-",
     "tag" : {
-      "hungry" : true,
-      "eat" : true
+      "eat" : true,
+      "hungry" : true
     },
-    "favorite" : 0,
     "text" : "so hungry"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FI_Hate_Him____06-08-2016_19-35-09.m4a?alt=media&token=ebfc4b32-f2c4-4c24-9635-d16cbfd6a40d",
     "soundName" : "I Hate Him",
     "source" : "-",
     "tag" : {
-      "sad" : true,
       "broken" : true,
-      "cry" : true
+      "cry" : true,
+      "sad" : true,
+      "☹️" : true,
+      "\uD83D\uDE2D" : true
     },
-    "favorite" : 0,
     "text" : "i hate him"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FI_ll_be_right_back__06-08-2016_19-32-56.m4a?alt=media&token=e2eb425d-041d-4a51-9d8d-66da861b1ed4",
     "soundName" : "I'll be right back",
     "source" : "-",
     "tag" : {
-      "brb" : true,
-      "back" : true
+      "back" : true,
+      "brb" : true
     },
-    "favorite" : 0,
     "text" : "brb"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FI_look_good_in_this_shirt_06-08-2016_19-35-46.m4a?alt=media&token=01eba47a-2ea1-4d92-8ce8-ee591e97dc54",
     "soundName" : "I look good in this shirt",
     "source" : "-",
     "tag" : {
       "shirt" : true
     },
-    "favorite" : 0,
     "text" : "I look good in this shirt"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FI_m_gonna_say_no_06-08-2016_19-33-26.m4a?alt=media&token=3bb5347d-372e-44b6-a798-88d5968817fa",
     "soundName" : "NO",
     "source" : "-",
@@ -955,70 +1225,74 @@
       "no" : true,
       "nop" : true
     },
-    "favorite" : 0,
     "text" : "im gonna say no"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FI_m_sorry____06-08-2016_19-33-57.m4a?alt=media&token=2fbd6131-119f-4bd6-8311-79eae3405ee2",
     "soundName" : "I'm sorry",
     "source" : "-",
     "tag" : {
+      "cry" : true,
       "sad" : true,
       "sorry" : true,
-      "cry" : true,
-      "tired" : true
+      "tired" : true,
+      "☹️" : true,
+      "\uD83D\uDE2D" : true
     },
-    "favorite" : 0,
     "text" : "im sorry"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FI_Still_Love_You_06-08-2016_19-36-18.m4a?alt=media&token=05f508ed-777a-4adf-bec0-ad1a1c08cf82",
     "soundName" : "I Still Love You",
     "source" : "-",
     "tag" : {
-      "love" : true,
       "ily" : true,
+      "jk" : true,
       "kidding" : true,
-      "jk" : true
+      "love" : true,
+      "❤️" : true
     },
-    "favorite" : 0,
     "text" : "i still love you"
   }, {
     "by" : "Mext",
+    "favorite" : 2,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fi_wanna_take_a_nap_06-08-2016_19-32-28.m4a?alt=media&token=00ea3023-6ef8-44ad-8b6e-2f9b5f638442",
     "soundName" : "I'll take a nap",
     "source" : "-",
     "tag" : {
-      "tired" : true,
-      "sleep" : true,
-      "night" : true,
       "nap" : true,
-      "yawn" : true
+      "night" : true,
+      "sleep" : true,
+      "tired" : true,
+      "yawn" : true,
+      "\uD83D\uDE34" : true
     },
-    "favorite" : 0,
     "text" : "ill take a nap"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FIM_ALWAYS_HUNGRY_06-08-2016_19-38-31.m4a?alt=media&token=d0847c3f-7457-427b-b883-0c7c4ace5b5c",
     "soundName" : "I'm always hungry",
     "source" : "-",
     "tag" : {
       "hungry" : true
     },
-    "favorite" : 0,
     "text" : "hungry"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FIm_hungry_06-08-2016_19-37-12.m4a?alt=media&token=15c07451-23b8-4c0c-a6d4-828680c4f329",
     "soundName" : "I'm hungry",
     "source" : "-",
     "tag" : {
       "hungry" : true
     },
-    "favorite" : 0,
     "text" : "pss im hungry"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FIm_thirsty__I_m_hungry__I_m_batman__06-08-2016_19-37-46.m4a?alt=media&token=0d04b14f-3e95-4338-adf2-cd8cdc577622",
     "soundName" : "I'm hungry, I'm thirsty",
     "source" : "-",
@@ -1026,71 +1300,78 @@
       "hungry" : true,
       "thirsty" : true
     },
-    "favorite" : 0,
     "text" : "hungry thirsty"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fjohn_cena_06-08-2016_19-39-12.m4a?alt=media&token=b4290555-b172-47ac-872b-f590328ccacb",
     "soundName" : "The Champ is here",
     "source" : "-",
     "tag" : {
       "champ" : true,
-      "here" : true,
       "champion" : true,
+      "here" : true,
       "win" : true,
       "yes" : true
     },
-    "favorite" : 0,
     "text" : "john cena"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FJohn_Cena_06-08-2016_19-39-45.m4a?alt=media&token=f05b6ef8-d7fb-4da5-831f-2d5cbfaee7bd",
     "soundName" : "John Cena",
     "source" : "-",
     "tag" : {
       "cena" : true
     },
-    "favorite" : 0,
     "text" : "john cena"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FJoker%20Laughing%20Sound%20Effect.m4a?alt=media&token=dcc2feeb-7e7a-45e6-94e8-c7566d1b7ef7",
     "soundName" : "Joker Laugh",
     "source" : "Mark Hamil",
     "tag" : {
-      "haha" : true,
-      "joker" : true,
       "evil" : true,
-      "hehe" : true
+      "haha" : true,
+      "hehe" : true,
+      "joker" : true,
+      "\uD83D\uDE02" : true,
+      "\uD83D\uDE06" : true
     },
-    "favorite" : 0,
     "text" : "hahaha"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FJoker_Laugh___Suicide_Squad_06-08-2016_19-40-17.m4a?alt=media&token=a2971880-0dd6-4829-9add-75593220d4b5",
     "soundName" : "Hahaha",
     "source" : "Joker",
     "tag" : {
-      "haha" : true,
-      "joker" : true,
       "evil" : true,
-      "hehe" : true
+      "haha" : true,
+      "hehe" : true,
+      "joker" : true,
+      "\uD83D\uDE02" : true,
+      "\uD83D\uDE06" : true
     },
-    "favorite" : 0,
     "text" : "hahaha"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FJolly%20Laugh-SoundBible.com-874430997.mp3?alt=media&token=9742258d-434b-497c-8d23-09e8889b6244",
     "soundName" : "Hohoho",
     "source" : "Santa",
     "tag" : {
+      "haha" : true,
       "hoho" : true,
-      "haha" : true
+      "\uD83C\uDF85" : true,
+      "\uD83D\uDE02" : true,
+      "\uD83D\uDE2E" : true
     },
-    "favorite" : 0,
     "text" : "haha"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FJust_Kidding_06-08-2016_19-40-46.m4a?alt=media&token=ececc880-3fa7-4f77-9d40-09ddaf59dba2",
     "soundName" : "Jk just kidding",
     "source" : "-",
@@ -1098,22 +1379,22 @@
       "jk" : true,
       "kidding" : true
     },
-    "favorite" : 0,
     "text" : "just kidding"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FJUST_KIDDING___06-08-2016_19-46-25.m4a?alt=media&token=6d3a0428-06b2-4c20-854c-05113c1ab9fe",
     "soundName" : "Just Kidding",
     "source" : "-",
     "tag" : {
-      "kidding" : true,
       "jk" : true,
-      "jking" : true
+      "jking" : true,
+      "kidding" : true
     },
-    "favorite" : 0,
     "text" : "jk"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FJustin_Bieber_06-08-2016_19-43-19.m4a?alt=media&token=d7bbdbaa-9da2-405d-bb66-a48d2a787ff5",
     "soundName" : "Baby",
     "source" : "Justin Bieber",
@@ -1121,64 +1402,75 @@
       "baby" : true,
       "bae" : true
     },
-    "favorite" : 0,
     "text" : "baby"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FLion%20Laugh.mp3?alt=media&token=c5db91d7-d7a6-4795-b139-e3945d65e342",
     "soundName" : "Hahaha",
     "source" : "Lion",
     "tag" : {
       "haha" : true,
-      "hahaha" : true
+      "hahaha" : true,
+      "❤️" : true,
+      "\uD83D\uDE02" : true
     },
-    "favorite" : 0,
     "text" : "hahaha"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fnever_mind_06-08-2016_19-46-59.m4a?alt=media&token=42a13cd5-fd18-4519-a473-92051e410995",
     "soundName" : "Nevermind",
     "source" : "-",
     "tag" : {
-      "nvm" : true,
+      "fed" : true,
       "nevermind" : true,
+      "nvm" : true,
       "ok" : true,
-      "fed" : true
+      "☹️" : true,
+      "\uD83D\uDC4C" : true,
+      "\uD83D\uDE15" : true
     },
-    "favorite" : 0,
     "text" : "nvm"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fnice_06-08-2016_19-49-21.m4a?alt=media&token=3d89488b-9b66-4e37-aff1-47365fcbfb4d",
     "soundName" : "Nice!!",
     "source" : "-",
     "tag" : {
-      "nice" : true
+      "nice" : true,
+      "\uD83D\uDC4D" : true,
+      "\uD83D\uDC4F" : true
     },
-    "favorite" : 0,
     "text" : "nice"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fnice_06-08-2016_19-53-01.m4a?alt=media&token=9f55bce5-5bd8-4166-8ae2-3c4e0f818fad",
     "soundName" : "Nice",
     "source" : "-",
     "tag" : {
-      "nice" : true
+      "nice" : true,
+      "\uD83D\uDC4D" : true,
+      "\uD83D\uDC4F" : true
     },
-    "favorite" : 0,
     "text" : "nice"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FNICE_06-08-2016_19-54-33.m4a?alt=media&token=90e33983-ff0c-4d5e-b940-334ec276dc92",
     "soundName" : "Nice!",
     "source" : "-",
     "tag" : {
-      "nice" : true
+      "nice" : true,
+      "\uD83D\uDC4D" : true,
+      "\uD83D\uDC4F" : true
     },
-    "favorite" : 0,
     "text" : "nice"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fno_06-08-2016_19-53-31.m4a?alt=media&token=4a01c404-283c-4bfb-b00f-146543f0aef1",
     "soundName" : "No!!",
     "source" : "-",
@@ -1186,10 +1478,10 @@
       "no" : true,
       "nooo" : true
     },
-    "favorite" : 0,
     "text" : "no"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FNo__No_no_no_06-08-2016_19-55-56.m4a?alt=media&token=08a9107e-0102-4c38-8ac7-b16db117d44f",
     "soundName" : "Nonono",
     "source" : "-",
@@ -1197,114 +1489,118 @@
       "no" : true,
       "nono" : true
     },
-    "favorite" : 0,
     "text" : "nonono"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FNo_god__please_no_06-08-2016_19-55-00.m4a?alt=media&token=24497e2d-82a4-48aa-afb7-a401c72ba490",
     "soundName" : "No, God please no!",
     "source" : "-",
     "tag" : {
       "no" : true
     },
-    "favorite" : 0,
     "text" : "no"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FNo_no_no_no_06-08-2016_19-55-28.m4a?alt=media&token=3745acb2-dc68-4361-9772-8fa19662f8e3",
     "soundName" : "Nononono",
     "source" : "-",
     "tag" : {
       "no" : true
     },
-    "favorite" : 0,
     "text" : "no"
   }, {
     "by" : "Mext",
+    "favorite" : 1,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fno_thanks_mr__muffin_06-08-2016_19-54-06.m4a?alt=media&token=d8d75e29-0d2e-401a-bf49-db326012c4c5",
     "soundName" : "Hey, you wana eat me?",
     "source" : "-",
     "tag" : {
+      "die" : true,
       "hey" : true,
-      "die" : true
+      "\uD83D\uDE32" : true,
+      "\uD83D\uDE35" : true
     },
-    "favorite" : 0,
     "text" : "hey wana eat me?"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fokay_06-08-2016_19-56-31.m4a?alt=media&token=24b62661-c2ed-4dc5-a3be-dd14e787aae9",
     "soundName" : "Ok",
     "source" : "-",
     "tag" : {
       "ok" : true,
-      "okay" : true
+      "okay" : true,
+      "\uD83D\uDC4C" : true
     },
-    "favorite" : 0,
     "text" : "ok"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FOkay_okay_okay_okay_okay_06-08-2016_19-57-58.m4a?alt=media&token=bd497440-ee4e-49dc-b2a6-d98fbbdffbb8",
     "soundName" : "Ok",
     "source" : "-",
     "tag" : {
-      "ok" : true
+      "ok" : true,
+      "\uD83D\uDC4C" : true
     },
-    "favorite" : 0,
     "text" : "ok"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fomg_06-08-2016_19-57-01.m4a?alt=media&token=0616704b-24ae-45b5-9d02-d38f303da10c",
     "soundName" : "Omg, it's my best friend calling me",
     "source" : "-",
     "tag" : {
-      "omg" : true,
       "friend" : true,
+      "omg" : true,
       "yo" : true
     },
-    "favorite" : 0,
     "text" : "omg"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fomg_06-08-2016_19-57-32.m4a?alt=media&token=e30e409c-5d8a-4560-99d4-f491536b860f",
     "soundName" : "OMG",
     "source" : "-",
     "tag" : {
       "omg" : true
     },
-    "favorite" : 0,
     "text" : "omg"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FOmg_06-08-2016_19-58-32.m4a?alt=media&token=b596a5c6-a4de-4a17-be07-aff4babb2359",
     "soundName" : "Omg",
     "source" : "-",
     "tag" : {
       "omg" : true
     },
-    "favorite" : 0,
     "text" : "omg"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FOMG_06-08-2016_19-59-20.m4a?alt=media&token=d36fb8ab-e9eb-41f6-8179-025a9127f542",
     "soundName" : "Omg",
     "source" : "-",
     "tag" : {
       "omg" : true
     },
-    "favorite" : 0,
     "text" : "omg"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FOMG_06-08-2016_19-59-53.m4a?alt=media&token=e6535ba2-28a9-4841-ad54-c7a7871373b6",
     "soundName" : "OMG",
     "source" : "-",
     "tag" : {
       "omg" : true
     },
-    "favorite" : 0,
     "text" : "omg"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fplease_06-08-2016_20-00-19.m4a?alt=media&token=e029c8f1-a0cb-4fd0-9a04-b1cdedeec1a6",
     "soundName" : "Please",
     "source" : "-",
@@ -1312,126 +1608,132 @@
       "please" : true,
       "plz" : true
     },
-    "favorite" : 0,
     "text" : "please"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FPlease_Say_Yes_06-08-2016_20-01-35.m4a?alt=media&token=36656dfd-8dcc-4162-8b86-35a923dc924e",
     "soundName" : "Marry you",
     "source" : "Bruno Mars",
     "tag" : {
-      "yes" : true,
+      "love" : true,
       "marry" : true,
-      "love" : true
+      "yes" : true,
+      "❤️" : true
     },
-    "favorite" : 0,
     "text" : "dont say nonononono"
   }, {
     "by" : "Mext",
+    "favorite" : 1,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fpokemon_06-08-2016_20-00-50.m4a?alt=media&token=eae86eea-008a-4c1d-99fa-3e8327323317",
     "soundName" : "Pikachu",
     "source" : "Pokemon",
     "tag" : {
       "ok" : true,
-      "pokemon" : true,
-      "pikachu" : true
+      "pikachu" : true,
+      "pokemon" : true
     },
-    "favorite" : 0,
     "text" : "pikachu"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FSad_06-08-2016_20-06-42.m4a?alt=media&token=3fa58e1f-3538-4cb6-a086-c15419e0b8a8",
     "soundName" : "Kiss The Rain",
     "source" : "Yiruma",
     "tag" : {
-      "sad" : true,
       "cry" : true,
-      "moody" : true
+      "moody" : true,
+      "sad" : true,
+      "☹️" : true,
+      "\uD83D\uDE2D" : true
     },
-    "favorite" : 0,
     "text" : "cry"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fsee_you_06-08-2016_20-02-22.m4a?alt=media&token=dc7eaa6c-4254-47d7-8f57-d5e1d6d10db2",
     "soundName" : "See You Again",
     "source" : "Wiz Khalifa",
     "tag" : {
-      "hi" : true,
+      "farewell" : true,
       "friend" : true,
-      "farewell" : true
+      "hi" : true
     },
-    "favorite" : 0,
     "text" : "its been a long day without you my friend"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fsehun_s_never_mind_about_a_thing_06-08-2016_20-02-46.m4a?alt=media&token=fd4adf79-4399-42e3-9403-de5f70ba1785",
     "soundName" : "Call Me Baby",
     "source" : "EXO",
     "tag" : {
+      "exo" : true,
       "nevermind" : true,
       "nvm" : true,
-      "exo" : true
+      "\uD83D\uDE15" : true
     },
-    "favorite" : 0,
     "text" : "nvm"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fsnowman_06-08-2016_20-04-11.m4a?alt=media&token=227c445a-9069-4f54-ba3d-d15d6aae1992",
     "soundName" : "Do You Wana Build A Snowman",
     "source" : "-",
     "tag" : {
       "no" : true
     },
-    "favorite" : 0,
     "text" : "no please no"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fsnowman_06-08-2016_20-04-43.m4a?alt=media&token=729a0ec9-b701-4040-9b36-a9f3bac52d01",
     "soundName" : "Do You Wana Build A Snowman",
     "source" : "Frozen",
     "tag" : {
       "snowman" : true
     },
-    "favorite" : 0,
     "text" : "Do You Wana Build A Snowman"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FSomebody_Kill_Me_Please_06-08-2016_20-07-21.m4a?alt=media&token=5921dc28-dc2d-4859-875e-fd4b30257ade",
     "soundName" : "Somebody kill me please",
     "source" : "-",
     "tag" : {
       "kill" : true,
       "sad" : true,
-      "upset" : true
+      "upset" : true,
+      "☹️" : true,
+      "\uD83D\uDE2D" : true
     },
-    "favorite" : 0,
     "text" : "-"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fsorry_06-08-2016_20-05-10.m4a?alt=media&token=27ad4512-fe33-438f-b53e-6eeeea1d8d25",
     "soundName" : "Sorry, would you forgive me?",
     "source" : "-",
     "tag" : {
+      "forgive" : true,
       "sorry" : true,
-      "sry" : true,
-      "forgive" : true
+      "sry" : true
     },
-    "favorite" : 0,
     "text" : "sorry"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FStay_hungry__stay_foolish_06-08-2016_20-08-22.m4a?alt=media&token=64de05ac-57e9-4f52-8a4a-ba66d90c1b1b",
     "soundName" : "Stay Hungry, Stay Foolish",
     "source" : "Steve Jobs",
     "tag" : {
+      "hardwork" : true,
       "hungry" : true,
-      "learn" : true,
-      "hardwork" : true
+      "learn" : true
     },
-    "favorite" : 0,
     "text" : "-"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fthanks_06-08-2016_20-08-53.m4a?alt=media&token=1181dd6f-f95b-4f25-bba7-d8038985c2bb",
     "soundName" : "Thanks a lot",
     "source" : "-",
@@ -1441,10 +1743,10 @@
       "tq" : true,
       "ty" : true
     },
-    "favorite" : 0,
     "text" : "thanks"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fthanks_Thai__06-08-2016_20-09-18.m4a?alt=media&token=6f70ab8f-8a32-4a2f-9cfc-1571e2e3792e",
     "soundName" : "Thanks",
     "source" : "Thai",
@@ -1454,178 +1756,185 @@
       "tq" : true,
       "ty" : true
     },
-    "favorite" : 0,
     "text" : "Kakumkap"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fthe_hell_06-08-2016_20-10-34.m4a?alt=media&token=205e5b93-81d7-430e-855d-7d133fa84a87",
     "soundName" : "Eww, wth",
     "source" : "-",
     "tag" : {
+      "eww" : true,
       "wth" : true,
-      "yuck" : true,
-      "eww" : true
+      "yuck" : true
     },
-    "favorite" : 0,
     "text" : "eww"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FThe_Joker_06-08-2016_20-11-24.m4a?alt=media&token=3cfdd938-f62f-4218-86b8-3e8c35aff73f",
     "soundName" : "I'm gonna hurt you",
     "source" : "Joker",
     "tag" : {
-      "joker" : true,
+      "angry" : true,
       "hurt" : true,
-      "angry" : true
+      "joker" : true,
+      "\uD83D\uDD95" : true,
+      "\uD83D\uDE21" : true
     },
-    "favorite" : 0,
     "text" : "-"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fwhat_06-08-2016_20-12-02.m4a?alt=media&token=9e6d412f-a05d-4497-8bee-094b7f033b1f",
     "soundName" : "What?",
     "source" : "-",
     "tag" : {
+      "wat" : true,
       "what" : true,
-      "wat" : true
+      "\uD83E\uDD14" : true
     },
-    "favorite" : 0,
     "text" : "what?"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fwhat_06-08-2016_20-12-32.m4a?alt=media&token=16ebf598-5a68-4b38-932d-c9b379d495cf",
     "soundName" : "What? I don't understand",
     "source" : "-",
     "tag" : {
-      "what" : true,
       "dunno" : true,
-      "duno" : true
+      "duno" : true,
+      "what" : true,
+      "\uD83E\uDD14" : true
     },
-    "favorite" : 0,
     "text" : "-"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fwhat_06-08-2016_20-12-55.m4a?alt=media&token=606085c4-0bd3-4461-babf-809492944634",
     "soundName" : "What?",
     "source" : "-",
     "tag" : {
-      "what" : true
+      "what" : true,
+      "\uD83E\uDD14" : true
     },
-    "favorite" : 0,
     "text" : "what"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FWHAT_06-08-2016_20-17-30.m4a?alt=media&token=675046f4-dacc-4941-ab44-06df9d4fe938",
     "soundName" : "What bitch?",
     "source" : "-",
     "tag" : {
-      "what" : true,
-      "wat" : true
+      "wat" : true,
+      "what" : true
     },
-    "favorite" : 0,
     "text" : "what"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fwhy_06-08-2016_20-13-23.m4a?alt=media&token=7de37609-af29-473d-8b81-1bea72030a91",
     "soundName" : "Why? Why?",
     "source" : "-",
     "tag" : {
       "why" : true
     },
-    "favorite" : 0,
     "text" : "why why why"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fwhy_06-08-2016_20-14-14.m4a?alt=media&token=1f3bdd99-e20b-4540-ab22-e96f8aa74b8c",
     "soundName" : "Why would you do this to me?",
     "source" : "-",
     "tag" : {
+      "sad" : true,
       "why" : true,
-      "sad" : true
+      "☹️" : true,
+      "\uD83D\uDE2D" : true
     },
-    "favorite" : 0,
     "text" : "why would you do this to me?"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FWhy_so_serious__06-08-2016_20-16-56.m4a?alt=media&token=214e34ad-3989-4efe-8391-04385e9f9aa5",
     "soundName" : "Why so serious?",
     "source" : "Joker",
     "tag" : {
-      "why" : true,
-      "kidding" : true,
-      "jking" : true,
       "jk" : true,
-      "serious" : true
+      "jking" : true,
+      "kidding" : true,
+      "serious" : true,
+      "why" : true
     },
-    "favorite" : 0,
     "text" : "why so serious"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fwhy_tf_you_lying_06-08-2016_20-14-52.m4a?alt=media&token=aa3dfbc2-af14-40c4-9947-017ea8dd1926",
     "soundName" : "Why you lying?",
     "source" : "-",
     "tag" : {
-      "why" : true,
+      "betray" : true,
       "lie" : true,
-      "betray" : true
+      "why" : true
     },
-    "favorite" : 0,
     "text" : "-"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fwow_06-08-2016_20-15-15.m4a?alt=media&token=045c5c9b-e3d8-4e05-b5e4-6cb79c9c1847",
     "soundName" : "Wow",
     "source" : "-",
     "tag" : {
       "wow" : true
     },
-    "favorite" : 0,
     "text" : "-"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fwow_06-08-2016_20-15-46.m4a?alt=media&token=718d902b-88f3-4dc6-9b97-336546f14b1d",
     "soundName" : "Wow this is ridiculous",
     "source" : "-",
     "tag" : {
       "wow" : true
     },
-    "favorite" : 0,
     "text" : "-"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fwth_06-08-2016_20-16-05.m4a?alt=media&token=6ad0d315-3add-439f-a7b3-c4c39dca65ce",
     "soundName" : "What the hell?",
     "source" : "-",
     "tag" : {
-      "wth" : true,
-      "hell" : true
+      "hell" : true,
+      "wth" : true
     },
-    "favorite" : 0,
     "text" : "wth"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fwth_06-08-2016_20-16-30.m4a?alt=media&token=2af55501-c84a-4300-95cd-c4250d798aa7",
     "soundName" : "Wth?",
     "source" : "-",
     "tag" : {
-      "wth" : true,
-      "hell" : true
+      "hell" : true,
+      "wth" : true
     },
-    "favorite" : 0,
     "text" : "wth"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FWTH_06-08-2016_20-18-02.m4a?alt=media&token=8ae045fe-2e06-4ee4-a43a-ade82740582d",
     "soundName" : "What the hell",
     "source" : "-",
     "tag" : {
-      "wth" : true,
-      "hell" : true
+      "hell" : true,
+      "wth" : true
     },
-    "favorite" : 0,
     "text" : "wth"
   }, {
     "by" : "Mext",
+    "favorite" : 0,
     "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Fyas_06-08-2016_20-18-35.m4a?alt=media&token=006a2849-1f13-4fb9-92cf-92229139e8c2",
     "soundName" : "YAAAS!!",
     "source" : "-",
@@ -1633,27 +1942,57 @@
       "yas" : true,
       "yes" : true
     },
-    "favorite" : 0,
     "text" : "yas"
+  }, {
+    "by" : "Mext",
+    "favorite" : 0,
+    "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2FFuck%20You%20Colin.m4a?alt=media&token=21167ef6-68e4-4702-9127-44350f9bab3a",
+    "soundName" : "Colin",
+    "source" : "Mext",
+    "tag" : {
+      "colin" : true
+    },
+    "text" : "fuck you colin"
+  }, {
+    "by" : "Mext",
+    "favorite" : 0,
+    "soundFileUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/SoundClips%2FMe%2Ffuck%20you%20teddy.m4a?alt=media&token=5280f96e-0bcf-442e-a984-802a65c7c6f3",
+    "soundName" : "Teddy",
+    "source" : "Mext",
+    "tag" : {
+      "teddy" : true
+    },
+    "text" : "fuck you teddy"
   } ],
   "Users" : {
     "4WUfu69sWVhHXM1s9PqkFf9Pkl82" : {
       "chatRooms" : {
         "-KOW4sG_fMcy_u7FNIP7" : "JQSW41TtQRYyfOCIEfBH41qx3FU2"
       },
-      "displayName" : "New User",
+      "displayName" : "Adele",
       "email" : "new@new.com",
       "lowerCaseDisplayName" : "new user",
       "phoneNumber" : "0123",
-      "photoUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/UserProfilePicture-Large%2F4WUfu69sWVhHXM1s9PqkFf9Pkl82.jpg?alt=media&token=f41e7288-1266-4ac7-90b6-bf2bf610c821"
+      "photoUrl" : "https://pbs.twimg.com/profile_images/657199367556866048/EBEIl2ol.jpg"
+    },
+    "CVp6DpWziLP7QGYlNayaQK0x4eg1" : {
+      "chatRooms" : {
+        "-KOqXC0GbrbEKbLQFrUY" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
+        "-KOqYfvxMpt6L8ljwwRc" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3"
+      },
+      "displayName" : "the dream team",
+      "email" : "teddytduoliang@gmail.com",
+      "lowerCaseDisplayName" : "the dream team",
+      "phoneNumber" : "0123",
+      "photoUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/UserProfilePicture-Large%2FCVp6DpWziLP7QGYlNayaQK0x4eg1.jpg?alt=media&token=ad0a9f15-ccca-4177-8297-1314ecd56370"
     },
     "JQSW41TtQRYyfOCIEfBH41qx3FU2" : {
       "chatRooms" : {
         "-KNEbaMcxX9hDu0VJy5X" : "S8whq96Mi8QHvmiugXAn95NRuFB3",
-        "-KNEbdt-WGJX5H939ScF" : "abc",
         "-KNUACfr71_c0quUJtKU" : "oLEqzm978bSx2kkSu3hvAAoubiW2",
-        "-KO7S6c968rYHFQiNb1e" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3",
-        "-KOW4sG_fMcy_u7FNIP7" : "4WUfu69sWVhHXM1s9PqkFf9Pkl82"
+        "-KOW4sG_fMcy_u7FNIP7" : "4WUfu69sWVhHXM1s9PqkFf9Pkl82",
+        "-KOqXC0GbrbEKbLQFrUY" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "-KOvmhxWbBjFANOaKrvQ" : "feKUo4B9aSO0TwLbIQ7v6z6MraI3"
       },
       "displayName" : "def",
       "email" : "def@def.com",
@@ -1673,8 +2012,9 @@
     },
     "feKUo4B9aSO0TwLbIQ7v6z6MraI3" : {
       "chatRooms" : {
-        "-KO7S6c968rYHFQiNb1e" : "JQSW41TtQRYyfOCIEfBH41qx3FU2",
-        "-KOC4s8A2ACoUxYVHbtc" : "S8whq96Mi8QHvmiugXAn95NRuFB3"
+        "-KOC4s8A2ACoUxYVHbtc" : "S8whq96Mi8QHvmiugXAn95NRuFB3",
+        "-KOqYfvxMpt6L8ljwwRc" : "CVp6DpWziLP7QGYlNayaQK0x4eg1",
+        "-KOvmhxWbBjFANOaKrvQ" : "JQSW41TtQRYyfOCIEfBH41qx3FU2"
       },
       "displayName" : "Colin Au",
       "email" : "calrhino@gmail.com",
@@ -1691,6 +2031,13 @@
       "lowerCaseDisplayName" : "john mayer",
       "phoneNumber" : "0123",
       "photoUrl" : "https://i.ytimg.com/vi/EzedjyuD63I/hqdefault.jpg"
+    },
+    "y9SNcc4hHvT9ujf8WLdV6p4xRlp2" : {
+      "displayName" : "Caesar2013",
+      "email" : "milindpathiyal@gmail.com",
+      "lowerCaseDisplayName" : "caesar2013",
+      "phoneNumber" : "0123",
+      "photoUrl" : "https://firebasestorage.googleapis.com/v0/b/project-7984311037219211014.appspot.com/o/UserProfilePicture-Large%2Fy9SNcc4hHvT9ujf8WLdV6p4xRlp2.jpg?alt=media&token=3b2ca1a5-b85a-4b34-8c86-593acc1226fc"
     }
   }
 }

@@ -163,6 +163,26 @@ extension FirebaseHelper{
 //        })
 //    }
     
+//    static func getUserFriendUID(fromUserUID: String, onComplete: String? -> Void ) {
+//        friendshipsRef().queryOrderedByChild("fromUser").queryEqualToValue(fromUserUID)
+//            .observeEventType(.ChildAdded, withBlock: { snapshot in
+//                guard let value = snapshot.value as? [String: AnyObject] else { return }
+//                guard let friendUID = value["toUser"] as? String else { return }
+//                onComplete(friendUID)
+//            })
+//    }
+    
+    static func getUserChatRoomUID(userUID: String, onComplete: String? -> Void ) {
+        userChatRoomsRef(userUID).observeEventType(.ChildAdded, withBlock: { snapshot in
+//            if let chatRoomUID = snapshot.key {
+//                
+//            }
+//            guard let value = snapshot as? [String: AnyObject] else { return }
+//            guard let chatRoomKey = Array(value.keys)[0] as? String else { return }
+            onComplete(snapshot.key)
+        })
+    }
+
     static func getUserChatRoomUIDs(userUID: String, onComplete: [String]? -> Void ) {
         userChatRoomsRef(userUID).observeEventType(.Value, withBlock: { snapshot in
             var chatRoomKeys: [String]? = nil
