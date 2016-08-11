@@ -110,6 +110,10 @@ extension FirebaseHelper{
         return userRef(userUID).child("chatRooms")
     }
     
+    static func userChatRoomRef(userUID: String, chatRoomUID: String) -> FIRDatabaseReference {
+        return userChatRoomsRef(userUID).child(chatRoomUID)
+    }
+    
     static func userFriendsRef(userUID: String) -> FIRDatabaseReference {
         return userRef(userUID).child("friends")
     }
@@ -136,6 +140,28 @@ extension FirebaseHelper{
     static func updateUserProfilePicUrl(userUID: String, photoUrl: String){
         userPhotoUrlRef(userUID).setValue(photoUrl)
     }
+    
+//    static func getUserFriendUID(fromUserUID: String, onComplete: String? -> Void ) {
+//        friendshipsRef().queryOrderedByChild("fromUser").queryEqualToValue(fromUserUID)
+//            .observeEventType(.ChildAdded, withBlock: { snapshot in
+//                guard let value = snapshot.value as? [String: AnyObject] else { return }
+//                guard let friendUID = value["toUser"] as? String else { return }
+//                onComplete(friendUID)
+//            })
+//    }
+//    
+//    static func getUserChatRoomUID(userUID: String, onComplete: [String]? -> Void ) {
+//        userChatRoomsRef(userUID).observeEventType(.ChildAdded, withBlock: { snapshot in
+//            guard let value = snapshot.value as? [String: AnyObject] else { return }
+//            var chatRoomKeys: [String]? = nil
+//            if let value = snapshot.value as? [String: AnyObject] {
+//                chatRoomKeys = Array(value.keys)
+//            } else {
+//                print("Firebase ChatRooms Endpoint - null")
+//            }
+//            onComplete(chatRoomKeys)
+//        })
+//    }
     
     static func getUserChatRoomUIDs(userUID: String, onComplete: [String]? -> Void ) {
         userChatRoomsRef(userUID).observeEventType(.Value, withBlock: { snapshot in
@@ -271,6 +297,12 @@ extension FirebaseHelper{
             onComplete(snapshot)
         })
     }
+    
+    static func deleteChatRoom(chatRoomUID: String, user1UID: String, user2UID: String){
+        chatRoomRef(chatRoomUID).removeValue()
+        userChatRoomRef(user1UID, chatRoomUID: chatRoomUID).removeValue()
+        userChatRoomRef(user2UID, chatRoomUID: chatRoomUID).removeValue()
+    }
 }
 
 // MARK: ChatRoomMembers Endpoint
@@ -318,6 +350,15 @@ extension FirebaseHelper{
         return friendshipRef(fromUserUID, toUserUID: toUserUID).child("status")
     }
     
+    static func getUserFriendUID(fromUserUID: String, onComplete: String? -> Void ) {
+        friendshipsRef().queryOrderedByChild("fromUser").queryEqualToValue(fromUserUID)
+            .observeEventType(.ChildAdded, withBlock: { snapshot in
+                guard let value = snapshot.value as? [String: AnyObject] else { return }
+                guard let friendUID = value["toUser"] as? String else { return }
+                onComplete(friendUID)
+            })
+    }
+    
     static func getUserFriendUIDs(fromUserUID: String, onComplete: [String]? -> Void ) {
         friendshipsRef().queryOrderedByChild("fromUser").queryEqualToValue(fromUserUID)
             .observeEventType(.Value, withBlock: { snapshot in
@@ -343,7 +384,7 @@ extension FirebaseHelper{
         newFriendshipRef.setValue(newFriendship_JSON)
     }
     
-    static func removeFriendship(fromUserUID: String, toUserUID: String){
+    static func deleteFriendship(fromUserUID: String, toUserUID: String){
         friendshipRef(fromUserUID, toUserUID: toUserUID).removeValue()
     }
     
@@ -382,7 +423,7 @@ extension FirebaseHelper{
     }
     
     static func declineFriendRequest(currUserUID: String, requestingUserUID: String){
-        removeFriendship(requestingUserUID, toUserUID: currUserUID)
+        deleteFriendship(requestingUserUID, toUserUID: currUserUID)
     }
 }
 

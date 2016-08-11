@@ -20,6 +20,10 @@ class ContactsViewController: UIViewController {
     var friends: [User]! {
         didSet{
             contactsTableView.reloadData()
+            if friends != nil {
+                print(friends)
+                print(friends.count)
+            }
         }
     }
     
@@ -27,37 +31,34 @@ class ContactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FirebaseHelper.getUserFriendUIDs(self.currUser.UID){ friendUIDs in
-            if let friendUIDs = friendUIDs {
-                for uid in friendUIDs {
-                    FirebaseHelper.getUser(uid, onComplete: { user in
-                        guard let friend = user else {return}
-                        
-                        if (self.friends?.append(friend)) == nil {
-                            self.friends = [friend]
-                        }
-                    })
-                }
+        
+        FirebaseHelper.getUserFriendUID(self.currUser.UID){ friendUID in
+            if let friendUID = friendUID {
+                FirebaseHelper.getUser(friendUID, onComplete: { user in
+                    guard let friend = user else {return}
+                    if (self.friends?.append(friend)) == nil {
+                        self.friends = [friend]
+                    }
+                })
             } else {
                 print("\(self.TAG) - No chat room")
             }
         }
         
-//        FirebaseHelper.getUserFriendUIDs(self.currUser.UID){ friendKeys in
-//            if let friendKeys = friendKeys {
-//                for uid in friendKeys {
-//                    FirebaseHelper.getUser(uid, onComplete: { user in
-//                        guard let friend = user else {return}
-//                        
-//                        if (self.friends?.append(friend)) == nil {
-//                            self.friends = [friend]
-//                        }
-//                    })
-//                }
-//            } else {
-//                print("\(self.TAG) - No chat room")
-//            }
-//        }
+        //        FirebaseHelper.getUserFriendUIDs(self.currUser.UID){ friendUIDs in
+        //            if let friendUIDs = friendUIDs {
+        //                for uid in friendUIDs {
+        //                    FirebaseHelper.getUser(uid, onComplete: { user in
+        //                        guard let friend = user else {return}
+        //                        if (self.friends?.append(friend)) == nil {
+        //                            self.friends = [friend]
+        //                        }
+        //                    })
+        //                }
+        //            } else {
+        //                print("\(self.TAG) - No chat room")
+        //            }
+        //        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -130,7 +131,7 @@ extension ContactsViewController: UITableViewDataSource, UITableViewDelegate {
                 FirebaseHelper.saveNewChatRoomMemberRelationship(newChatRoomUID, userUID: userTapped.UID)
                 FirebaseHelper.addChatRoomToUser(self.currUser, chatRoomUID: newChatRoomUID, chatPartner: userTapped)
                 FirebaseHelper.addChatRoomToUser(userTapped, chatRoomUID: newChatRoomUID,
-                    chatPartner: self.currUser)
+                                                 chatPartner: self.currUser)
                 
                 self.chatVCChatRoom = newChatRoom
                 self.performSegueWithIdentifier("toChat", sender: nil)

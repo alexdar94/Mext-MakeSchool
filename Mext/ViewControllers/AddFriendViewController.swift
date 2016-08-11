@@ -88,8 +88,8 @@ extension AddFriendViewController: AddFriendTableViewCellDelegate {
     }
     
     func cell(cell: AddFriendTableViewCell, didSelectUnfriendUser user: User) {
-        FirebaseHelper.removeFriendship(currUserUID, toUserUID: user.UID)
-        FirebaseHelper.removeFriendship(user.UID, toUserUID: currUserUID)
+        FirebaseHelper.deleteFriendship(currUserUID, toUserUID: user.UID)
+        FirebaseHelper.deleteFriendship(user.UID, toUserUID: currUserUID)
         self.friendUIDs = friendUIDs!.filter({$0 != user.UID})
     }
     
